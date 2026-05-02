@@ -1,0 +1,602 @@
+
+    <html>
+    <head>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+               background: #f5f6fa; margin: 0; padding: 20px; color: #2c3e50; }
+        .container { max-width: 680px; margin: 0 auto; background: #fff; border-radius: 8px; 
+                      overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+        .header { background: #1a1a2e; color: #fff; padding: 20px 24px; }
+        .header h1 { margin: 0 0 4px 0; font-size: 18px; font-weight: 600; letter-spacing: 0.5px; }
+        .header .subtitle { color: #8e9aaf; font-size: 13px; }
+        .regime-bar { background: #16213e; padding: 12px 24px; display: flex; gap: 24px; 
+                       font-size: 13px; color: #8e9aaf; }
+        .regime-bar .val { color: #fff; font-weight: 600; }
+        .section { padding: 20px 24px; border-bottom: 1px solid #eee; }
+        .section:last-child { border-bottom: none; }
+        .section h2 { font-size: 14px; font-weight: 700; margin: 0 0 4px 0; text-transform: uppercase;
+                        letter-spacing: 0.5px; color: #2c3e50; }
+        .section .desc { font-size: 12px; color: #7f8c8d; margin: 0 0 12px 0; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th { text-align: left; padding: 6px 8px; border-bottom: 2px solid #eee; 
+              font-weight: 600; color: #7f8c8d; font-size: 11px; text-transform: uppercase; }
+        td { padding: 6px 8px; border-bottom: 1px solid #f5f5f5; }
+        .status { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; 
+                   font-weight: 700; text-transform: uppercase; }
+        .cluster-box { background: #2c3e50; color: #fff; padding: 12px 16px; 
+                        border-radius: 6px; margin-bottom: 12px; font-size: 14px; font-weight: 600; }
+        .footer { padding: 16px 24px; background: #f8f9fa; font-size: 11px; color: #95a5a6; }
+        .alert-banner { background: #e74c3c; color: #fff; padding: 10px 24px; font-size: 13px; 
+                         font-weight: 600; text-align: center; }
+    </style>
+    </head>
+    <body>
+    <div class="container">
+        <div class="header">
+            <h1>RetailEdge Signal Monitor</h1>
+            <div class="subtitle">Wide Spread Capital &#183; Saturday, May 02, 2026 at 01:32 PM</div>
+        </div>
+    
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#111827;border-radius:6px;overflow:hidden;margin-bottom:16px;">
+  <tr>
+    <td style="padding:10px 16px;background:#991b1b;">
+      <span style="color:#fecaca;font-size:13px;font-weight:700;">DATA INTEGRITY: 3 SOURCES NOT LIVE</span>
+    </td>
+  </tr>
+  <tr><td style="padding:0">
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tr style="background:#1f2937">
+        <td style="padding:6px 8px;font-size:10px;color:#6b7280;font-weight:700;text-transform:uppercase">Source</td>
+        <td style="padding:6px 8px;font-size:10px;color:#6b7280;font-weight:700;text-transform:uppercase" align="center">Status</td>
+        <td style="padding:6px 8px;font-size:10px;color:#6b7280;font-weight:700;text-transform:uppercase">Evidence</td>
+      </tr>
+      
+      <tr>
+        <td style="padding:4px 8px;font-size:12px;color:#e5e7eb;border-bottom:1px solid #1f2937">FlashAlpha</td>
+        <td style="padding:4px 8px;border-bottom:1px solid #1f2937" align="center">
+          <span style="background:#065f46;color:#a7f3d0;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.03em">LIVE</span>
+        </td>
+        <td style="padding:4px 8px;font-size:11px;color:#9ca3af;border-bottom:1px solid #1f2937">SPY net_gex: 5.6319 -> 0.0000 (delta=-5.6319), 45 symbols</td>
+      </tr>
+      <tr>
+        <td style="padding:4px 8px;font-size:12px;color:#e5e7eb;border-bottom:1px solid #1f2937">VIX</td>
+        <td style="padding:4px 8px;border-bottom:1px solid #1f2937" align="center">
+          <span style="background:#7c2d12;color:#fed7aa;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.03em">DEGRADED</span>
+        </td>
+        <td style="padding:4px 8px;font-size:11px;color:#9ca3af;border-bottom:1px solid #1f2937">VVIX is NaN — spot=16.99</td>
+      </tr>
+      <tr>
+        <td style="padding:4px 8px;font-size:12px;color:#e5e7eb;border-bottom:1px solid #1f2937">SqzMe</td>
+        <td style="padding:4px 8px;border-bottom:1px solid #1f2937" align="center">
+          <span style="background:#065f46;color:#a7f3d0;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.03em">LIVE</span>
+        </td>
+        <td style="padding:4px 8px;font-size:11px;color:#9ca3af;border-bottom:1px solid #1f2937">5788 securities</td>
+      </tr>
+      <tr>
+        <td style="padding:4px 8px;font-size:12px;color:#e5e7eb;border-bottom:1px solid #1f2937">RTAT</td>
+        <td style="padding:4px 8px;border-bottom:1px solid #1f2937" align="center">
+          <span style="background:#065f46;color:#a7f3d0;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.03em">LIVE</span>
+        </td>
+        <td style="padding:4px 8px;font-size:11px;color:#9ca3af;border-bottom:1px solid #1f2937">risk_ratio: 1.3440 -> 1.4423, 51 tickers</td>
+      </tr>
+      <tr>
+        <td style="padding:4px 8px;font-size:12px;color:#e5e7eb;border-bottom:1px solid #1f2937">Polygon 0DTE</td>
+        <td style="padding:4px 8px;border-bottom:1px solid #1f2937" align="center">
+          <span style="background:#065f46;color:#a7f3d0;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.03em">LIVE</span>
+        </td>
+        <td style="padding:4px 8px;font-size:11px;color:#9ca3af;border-bottom:1px solid #1f2937">score=0.0000</td>
+      </tr>
+      <tr>
+        <td style="padding:4px 8px;font-size:12px;color:#e5e7eb;border-bottom:1px solid #1f2937">Polygon Engine</td>
+        <td style="padding:4px 8px;border-bottom:1px solid #1f2937" align="center">
+          <span style="background:#065f46;color:#a7f3d0;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.03em">LIVE</span>
+        </td>
+        <td style="padding:4px 8px;font-size:11px;color:#9ca3af;border-bottom:1px solid #1f2937">24 tickers, 0 unusual vol</td>
+      </tr>
+      <tr>
+        <td style="padding:4px 8px;font-size:12px;color:#e5e7eb;border-bottom:1px solid #1f2937">Unusual Whales</td>
+        <td style="padding:4px 8px;border-bottom:1px solid #1f2937" align="center">
+          <span style="background:#065f46;color:#a7f3d0;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.03em">LIVE</span>
+        </td>
+        <td style="padding:4px 8px;font-size:11px;color:#9ca3af;border-bottom:1px solid #1f2937">24 tickers, 906 sweeps, 2 bullish / 2 bearish</td>
+      </tr>
+      <tr>
+        <td style="padding:4px 8px;font-size:12px;color:#e5e7eb;border-bottom:1px solid #1f2937">FINRA</td>
+        <td style="padding:4px 8px;border-bottom:1px solid #1f2937" align="center">
+          <span style="background:#065f46;color:#a7f3d0;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.03em">LIVE</span>
+        </td>
+        <td style="padding:4px 8px;font-size:11px;color:#9ca3af;border-bottom:1px solid #1f2937">market_ratio: 0.5021 -> 0.5092, 45 tickers</td>
+      </tr>
+      <tr>
+        <td style="padding:4px 8px;font-size:12px;color:#e5e7eb;border-bottom:1px solid #1f2937">EDGAR Insiders</td>
+        <td style="padding:4px 8px;border-bottom:1px solid #1f2937" align="center">
+          <span style="background:#065f46;color:#a7f3d0;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.03em">LIVE</span>
+        </td>
+        <td style="padding:4px 8px;font-size:11px;color:#9ca3af;border-bottom:1px solid #1f2937">bias=selling, 0 buying / 7 selling</td>
+      </tr>
+      <tr>
+        <td style="padding:4px 8px;font-size:12px;color:#e5e7eb;border-bottom:1px solid #1f2937">CBOE P/C</td>
+        <td style="padding:4px 8px;border-bottom:1px solid #1f2937" align="center">
+          <span style="background:#7c2d12;color:#fed7aa;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.03em">DEGRADED</span>
+        </td>
+        <td style="padding:4px 8px;font-size:11px;color:#9ca3af;border-bottom:1px solid #1f2937">Using cboe_fallback instead of primary CBOE feed</td>
+      </tr>
+      <tr>
+        <td style="padding:4px 8px;font-size:12px;color:#e5e7eb;border-bottom:1px solid #1f2937">QuiverQuant WSB</td>
+        <td style="padding:4px 8px;border-bottom:1px solid #1f2937" align="center">
+          <span style="background:#92400e;color:#fde68a;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.03em">STALE</span>
+        </td>
+        <td style="padding:4px 8px;font-size:11px;color:#9ca3af;border-bottom:1px solid #1f2937">total_mentions: 307 -> 307 (unchanged), crowding=0.00</td>
+      </tr>
+      <tr>
+        <td style="padding:4px 8px;font-size:12px;color:#e5e7eb;border-bottom:1px solid #1f2937">Congress Trades</td>
+        <td style="padding:4px 8px;border-bottom:1px solid #1f2937" align="center">
+          <span style="background:#065f46;color:#a7f3d0;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.03em">LIVE</span>
+        </td>
+        <td style="padding:4px 8px;font-size:11px;color:#9ca3af;border-bottom:1px solid #1f2937">424 tickers with activity</td>
+      </tr>
+      <tr>
+        <td style="padding:4px 8px;font-size:12px;color:#e5e7eb;border-bottom:1px solid #1f2937">CTA Regime</td>
+        <td style="padding:4px 8px;border-bottom:1px solid #1f2937" align="center">
+          <span style="background:#065f46;color:#a7f3d0;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.03em">LIVE</span>
+        </td>
+        <td style="padding:4px 8px;font-size:11px;color:#9ca3af;border-bottom:1px solid #1f2937">posture=LONG, signal=HOLD</td>
+      </tr>
+    </table>
+  </td></tr>
+</table><div style="margin:12px 0;padding:8px 12px;border:1px solid #ddd;border-radius:6px;background:#fafafa;font-family:Arial,sans-serif;font-size:12px;"><div style="font-weight:600;color:#c0392b;margin-bottom:6px;">Cache Freshness — 1 stale / 12 sources</div><table style="border-collapse:collapse;width:100%;"><thead><tr style="text-align:left;color:#555;font-size:11px;"><th style="padding:4px 8px;border-bottom:1px solid #ccc;">Source</th><th style="padding:4px 8px;border-bottom:1px solid #ccc;text-align:right;">Rows</th><th style="padding:4px 8px;border-bottom:1px solid #ccc;">Latest</th><th style="padding:4px 8px;border-bottom:1px solid #ccc;text-align:right;">Age</th><th style="padding:4px 8px;border-bottom:1px solid #ccc;text-align:center;">Status</th></tr></thead><tbody><tr><td style="padding:4px 8px;border-bottom:1px solid #eee;">GEX history (SPY G_NORM)</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">3,982</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-family:monospace;">2026-05-01</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">1bd</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;background:#1b8a3a;color:#fff;font-size:11px;font-weight:600;">FRESH</span></td></tr><tr><td style="padding:4px 8px;border-bottom:1px solid #eee;">RTAT history</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">173,410</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-family:monospace;">2026-05-01</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">1bd</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;background:#1b8a3a;color:#fff;font-size:11px;font-weight:600;">FRESH</span></td></tr><tr><td style="padding:4px 8px;border-bottom:1px solid #eee;">RTAT risk ratio (live)</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">97</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-family:monospace;">2026-05-01</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">1bd</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;background:#1b8a3a;color:#fff;font-size:11px;font-weight:600;">FRESH</span></td></tr><tr><td style="padding:4px 8px;border-bottom:1px solid #eee;">RTAT risk ratio history</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">2,590</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-family:monospace;">2026-05-01</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">1bd</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;background:#1b8a3a;color:#fff;font-size:11px;font-weight:600;">FRESH</span></td></tr><tr><td style="padding:4px 8px;border-bottom:1px solid #eee;">FINRA short volume</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">360</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-family:monospace;">2026-05-01</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">1bd</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;background:#1b8a3a;color:#fff;font-size:11px;font-weight:600;">FRESH</span></td></tr><tr><td style="padding:4px 8px;border-bottom:1px solid #eee;">FlashAlpha SPY history</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">6</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-family:monospace;">2026-05-02</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">0bd</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;background:#1b8a3a;color:#fff;font-size:11px;font-weight:600;">FRESH</span></td></tr><tr><td style="padding:4px 8px;border-bottom:1px solid #eee;">SqzMe latest (cross-section)</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">5,788</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-family:monospace;">2026-05-01</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">1bd</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;background:#1b8a3a;color:#fff;font-size:11px;font-weight:600;">FRESH</span></td></tr><tr><td style="padding:4px 8px;border-bottom:1px solid #eee;">SqzMe SPY (bellwether)</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">4,107</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-family:monospace;">2026-05-01</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">1bd</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;background:#1b8a3a;color:#fff;font-size:11px;font-weight:600;">FRESH</span></td></tr><tr><td style="padding:4px 8px;border-bottom:1px solid #eee;">Polygon engine (0DTE)</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">24</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-family:monospace;">2026-05-02</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">0bd</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;background:#1b8a3a;color:#fff;font-size:11px;font-weight:600;">FRESH</span></td></tr><tr><td style="padding:4px 8px;border-bottom:1px solid #eee;">Polygon prices SPY</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">2,596</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-family:monospace;">2026-04-30</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">2bd</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;background:#b07d00;color:#fff;font-size:11px;font-weight:600;">AGING</span></td></tr><tr><td style="padding:4px 8px;border-bottom:1px solid #eee;">PC ratio (CBOE)</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">0</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-family:monospace;">—</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">—</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;background:#c0392b;color:#fff;font-size:11px;font-weight:600;">EMPTY</span></td></tr><tr><td style="padding:4px 8px;border-bottom:1px solid #eee;">JPM sentiment</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">122</td><td style="padding:4px 8px;border-bottom:1px solid #eee;font-family:monospace;">2026-04-29</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:right;">3bd</td><td style="padding:4px 8px;border-bottom:1px solid #eee;text-align:center;"><span style="display:inline-block;padding:1px 8px;border-radius:10px;background:#b07d00;color:#fff;font-size:11px;font-weight:600;">AGING</span></td></tr></tbody></table></div>
+        <div class="regime-bar">
+            <span>SPY <span class="val">$720.65</span></span>
+            <span>200d MA <span class="val">$670.94</span></span>
+            <span>vs 200d <span class="val" style="color:#27ae60">+7.4%</span></span>
+            <span>Gate <span class="val" style="color:#27ae60">OPEN</span></span>
+            <span>VIX <span class="val">16.99</span></span>
+        </div>
+    
+        <div class="section">
+            <h2>Contrarian GEX Flip</h2>
+            <p class="desc">Validated edge &#183; 15-year backfill &#183; ~13 fires/year each direction &#183; Source: SqzMe G_NORM</p>
+            <table style="width:auto;margin-bottom:12px">
+                <tr>
+                    <td style="border:none;padding:4px 16px 4px 0"><strong>Signal</strong></td>
+                    <td style="border:none;padding:4px 16px 4px 0"><span style="display:inline-block;padding:6px 16px;border-radius:4px;background:#2980b9;color:#fff;font-weight:700;font-size:14px">POSITIVE GAMMA</span></td>
+                </tr>
+                <tr>
+                    <td style="border:none;padding:4px 16px 4px 0"><strong>GEX (prev &#8594; today)</strong></td>
+                    <td style="border:none;padding:4px 0">+5.63B &#8594; +0.00B</td>
+                </tr>
+                <tr>
+                    <td style="border:none;padding:0 16px 4px 0;font-size:11px;color:#7f8c8d">vs recent</td>
+                    <td style="border:none;padding:0 0 4px 0"><span style="font-size:12px;color:#34495e"><span style="display:inline-block;margin-right:10px;font-size:11px"><span style="color:#7f8c8d;font-family:monospace">04-25</span> <strong style="color:#27ae60">+1.97B</strong></span><span style="display:inline-block;margin-right:10px;font-size:11px"><span style="color:#7f8c8d;font-family:monospace">04-28</span> <strong style="color:#27ae60">+6.15B</strong></span><span style="display:inline-block;margin-right:10px;font-size:11px"><span style="color:#7f8c8d;font-family:monospace">04-29</span> <strong style="color:#e74c3c">-1.86B</strong></span><span style="display:inline-block;margin-right:10px;font-size:11px"><span style="color:#7f8c8d;font-family:monospace">04-30</span> <strong style="color:#27ae60">+5.82B</strong></span><span style="display:inline-block;margin-right:10px;font-size:11px"><span style="color:#7f8c8d;font-family:monospace">05-01</span> <strong style="color:#27ae60">+5.63B</strong></span><span style="display:inline-block;margin-right:10px;font-size:11px;color:#bdc3c7"><span style="font-family:monospace">— —</span> <strong>—</strong></span><span style="display:inline-block;margin-right:10px;font-size:11px;color:#bdc3c7"><span style="font-family:monospace">— —</span> <strong>—</strong></span><span style="display:inline-block;margin-right:10px;font-size:11px;color:#bdc3c7"><span style="font-family:monospace">— —</span> <strong>—</strong></span><span style="display:inline-block;margin-right:10px;font-size:11px;color:#bdc3c7"><span style="font-family:monospace">— —</span> <strong>—</strong></span><span style="display:inline-block;margin-right:10px;font-size:11px;color:#bdc3c7"><span style="font-family:monospace">— —</span> <strong>—</strong></span></span> <span style="font-size:10px;color:#95a5a6">(5/10 days collected)</span></td>
+                </tr>
+                <tr>
+                    <td style="border:none;padding:4px 16px 4px 0"><strong>G_NORM (SqzMe)</strong></td>
+                    <td style="border:none;padding:4px 0"><span style="color:#27ae60;font-weight:600">+0.255</span></td>
+                </tr>
+                <tr>
+                    <td style="border:none;padding:0 16px 4px 0;font-size:11px;color:#7f8c8d">vs recent</td>
+                    <td style="border:none;padding:0 0 4px 0"><span style="font-size:12px;color:#34495e">5d avg <strong>+0.236</strong> &#183; ±1σ band <strong>[-0.105, +0.719]</strong> &#183; today z=<strong>-0.13</strong></span><span style="display:inline-block;margin-left:8px;padding:1px 8px;border-radius:10px;background:#7f8c8d;color:#fff;font-size:10px;font-weight:700;letter-spacing:0.3px;vertical-align:middle">WITHIN NOISE</span></td>
+                </tr>
+                <tr>
+                    <td style="border:none;padding:4px 16px 4px 0"><strong>Days since last flip</strong></td>
+                    <td style="border:none;padding:4px 0">3d ago (2026-04-29)</td>
+                </tr>
+                <tr>
+                    <td style="border:none;padding:4px 16px 4px 0"><strong>Historical (n=&#8212;)</strong></td>
+                    <td style="border:none;padding:4px 0">N/A</td>
+                </tr>
+            </table>
+    <div style="margin:8px 0 12px 0;"><div style="font-size:12px;font-weight:600;color:#555;margin-bottom:4px;">5-Day GEX History (gex_history.parquet)</div><table style="border-collapse:collapse;font-size:12px;"><thead><tr style="text-align:left;color:#777;font-size:11px;"><th style="padding:3px 8px;border-bottom:1px solid #ccc;">Date</th><th style="padding:3px 8px;border-bottom:1px solid #ccc;text-align:right;">SPY Close</th><th style="padding:3px 8px;border-bottom:1px solid #ccc;text-align:right;">G_NORM</th><th style="padding:3px 8px;border-bottom:1px solid #ccc;text-align:center;">Regime</th><th style="padding:3px 8px;border-bottom:1px solid #ccc;text-align:center;">Flip</th></tr></thead><tbody><tr><td style="padding:3px 8px;border-bottom:1px solid #eee;font-family:monospace;">2026-04-27</td><td style="padding:3px 8px;border-bottom:1px solid #eee;text-align:right;">715.17</td><td style="padding:3px 8px;border-bottom:1px solid #eee;text-align:right;color:#27ae60;font-weight:600;">+0.288</td><td style="padding:3px 8px;border-bottom:1px solid #eee;text-align:center;">POS</td><td style="padding:3px 8px;border-bottom:1px solid #eee;text-align:center;"></td></tr><tr><td style="padding:3px 8px;border-bottom:1px solid #eee;font-family:monospace;">2026-04-28</td><td style="padding:3px 8px;border-bottom:1px solid #eee;text-align:right;">711.69</td><td style="padding:3px 8px;border-bottom:1px solid #eee;text-align:right;color:#e74c3c;font-weight:600;">-0.005</td><td style="padding:3px 8px;border-bottom:1px solid #eee;text-align:center;">NEG</td><td style="padding:3px 8px;border-bottom:1px solid #eee;text-align:center;"><span style="display:inline-block;padding:1px 6px;border-radius:8px;background:#f39c12;color:#fff;font-size:10px;font-weight:600;">FLIP</span></td></tr><tr><td style="padding:3px 8px;border-bottom:1px solid #eee;font-family:monospace;">2026-04-29</td><td style="padding:3px 8px;border-bottom:1px solid #eee;text-align:right;">711.58</td><td style="padding:3px 8px;border-bottom:1px solid #eee;text-align:right;color:#27ae60;font-weight:600;">+0.159</td><td style="padding:3px 8px;border-bottom:1px solid #eee;text-align:center;">POS</td><td style="padding:3px 8px;border-bottom:1px solid #eee;text-align:center;"><span style="display:inline-block;padding:1px 6px;border-radius:8px;background:#f39c12;color:#fff;font-size:10px;font-weight:600;">FLIP</span></td></tr><tr><td style="padding:3px 8px;border-bottom:1px solid #eee;font-family:monospace;">2026-04-30</td><td style="padding:3px 8px;border-bottom:1px solid #eee;text-align:right;">718.66</td><td style="padding:3px 8px;border-bottom:1px solid #eee;text-align:right;color:#27ae60;font-weight:600;">+0.413</td><td style="padding:3px 8px;border-bottom:1px solid #eee;text-align:center;">POS</td><td style="padding:3px 8px;border-bottom:1px solid #eee;text-align:center;"></td></tr><tr><td style="padding:3px 8px;border-bottom:1px solid #eee;font-family:monospace;">2026-05-01</td><td style="padding:3px 8px;border-bottom:1px solid #eee;text-align:right;">720.65</td><td style="padding:3px 8px;border-bottom:1px solid #eee;text-align:right;color:#27ae60;font-weight:600;">+0.255</td><td style="padding:3px 8px;border-bottom:1px solid #eee;text-align:center;">POS</td><td style="padding:3px 8px;border-bottom:1px solid #eee;text-align:center;"></td></tr></tbody></table></div>
+            <p style="font-size:12px;color:#2c3e50;margin:4px 0 0 0"><em>No GEX sign flip today. Current regime: Positive Gamma. Last flip: 2026-04-29 (3d ago).</em></p>
+        </div>
+    
+        <p style="font-size:10px;color:#7f8c8d;margin:2px 0 0 24px;">
+            Cross-validated: FlashAlpha magnitude + SqzMe G_NORM regime (5 checks passed)
+        </p>
+
+        <div class="section">
+            <h2>GEX Squeeze Monitor</h2>
+            <p class="desc">V-shape 5x20 cross + FA Squeeze Score (0-6) &#183; Source: FlashAlpha Growth</p>
+            <table style="width:auto;margin-bottom:8px">
+                <tr>
+                    <td style="border:none;padding:4px 16px 4px 0"><strong>Tier</strong></td>
+                    <td style="border:none;padding:4px 0"><span style="display:inline-block;padding:6px 16px;border-radius:4px;background:#e67e22;color:#fff;font-weight:700;font-size:14px">WATCH (Score 4)</span></td>
+                </tr>
+            </table>
+
+            <table style="width:100%;margin-bottom:10px;border-collapse:collapse">
+                <tr>
+                    <!-- Left: V-shape -->
+                    <td style="border:none;padding:8px 16px 8px 0;vertical-align:top;width:50%">
+                        <div style="font-weight:700;color:#2c3e50;font-size:13px;margin-bottom:6px">V-Shape Signal</div>
+                        <table style="width:100%;border-collapse:collapse">
+                            <tr><td style="border:none;padding:2px 8px 2px 0;font-size:12px;color:#7f8c8d">Cross state</td>
+                                <td style="border:none;padding:2px 0;font-size:12px;color:#bdc3c7;font-weight:600">MA5 above MA20</td></tr>
+                            <tr><td style="border:none;padding:2px 8px 2px 0;font-size:12px;color:#7f8c8d">Tier today</td>
+                                <td style="border:none;padding:2px 0;font-size:12px;color:#bdc3c7;font-weight:600">NO FIRE</td></tr>
+                            <tr><td style="border:none;padding:2px 8px 2px 0;font-size:12px;color:#7f8c8d">GEX MA5</td>
+                                <td style="border:none;padding:2px 0;font-size:12px;font-family:monospace">-11.02B</td></tr>
+                            <tr><td style="border:none;padding:2px 8px 2px 0;font-size:12px;color:#7f8c8d">GEX MA20</td>
+                                <td style="border:none;padding:2px 0;font-size:12px;font-family:monospace">-11.83B</td></tr>
+                            <tr><td style="border:none;padding:2px 8px 2px 0;font-size:12px;color:#7f8c8d">z<sub>-5d</sub> (252d)</td>
+                                <td style="border:none;padding:2px 0;font-size:12px;font-family:monospace">-1.93</td></tr>
+                            <tr><td style="border:none;padding:2px 8px 2px 0;font-size:12px;color:#7f8c8d">Snap ratio</td>
+                                <td style="border:none;padding:2px 0;font-size:12px;font-family:monospace">—</td></tr>
+                        </table>
+                    </td>
+
+                    <!-- Right: FA Squeeze Score -->
+                    <td style="border:none;padding:8px 0 8px 16px;vertical-align:top;width:50%;border-left:1px solid #ecf0f1">
+                        <div style="font-weight:700;color:#2c3e50;font-size:13px;margin-bottom:6px">FA Squeeze Score: <span style="color:#c0392b">4/6</span></div>
+                        <table style="width:100%;border-collapse:collapse">
+                            <tr><td style="border:none;padding:2px 8px 2px 0;font-size:12px;color:#7f8c8d">Spot</td>
+                                <td style="border:none;padding:2px 0;font-size:12px;font-family:monospace">660.54</td></tr>
+                            <tr><td style="border:none;padding:2px 8px 2px 0;font-size:12px;color:#7f8c8d">Gamma flip</td>
+                                <td style="border:none;padding:2px 0;font-size:12px;font-family:monospace">714.04</td></tr>
+                            <tr><td style="border:none;padding:2px 8px 2px 0;font-size:12px;color:#7f8c8d">Call wall</td>
+                                <td style="border:none;padding:2px 0;font-size:12px;font-family:monospace">720</td></tr>
+                            <tr><td style="border:none;padding:2px 8px 2px 0;font-size:12px;color:#7f8c8d">Net VEX</td>
+                                <td style="border:none;padding:2px 0;font-size:12px;font-family:monospace">-355.8B</td></tr>
+                            <tr><td style="border:none;padding:2px 8px 2px 0;font-size:12px;color:#7f8c8d">Neg-gex ±2%</td>
+                                <td style="border:none;padding:2px 0;font-size:12px;font-family:monospace">-13.6B</td></tr>
+                            <tr><td style="border:none;padding:2px 8px 2px 0;font-size:12px;color:#7f8c8d">Front put_10d IV</td>
+                                <td style="border:none;padding:2px 0;font-size:12px;font-family:monospace">12.3%</td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+            <div style="margin:8px 0 6px 0;font-size:11px;color:#7f8c8d">Score components (6):</div>
+            <div style="margin-bottom:10px;line-height:1.8"><span style="display:inline-block;margin-right:14px;font-size:11px"><span style="color:#bdc3c7;font-weight:700;font-family:monospace">&#8212;</span> <span style="color:#2c3e50">Spot at flip (-7.49%)</span></span><span style="display:inline-block;margin-right:14px;font-size:11px"><span style="color:#bdc3c7;font-weight:700;font-family:monospace">&#8212;</span> <span style="color:#2c3e50">Tight call wall (+9.00%)</span></span><span style="display:inline-block;margin-right:14px;font-size:11px"><span style="color:#27ae60;font-weight:700;font-family:monospace">&#10003;</span> <span style="color:#2c3e50">Neg-gex cluster (-13.6B)</span></span><span style="display:inline-block;margin-right:14px;font-size:11px"><span style="color:#27ae60;font-weight:700;font-family:monospace">&#10003;</span> <span style="color:#2c3e50">Vex flipped + → -</span></span><span style="display:inline-block;margin-right:14px;font-size:11px"><span style="color:#27ae60;font-weight:700;font-family:monospace">&#10003;</span> <span style="color:#2c3e50">Skew compress (-50% put_10d 5d)</span></span><span style="display:inline-block;margin-right:14px;font-size:11px"><span style="color:#27ae60;font-weight:700;font-family:monospace">&#10003;</span> <span style="color:#2c3e50">Call wall near flip</span></span></div>
+
+            <div style="margin:8px 0 4px 0;font-size:11px;color:#7f8c8d">10-day GEX trend (MA5 / MA20):</div>
+            <div style="margin-bottom:8px;white-space:nowrap;overflow-x:auto"><span style="display:inline-block;margin-right:8px;padding:2px 4px;border-left:2px solid #7f8c8d;font-size:10px;font-family:monospace;vertical-align:top"><div style="color:#7f8c8d">03-23</div><div style="color:#e74c3c;font-weight:600">-9.2B</div><div style="color:#34495e">5: -13.3</div><div style="color:#7f8c8d">20: -8.8</div></span><span style="display:inline-block;margin-right:8px;padding:2px 4px;border-left:2px solid #7f8c8d;font-size:10px;font-family:monospace;vertical-align:top"><div style="color:#7f8c8d">03-24</div><div style="color:#e74c3c;font-weight:600">-10.9B</div><div style="color:#34495e">5: -13.2</div><div style="color:#7f8c8d">20: -9.2</div></span><span style="display:inline-block;margin-right:8px;padding:2px 4px;border-left:2px solid #7f8c8d;font-size:10px;font-family:monospace;vertical-align:top"><div style="color:#7f8c8d">03-25</div><div style="color:#e74c3c;font-weight:600">-9.6B</div><div style="color:#34495e">5: -11.7</div><div style="color:#7f8c8d">20: -9.9</div></span><span style="display:inline-block;margin-right:8px;padding:2px 4px;border-left:2px solid #7f8c8d;font-size:10px;font-family:monospace;vertical-align:top"><div style="color:#7f8c8d">03-26</div><div style="color:#e74c3c;font-weight:600">-15.0B</div><div style="color:#34495e">5: -11.1</div><div style="color:#7f8c8d">20: -10.7</div></span><span style="display:inline-block;margin-right:8px;padding:2px 4px;border-left:2px solid #7f8c8d;font-size:10px;font-family:monospace;vertical-align:top"><div style="color:#7f8c8d">03-27</div><div style="color:#e74c3c;font-weight:600">-14.0B</div><div style="color:#34495e">5: -11.7</div><div style="color:#7f8c8d">20: -11.1</div></span><span style="display:inline-block;margin-right:8px;padding:2px 4px;border-left:2px solid #7f8c8d;font-size:10px;font-family:monospace;vertical-align:top"><div style="color:#7f8c8d">03-30</div><div style="color:#e74c3c;font-weight:600">-16.0B</div><div style="color:#34495e">5: -13.1</div><div style="color:#7f8c8d">20: -11.6</div></span><span style="display:inline-block;margin-right:8px;padding:2px 4px;border-left:2px solid #7f8c8d;font-size:10px;font-family:monospace;vertical-align:top"><div style="color:#7f8c8d">03-31</div><div style="color:#e74c3c;font-weight:600">-7.5B</div><div style="color:#34495e">5: -12.4</div><div style="color:#7f8c8d">20: -11.5</div></span><span style="display:inline-block;margin-right:8px;padding:2px 4px;border-left:2px solid #7f8c8d;font-size:10px;font-family:monospace;vertical-align:top"><div style="color:#7f8c8d">04-01</div><div style="color:#e74c3c;font-weight:600">-5.8B</div><div style="color:#34495e">5: -11.7</div><div style="color:#7f8c8d">20: -11.5</div></span><span style="display:inline-block;margin-right:8px;padding:2px 4px;border-left:2px solid #27ae60;font-size:10px;font-family:monospace;vertical-align:top"><div style="color:#7f8c8d">04-02</div><div style="color:#e74c3c;font-weight:600">-7.0B</div><div style="color:#34495e">5: -10.1</div><div style="color:#7f8c8d">20: -11.4</div></span><span style="display:inline-block;margin-right:8px;padding:2px 4px;border-left:2px solid #27ae60;font-size:10px;font-family:monospace;vertical-align:top"><div style="color:#7f8c8d">05-02</div><div style="color:#e74c3c;font-weight:600">-18.8B</div><div style="color:#34495e">5: -11.0</div><div style="color:#7f8c8d">20: -11.8</div></span></div>
+
+            <p style="font-size:11px;color:#7f8c8d;margin:4px 0 0 0;line-height:1.5">Backtest (post-2022): <strong>V-shape T3 alone</strong> N=14, 21d WR <strong>100%</strong>, mean +3.92%. <strong>V-shape T2 + Score≥4</strong> N=6, 63d WR <strong>100%</strong>, mean +7.55%. <strong>Score≥5 standalone</strong> N=28, 63d WR 89%, mean +4.88% (watchlist tier — needs cross trigger). Score=6 has fired only 3 times in 8 years.</p>
+        </div>
+    
+        <div class="section">
+            <h2>Inflection Monitor (Experimental)</h2>
+            <p class="desc" style="color:#e67e22;font-weight:600">3-of-6 composite rule not yet validated &mdash; monitoring only. Do not size on this signal.</p>
+            <p class="desc">6 flip conditions &#183; &#8805;3 to fire &#183; Regime shift detector</p>
+            <table style="width:auto;margin-bottom:12px">
+                <tr>
+                    <td style="border:none;padding:4px 16px 4px 0"><strong>Status</strong></td>
+                    <td style="border:none;padding:4px 16px 4px 0"><span style="display:inline-block;padding:4px 12px;border-radius:4px;background:#e74c3c;color:#fff;font-weight:700;font-size:13px">FIRED</span></td>
+                    <td style="border:none;padding:4px 16px 4px 0"><strong>Flips</strong></td>
+                    <td style="border:none;padding:4px 0">3 of 6</td>
+                </tr>
+                <tr>
+                    <td style="border:none;padding:4px 16px 4px 0"><strong>Conviction</strong></td>
+                    <td style="border:none;padding:4px 16px 4px 0"><span style="display:inline-block;padding:2px 8px;border-radius:3px;background:#f39c1220;color:#f39c12;font-weight:700;font-size:11px">MEDIUM</span></td>
+                    <td style="border:none;padding:4px 16px 4px 0"><strong>Direction</strong></td>
+                    <td style="border:none;padding:4px 0">none</td>
+                </tr>
+                <tr>
+                    <td style="border:none;padding:4px 16px 4px 0"><strong>RTAT regime</strong></td>
+                    <td style="border:none;padding:4px 16px 4px 0"><span style="display:inline-block;padding:2px 8px;border-radius:3px;background:#7f8c8d20;color:#7f8c8d;font-weight:700;font-size:11px">neutral</span></td>
+                    <td style="border:none;padding:4px 16px 4px 0"><strong>Risk ratio</strong></td>
+                    <td style="border:none;padding:4px 0">1.44</td>
+                </tr>
+                <tr>
+                    <td style="border:none;padding:4px 16px 4px 0"><strong>5d ratio delta</strong></td>
+                    <td style="border:none;padding:4px 0" colspan="3">+0.21</td>
+                </tr>
+            </table>
+    
+            <table>
+                <tr><th>Signal</th><th>Fired?</th><th>Prev &#8594; Today</th></tr>
+    
+                <tr>
+                    <td>GEX sign flip</td>
+                    <td style="color:#bdc3c7;font-weight:700;text-align:center">&#8212;</td>
+                    <td style="font-size:12px;color:#7f8c8d">positive_gamma &#8594; nan</td>
+                </tr>
+        
+                <tr>
+                    <td>DTE0 regime flip</td>
+                    <td style="color:#e74c3c;font-weight:700;text-align:center">&#10003;</td>
+                    <td style="font-size:12px;color:#7f8c8d">positive_gamma &#8594; unknown</td>
+                </tr>
+        
+                <tr>
+                    <td>VRP shift</td>
+                    <td style="color:#e74c3c;font-weight:700;text-align:center">&#10003;</td>
+                    <td style="font-size:12px;color:#7f8c8d">thin_premium &#8594; very_high_premium</td>
+                </tr>
+        
+                <tr>
+                    <td>CTA flipped</td>
+                    <td style="color:#bdc3c7;font-weight:700;text-align:center">&#8212;</td>
+                    <td style="font-size:12px;color:#7f8c8d">LONG &#8594; LONG</td>
+                </tr>
+        
+                <tr>
+                    <td>DP surge</td>
+                    <td style="color:#bdc3c7;font-weight:700;text-align:center">&#8212;</td>
+                    <td style="font-size:12px;color:#7f8c8d">z=1.31</td>
+                </tr>
+        
+                <tr>
+                    <td>RV decompression</td>
+                    <td style="color:#e74c3c;font-weight:700;text-align:center">&#10003;</td>
+                    <td style="font-size:12px;color:#7f8c8d">5d/20d=0.720</td>
+                </tr>
+        </table></div>
+        <div class="section">
+            <h2>Trade 1: SSI Cluster Signal</h2>
+            <p class="desc">9 core pairs &#183; Trigger &#8805; 5 bearish &#183; SPY &gt; -2% from 200d</p>
+            
+            <div class="cluster-box">
+                Cluster Breadth: 1 / 9 bearish
+                &nbsp;&nbsp;&#183; 4 more needed
+            </div>
+            <table>
+                <tr><th>Benchmark</th><th>Bull / Bear</th><th>SSI Z</th><th>5d Trend</th><th>5d Chg</th><th>Date</th><th>Status</th></tr>
+    
+                <tr>
+                    <td style="font-weight:600">XOP</td>
+                    <td style="color:#7f8c8d;font-size:12px">GUSH / DRIP</td>
+                    <td><span style="color:#e74c3c;font-weight:600">-3.10</span></td>
+                    <td style="font-size:11px;font-family:monospace;letter-spacing:1px"><span style="color:#bdc3c7">&#9679;</span> <span style="color:#bdc3c7">&#9679;</span> <span style="color:#e67e22">&#9679;</span> <span style="color:#27ae60">&#9679;</span> <span style="color:#e74c3c">&#9679;</span></td>
+                    <td><span style="color:#e74c3c;font-weight:600;font-size:12px">&#9660; -3.20</span></td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#e74c3c20;color:#e74c3c">BEARISH</span></td>
+                </tr>
+        
+                <tr>
+                    <td style="font-weight:600">SOXX</td>
+                    <td style="color:#7f8c8d;font-size:12px">SOXL / SOXS</td>
+                    <td><span style="color:#7f8c8d;font-weight:600">-0.80</span></td>
+                    <td style="font-size:11px;font-family:monospace;letter-spacing:1px"><span style="color:#e74c3c">&#9679;</span> <span style="color:#bdc3c7">&#9679;</span> <span style="color:#e67e22">&#9679;</span> <span style="color:#2ecc71">&#9679;</span> <span style="color:#e67e22">&#9679;</span></td>
+                    <td><span style="color:#27ae60;font-weight:600;font-size:12px">&#9650; +0.45</span></td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">NEUTRAL</span></td>
+                </tr>
+        
+                <tr>
+                    <td style="font-weight:600">SPY</td>
+                    <td style="color:#7f8c8d;font-size:12px">SSO / SDS</td>
+                    <td><span style="color:#7f8c8d;font-weight:600">-0.44</span></td>
+                    <td style="font-size:11px;font-family:monospace;letter-spacing:1px"><span style="color:#bdc3c7">&#9679;</span> <span style="color:#27ae60">&#9679;</span> <span style="color:#2ecc71">&#9679;</span> <span style="color:#2ecc71">&#9679;</span> <span style="color:#bdc3c7">&#9679;</span></td>
+                    <td><span style="color:#e67e22;font-weight:600;font-size:12px">&#9662; -0.12</span></td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">NEUTRAL</span></td>
+                </tr>
+        
+                <tr>
+                    <td style="font-weight:600">GDX</td>
+                    <td style="color:#7f8c8d;font-size:12px">NUGT / DUST</td>
+                    <td><span style="color:#7f8c8d;font-weight:600">+0.00</span></td>
+                    <td style="font-size:11px;font-family:monospace;letter-spacing:1px"><span style="color:#bdc3c7">&#9679;</span> <span style="color:#bdc3c7">&#9679;</span> <span style="color:#bdc3c7">&#9679;</span> <span style="color:#bdc3c7">&#9679;</span> <span style="color:#bdc3c7">&#9679;</span></td>
+                    <td><span style="color:#95a5a6;font-weight:600;font-size:12px">&#8212; +0.09</span></td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">NEUTRAL</span></td>
+                </tr>
+        
+                <tr>
+                    <td style="font-weight:600">QQQ</td>
+                    <td style="color:#7f8c8d;font-size:12px">TQQQ / SQQQ</td>
+                    <td><span style="color:#7f8c8d;font-weight:600">+0.25</span></td>
+                    <td style="font-size:11px;font-family:monospace;letter-spacing:1px"><span style="color:#27ae60">&#9679;</span> <span style="color:#27ae60">&#9679;</span> <span style="color:#2ecc71">&#9679;</span> <span style="color:#27ae60">&#9679;</span> <span style="color:#bdc3c7">&#9679;</span></td>
+                    <td><span style="color:#e74c3c;font-weight:600;font-size:12px">&#9660; -1.67</span></td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">NEUTRAL</span></td>
+                </tr>
+        
+                <tr>
+                    <td style="font-weight:600">IWM</td>
+                    <td style="color:#7f8c8d;font-size:12px">URTY / SRTY</td>
+                    <td><span style="color:#7f8c8d;font-weight:600">+0.49</span></td>
+                    <td style="font-size:11px;font-family:monospace;letter-spacing:1px"><span style="color:#2ecc71">&#9679;</span> <span style="color:#2ecc71">&#9679;</span> <span style="color:#2ecc71">&#9679;</span> <span style="color:#2ecc71">&#9679;</span> <span style="color:#bdc3c7">&#9679;</span></td>
+                    <td><span style="color:#e67e22;font-weight:600;font-size:12px">&#9662; -0.15</span></td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">NEUTRAL</span></td>
+                </tr>
+        
+                <tr>
+                    <td style="font-weight:600">SLV</td>
+                    <td style="color:#7f8c8d;font-size:12px">AGQ / ZSL</td>
+                    <td><span style="color:#7f8c8d;font-weight:600">+0.65</span></td>
+                    <td style="font-size:11px;font-family:monospace;letter-spacing:1px"><span style="color:#27ae60">&#9679;</span> <span style="color:#2ecc71">&#9679;</span> <span style="color:#e67e22">&#9679;</span> <span style="color:#e74c3c">&#9679;</span> <span style="color:#2ecc71">&#9679;</span></td>
+                    <td><span style="color:#e74c3c;font-weight:600;font-size:12px">&#9660; -1.38</span></td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">NEUTRAL</span></td>
+                </tr>
+        
+                <tr>
+                    <td style="font-weight:600">XBI</td>
+                    <td style="color:#7f8c8d;font-size:12px">LABU / LABD</td>
+                    <td><span style="color:#e74c3c;font-weight:600">+3.69</span></td>
+                    <td style="font-size:11px;font-family:monospace;letter-spacing:1px"><span style="color:#2ecc71">&#9679;</span> <span style="color:#2ecc71">&#9679;</span> <span style="color:#2ecc71">&#9679;</span> <span style="color:#2ecc71">&#9679;</span> <span style="color:#27ae60">&#9679;</span></td>
+                    <td><span style="color:#27ae60;font-weight:600;font-size:12px">&#9650; +2.99</span></td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#27ae6020;color:#27ae60">BULLISH</span></td>
+                </tr>
+        
+                <tr>
+                    <td style="font-weight:600">XLE</td>
+                    <td style="color:#7f8c8d;font-size:12px">ERX / ERY</td>
+                    <td>&#8212;</td>
+                    <td style="font-size:11px;font-family:monospace;letter-spacing:1px"><span style="color:#e67e22">&#9679;</span> <span style="color:#27ae60">&#9679;</span> <span style="color:#27ae60">&#9679;</span> <span style="color:#e74c3c">&#9679;</span></td>
+                    <td><span style="color:#e74c3c;font-weight:600;font-size:12px">&#9660; -0.44</span></td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">NEUTRAL</span></td>
+                </tr>
+        <tr><td colspan="7" style="padding:8px 0 4px 0;font-size:11px;color:#95a5a6;font-weight:700;border-bottom:none">WATCH (not in cluster count)</td></tr>
+                <tr style="opacity:0.75">
+                    <td style="font-weight:600">XLF</td>
+                    <td style="color:#7f8c8d;font-size:12px">FAS / FAZ</td>
+                    <td>&#8212;</td>
+                    <td style="font-size:11px;font-family:monospace;letter-spacing:1px"><span style="color:#e67e22">&#9679;</span> <span style="color:#e67e22">&#9679;</span> <span style="color:#27ae60">&#9679;</span> <span style="color:#27ae60">&#9679;</span> <span style="color:#27ae60">&#9679;</span></td>
+                    <td><span style="color:#27ae60;font-weight:600;font-size:12px">&#9650; +1.86</span></td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">NEUTRAL</span></td>
+                </tr>
+            </table></div>
+        <div class="section">
+            <h2>Trade 2: LETF Capitulation</h2>
+            <p class="desc">6 pairs &#183; Bear-side volume ratio z &#8805; 2.0 &#183; Buy unleveraged benchmark calls</p>
+            <table>
+                <tr><th>Trade</th><th>Bull / Bear</th><th>Bear Ratio Z</th><th>Date</th><th>Status</th></tr>
+    
+                <tr>
+                    <td style="font-weight:600">SOXX</td>
+                    <td style="color:#7f8c8d">SOXL / SOXS</td>
+                    <td><span style="color:#7f8c8d;font-weight:600">+0.80</span></td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">QUIET</span></td>
+                </tr>
+        
+                <tr>
+                    <td style="font-weight:600">QQQ</td>
+                    <td style="color:#7f8c8d">QLD / QID</td>
+                    <td><span style="color:#7f8c8d;font-weight:600">+0.57</span></td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">QUIET</span></td>
+                </tr>
+        
+                <tr>
+                    <td style="font-weight:600">QQQ</td>
+                    <td style="color:#7f8c8d">TQQQ / SQQQ</td>
+                    <td><span style="color:#7f8c8d;font-weight:600">-0.25</span></td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">QUIET</span></td>
+                </tr>
+        
+                <tr>
+                    <td style="font-weight:600">FXI</td>
+                    <td style="color:#7f8c8d">YINN / YANG</td>
+                    <td>&#8212;</td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">QUIET</span></td>
+                </tr>
+        
+                <tr>
+                    <td style="font-weight:600">XLF</td>
+                    <td style="color:#7f8c8d">FAS / FAZ</td>
+                    <td>&#8212;</td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">QUIET</span></td>
+                </tr>
+        
+                <tr>
+                    <td style="font-weight:600">DIA</td>
+                    <td style="color:#7f8c8d">DDM / DXD</td>
+                    <td>&#8212;</td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">QUIET</span></td>
+                </tr>
+        </table></div>
+        <div class="section">
+            <h2>Trade 4: LETF Euphoria</h2>
+            <p class="desc">2 pairs &#183; Bull-side volume ratio z &#8805; 2.0 &#183; Buy unleveraged benchmark puts</p>
+            <table>
+                <tr><th>Trade</th><th>Bull / Bear</th><th>Bull Ratio Z</th><th>Date</th><th>Status</th></tr>
+    
+                <tr>
+                    <td style="font-weight:600">XLK</td>
+                    <td style="color:#7f8c8d">TECL / TECS</td>
+                    <td><span style="color:#7f8c8d;font-weight:600">+0.23</span></td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">QUIET</span></td>
+                </tr>
+        
+                <tr>
+                    <td style="font-weight:600">XOP</td>
+                    <td style="color:#7f8c8d">GUSH / DRIP</td>
+                    <td><span style="color:#e74c3c;font-weight:600">-3.10</span></td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">QUIET</span></td>
+                </tr>
+        </table></div>
+        <div class="section">
+            <h2>Trade 3: Single-Stock LETF Pairs</h2>
+            <p class="desc">Polygon volume proxy &#183; NOT backtested &#183; Monitoring only</p>
+    <p style="font-size:12px;font-weight:700;color:#7f8c8d;margin:12px 0 4px 0">Tier A</p>
+            <table>
+                <tr><th>Stock</th><th>Bull / Bear</th><th>Ratio Z</th><th>Bull $Vol</th><th>Bear $Vol</th><th>Date</th><th>Status</th></tr>
+        
+                <tr>
+                    <td style="font-weight:600">AMZN</td>
+                    <td style="color:#7f8c8d">AMZU / AMZD</td>
+                    <td><span style="color:#7f8c8d;font-weight:600">+0.17</span></td>
+                    <td style="color:#7f8c8d;font-size:11px">$190.9M</td>
+                    <td style="color:#7f8c8d;font-size:11px">$127.5M</td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">QUIET</span></td>
+                </tr>
+            
+                <tr>
+                    <td style="font-weight:600">TSLA</td>
+                    <td style="color:#7f8c8d">TSLL / TSLS</td>
+                    <td><span style="color:#7f8c8d;font-weight:600">+1.14</span></td>
+                    <td style="color:#7f8c8d;font-size:11px">$1233.3M</td>
+                    <td style="color:#7f8c8d;font-size:11px">$64.3M</td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">QUIET</span></td>
+                </tr>
+            
+                <tr>
+                    <td style="font-weight:600">GOOGL</td>
+                    <td style="color:#7f8c8d">GGLL / GGLS</td>
+                    <td><span style="color:#7f8c8d;font-weight:600">-0.90</span></td>
+                    <td style="color:#7f8c8d;font-size:11px">$234.7M</td>
+                    <td style="color:#7f8c8d;font-size:11px">$79.4M</td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">QUIET</span></td>
+                </tr>
+            
+                <tr>
+                    <td style="font-weight:600">MSFT</td>
+                    <td style="color:#7f8c8d">MSFU / MSFD</td>
+                    <td><span style="color:#7f8c8d;font-weight:600">+0.86</span></td>
+                    <td style="color:#7f8c8d;font-size:11px">$189.7M</td>
+                    <td style="color:#7f8c8d;font-size:11px">$21.7M</td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">QUIET</span></td>
+                </tr>
+            
+                <tr>
+                    <td style="font-weight:600">AAPL</td>
+                    <td style="color:#7f8c8d">AAPU / AAPD</td>
+                    <td><span style="color:#7f8c8d;font-weight:600">-0.79</span></td>
+                    <td style="color:#7f8c8d;font-size:11px">$306.2M</td>
+                    <td style="color:#7f8c8d;font-size:11px">$172.4M</td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">QUIET</span></td>
+                </tr>
+            </table><p style="font-size:12px;font-weight:700;color:#7f8c8d;margin:12px 0 4px 0">Tier B</p>
+            <table>
+                <tr><th>Stock</th><th>Bull / Bear</th><th>Ratio Z</th><th>Bull $Vol</th><th>Bear $Vol</th><th>Date</th><th>Status</th></tr>
+        
+                <tr>
+                    <td style="font-weight:600">PLTR</td>
+                    <td style="color:#7f8c8d">PLTU / PLTD</td>
+                    <td><span style="color:#7f8c8d;font-weight:600">+0.00</span></td>
+                    <td style="color:#7f8c8d;font-size:11px">$106.5M</td>
+                    <td style="color:#7f8c8d;font-size:11px">$305.2M</td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">QUIET</span></td>
+                </tr>
+            
+                <tr>
+                    <td style="font-weight:600">NVDA</td>
+                    <td style="color:#7f8c8d">NVDU / NVDD</td>
+                    <td><span style="color:#7f8c8d;font-weight:600">+0.11</span></td>
+                    <td style="color:#7f8c8d;font-size:11px">$58.1M</td>
+                    <td style="color:#7f8c8d;font-size:11px">$5.1M</td>
+                    <td><span style="font-size:11px;color:#7f8c8d;font-family:monospace">05-01</span></td>
+                    <td><span class="status" style="background:#7f8c8d20;color:#7f8c8d">QUIET</span></td>
+                </tr>
+            </table></div>
+        <div class="footer">
+            RetailEdge Signal Monitor &#183; Wide Spread Capital<br>
+            Data: RTAT (Nasdaq), Polygon, Yahoo Finance &#183; Generated Saturday, May 02, 2026 at 01:32 PM<br>
+            Trade 3 signals are observational only &#8212; no backtest exists. Do not trade without verification.
+        </div>
+    </div>
+    </body>
+    </html>
+    
