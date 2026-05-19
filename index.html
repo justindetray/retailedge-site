@@ -1,2041 +1,567 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RetailEdge — Retail Flow Contrarian Signal Engine</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
-  <style>
-    /* ─── Design Tokens ─────────────────────────────────────────────── */
-    :root {
-      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
-      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
-      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
-
-      --space-1: 0.25rem;
-      --space-2: 0.5rem;
-      --space-3: 0.75rem;
-      --space-4: 1rem;
-      --space-5: 1.25rem;
-      --space-6: 1.5rem;
-      --space-8: 2rem;
-      --space-10: 2.5rem;
-      --space-12: 3rem;
-
-      --radius-sm: 0.375rem;
-      --radius-md: 0.5rem;
-      --radius-lg: 0.75rem;
-      --radius-full: 9999px;
-      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
-      --font-body: system-ui, 'Inter', 'Helvetica Neue', Arial, sans-serif;
-
-      /* Custom dark palette — institutional finance */
-      --color-bg: #111827;
-      --color-surface: #1f2937;
-      --color-surface-2: #253248;
-      --color-surface-offset: #18202e;
-      --color-border: #374151;
-      --color-divider: #2d3748;
-      --color-text: #d1d5db;
-      --color-text-muted: #9ca3af;
-      --color-text-faint: #6b7280;
-      --color-accent: #3b82f6;
-      --color-accent-hover: #2563eb;
-      --color-accent-dim: rgba(59,130,246,0.15);
-      --color-success: #10b981;
-      --color-success-dim: rgba(16,185,129,0.12);
-      --color-warning: #f59e0b;
-      --color-warning-dim: rgba(245,158,11,0.12);
-      --color-error: #ef4444;
-      --color-error-dim: rgba(239,68,68,0.12);
-      --color-purple: #8b5cf6;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
-      --shadow-md: 0 4px 14px rgba(0,0,0,0.45);
-      --shadow-lg: 0 12px 32px rgba(0,0,0,0.55);
-    }
-
-    /* ─── Base Reset ────────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html {
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      scroll-behavior: smooth;
-      scroll-padding-top: var(--space-8);
-    }
-    body {
-      min-height: 100dvh;
-      line-height: 1.6;
-      font-family: var(--font-body);
-      font-size: var(--text-sm);
-      color: var(--color-text);
-      background: var(--color-bg);
-    }
-    h1,h2,h3,h4,h5,h6 { text-wrap: balance; line-height: 1.2; }
-    button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; }
-    table { border-collapse: collapse; width: 100%; }
-    img, svg { display: block; max-width: 100%; }
-    :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; border-radius: var(--radius-sm); }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-    }
-
-    /* ─── Layout ────────────────────────────────────────────────────── */
-    .page-wrap { max-width: 1440px; margin: 0 auto; padding: 0 var(--space-6); }
-
-    /* ─── Header ────────────────────────────────────────────────────── */
-    .site-header {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(17,24,39,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--color-border);
-    }
-    .header-inner {
-      display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
-      padding: var(--space-4) var(--space-6);
-      flex-wrap: wrap;
-    }
-    .header-brand { display: flex; align-items: center; gap: var(--space-3); }
-    .brand-logo {
-      width: 38px; height: 38px; flex-shrink: 0;
-    }
-    .brand-text { display: flex; flex-direction: column; }
-    .brand-title {
-      font-size: var(--text-base); font-weight: 700; letter-spacing: -0.01em;
-      color: #f9fafb;
-      line-height: 1.1;
-    }
-    .brand-title span { color: var(--color-accent); }
-    .brand-subtitle { font-size: var(--text-xs); color: var(--color-text-muted); letter-spacing: 0.03em; margin-top: 2px; }
-    .header-right { display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap; }
-    .timestamp {
-      font-size: var(--text-xs); color: var(--color-text-faint);
-      font-variant-numeric: tabular-nums lining-nums;
-      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-    }
-    .regime-badge {
-      display: inline-flex; align-items: center; gap: var(--space-2);
-      padding: var(--space-2) var(--space-4);
-      border-radius: var(--radius-full);
-      font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
-      border: 1px solid;
-    }
-    .regime-badge.closed {
-      background: rgba(239,68,68,0.12); border-color: rgba(239,68,68,0.4); color: #fca5a5;
-    }
-    .regime-badge.open {
-      background: rgba(16,185,129,0.12); border-color: rgba(16,185,129,0.4); color: #6ee7b7;
-    }
-    .regime-badge .dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      animation: pulse-dot 1.8s ease-in-out infinite;
-    }
-    .regime-badge.closed .dot { background: #ef4444; }
-    .regime-badge.open .dot { background: #10b981; }
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.7); }
-    }
-    .regime-detail { font-size: var(--text-xs); color: var(--color-text-muted); white-space: nowrap; }
-    .action-btns { display: flex; gap: var(--space-2); }
-    .btn {
-      padding: var(--space-2) var(--space-4);
-      border-radius: var(--radius-md);
-      font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.03em;
-      transition: background var(--transition-interactive), box-shadow var(--transition-interactive);
-      white-space: nowrap;
-    }
-    .btn-primary {
-      background: var(--color-accent); color: #fff;
-      border: 1px solid var(--color-accent);
-    }
-    .btn-primary:hover { background: var(--color-accent-hover); box-shadow: 0 0 0 3px rgba(59,130,246,0.2); }
-    .btn-secondary {
-      background: var(--color-surface); color: var(--color-text);
-      border: 1px solid var(--color-border);
-    }
-    .btn-secondary:hover { background: var(--color-surface-2); border-color: var(--color-accent); }
-
-    /* ─── Nav Tabs ──────────────────────────────────────────────────── */
-    .nav-tabs {
-      display: flex; gap: 0;
-      border-bottom: 1px solid var(--color-border);
-      padding: 0 var(--space-6);
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .nav-tabs::-webkit-scrollbar { display: none; }
-    .nav-tab {
-      padding: var(--space-3) var(--space-5);
-      font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
-      color: var(--color-text-muted);
-      border-bottom: 2px solid transparent;
-      margin-bottom: -1px;
-      transition: color var(--transition-interactive), border-color var(--transition-interactive);
-      white-space: nowrap;
-    }
-    .nav-tab:hover { color: var(--color-text); }
-    .nav-tab.active { color: var(--color-accent); border-bottom-color: var(--color-accent); }
-
-    /* ─── Main ──────────────────────────────────────────────────────── */
-    .main-content { padding: var(--space-8) var(--space-6) var(--space-12); }
-
-    /* Data Integrity */
-    .integrity-summary {
-      display: flex; gap: var(--space-4); flex-wrap: wrap;
-      padding: var(--space-4) var(--space-5);
-      background: var(--color-surface); border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg); margin-bottom: var(--space-5);
-    }
-    .integrity-stat { display: flex; flex-direction: column; align-items: center; min-width: 80px; }
-    .integrity-stat-val { font-size: var(--text-xl); font-weight: 800; font-variant-numeric: tabular-nums; }
-    .integrity-stat-val.all-green { color: var(--color-success); }
-    .integrity-stat-val.has-issues { color: var(--color-warning); }
-    .integrity-stat-label { font-size: 11px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
-    .integrity-badge {
-      display: inline-flex; align-items: center; gap: 5px;
-      padding: 3px 10px; border-radius: var(--radius-full);
-      font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
-      text-transform: uppercase; white-space: nowrap;
-    }
-    .integrity-badge .status-dot {
-      width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
-    }
-    .integrity-badge.live { background: rgba(16,185,129,0.15); color: #6ee7b7; }
-    .integrity-badge.live .status-dot { background: #10b981; }
-    .integrity-badge.stale { background: rgba(245,158,11,0.15); color: #fbbf24; }
-    .integrity-badge.stale .status-dot { background: #f59e0b; }
-    .integrity-badge.synthetic { background: rgba(139,92,246,0.15); color: #c4b5fd; }
-    .integrity-badge.synthetic .status-dot { background: #8b5cf6; }
-    .integrity-badge.failed { background: rgba(239,68,68,0.15); color: #fca5a5; }
-    .integrity-badge.failed .status-dot { background: #ef4444; }
-    .integrity-badge.skipped { background: rgba(107,114,128,0.2); color: #9ca3af; }
-    .integrity-badge.skipped .status-dot { background: #6b7280; }
-    .integrity-detail { font-size: 11px; color: var(--color-text-muted); max-width: 340px; }
-    .integrity-value { font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace; font-size: 11px; color: var(--color-text-faint); }
-
-    .section { display: none; animation: fadeIn 0.2s ease; }
-    .section.active { display: block; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* ─── Section Headers ───────────────────────────────────────────── */
-    .section-header {
-      display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
-      margin-bottom: var(--space-6);
-      flex-wrap: wrap;
-    }
-    .section-title {
-      font-size: var(--text-base); font-weight: 700; color: #f9fafb;
-      letter-spacing: -0.01em;
-      display: flex; align-items: center; gap: var(--space-2);
-    }
-    .section-title-icon {
-      width: 18px; height: 18px;
-      color: var(--color-accent);
-    }
-    .section-meta { font-size: var(--text-xs); color: var(--color-text-faint); }
-
-    /* ─── Cards ─────────────────────────────────────────────────────── */
-    .card {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      padding: var(--space-5);
-      box-shadow: var(--shadow-sm);
-    }
-    .card-label {
-      font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--color-text-faint); margin-bottom: var(--space-2);
-    }
-    .card-value {
-      font-size: var(--text-xl); font-weight: 700; color: #f9fafb;
-      font-variant-numeric: tabular-nums lining-nums; line-height: 1;
-      margin-bottom: var(--space-1);
-    }
-    .card-sub {
-      font-size: var(--text-xs); color: var(--color-text-muted);
-      font-variant-numeric: tabular-nums;
-    }
-    .card-delta {
-      display: inline-flex; align-items: center; gap: 3px;
-      font-size: var(--text-xs); font-weight: 600; margin-top: var(--space-1);
-    }
-    .delta-up { color: var(--color-success); }
-    .delta-down { color: var(--color-error); }
-    .delta-neutral { color: var(--color-text-faint); }
-
-    /* ─── Metrics Grid ──────────────────────────────────────────────── */
-    .metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: var(--space-4);
-    }
-    .metric-card { position: relative; overflow: hidden; }
-    .metric-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    }
-    .metric-card.accent-blue::before { background: var(--color-accent); }
-    .metric-card.accent-green::before { background: var(--color-success); }
-    .metric-card.accent-yellow::before { background: var(--color-warning); }
-    .metric-card.accent-red::before { background: var(--color-error); }
-    .metric-card.accent-purple::before { background: var(--color-purple); }
-
-    /* ─── Gate Conditions ───────────────────────────────────────────── */
-    .gate-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: var(--space-4);
-    }
-    .gate-item {
-      display: flex; align-items: flex-start; gap: var(--space-3);
-      padding: var(--space-4) var(--space-5);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--color-border);
-      transition: border-color var(--transition-interactive), background var(--transition-interactive);
-    }
-    .gate-item.met {
-      background: var(--color-success-dim);
-      border-color: rgba(16,185,129,0.3);
-    }
-    .gate-item.not-met {
-      background: rgba(239,68,68,0.05);
-      border-color: rgba(239,68,68,0.2);
-    }
-    .gate-item.bonus {
-      background: rgba(139,92,246,0.07);
-      border-color: rgba(139,92,246,0.25);
-    }
-    .gate-flag {
-      width: 28px; height: 28px; flex-shrink: 0;
-      border-radius: var(--radius-full);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px;
-    }
-    .gate-item.met .gate-flag { background: var(--color-success-dim); }
-    .gate-item.not-met .gate-flag { background: var(--color-error-dim); }
-    .gate-item.bonus .gate-flag { background: rgba(139,92,246,0.15); }
-    .gate-name { font-size: var(--text-sm); font-weight: 600; color: var(--color-text); line-height: 1.2; }
-    .gate-value { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 2px; font-variant-numeric: tabular-nums; }
-    .gate-status-text { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.05em; margin-top: 4px; text-transform: uppercase; }
-    .gate-item.met .gate-status-text { color: var(--color-success); }
-    .gate-item.not-met .gate-status-text { color: #ef4444; }
-    .gate-item.bonus .gate-status-text { color: var(--color-purple); }
-    .gate-summary {
-      margin-top: var(--space-6);
-      padding: var(--space-4) var(--space-5);
-      background: var(--color-surface-offset);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap;
-    }
-    .gate-count { font-size: var(--text-xl); font-weight: 800; color: #ef4444; }
-    .gate-count.open { color: var(--color-success); }
-    .gate-sum-text { font-size: var(--text-sm); color: var(--color-text-muted); }
-    .gate-sum-text strong { color: var(--color-text); }
-
-    /* ─── Signal Table ──────────────────────────────────────────────── */
-    .table-wrap {
-      overflow-x: auto;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-sm);
-    }
-    .signal-table { min-width: 900px; }
-    .signal-table thead tr {
-      background: var(--color-surface-offset);
-      border-bottom: 1px solid var(--color-border);
-    }
-    .signal-table th {
-      padding: var(--space-3) var(--space-4);
-      font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
-      color: var(--color-text-faint); text-align: left; white-space: nowrap;
-    }
-    .signal-table th.right { text-align: right; }
-    .signal-table td {
-      padding: var(--space-3) var(--space-4);
-      font-size: var(--text-xs); color: var(--color-text);
-      border-bottom: 1px solid var(--color-divider);
-      vertical-align: middle;
-      font-variant-numeric: tabular-nums lining-nums;
-    }
-    .signal-table tbody tr:last-child td { border-bottom: none; }
-    .signal-table tbody tr:hover { background: rgba(59,130,246,0.04); }
-    .rank-num { color: var(--color-text-faint); font-weight: 600; }
-    .ticker-cell { font-weight: 800; color: #f9fafb; font-size: var(--text-sm); letter-spacing: 0.04em; }
-    .score-bar-wrap { display: flex; align-items: center; gap: var(--space-2); min-width: 110px; }
-    .score-bar-track {
-      flex: 1; height: 6px; background: var(--color-border);
-      border-radius: var(--radius-full); overflow: hidden;
-    }
-    .score-bar-fill {
-      height: 100%; border-radius: var(--radius-full);
-      transition: width 0.6s cubic-bezier(0.16,1,0.3,1);
-    }
-    .score-val { font-weight: 700; font-size: var(--text-xs); min-width: 32px; text-align: right; }
-    .score-low { color: #10b981; }
-    .score-med { color: #f59e0b; }
-    .score-high { color: #f97316; }
-    .score-crit { color: #ef4444; }
-    .bar-low { background: #10b981; }
-    .bar-med { background: #f59e0b; }
-    .bar-high { background: #f97316; }
-    .bar-crit { background: #ef4444; }
-    .gex-bucket {
-      display: inline-block; padding: 2px 8px;
-      border-radius: var(--radius-full); font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
-    }
-    .gex-pos { background: rgba(16,185,129,0.15); color: #6ee7b7; }
-    .gex-neg { background: rgba(239,68,68,0.15); color: #fca5a5; }
-    .gex-neu { background: rgba(107,114,128,0.2); color: #9ca3af; }
-    .blackout-yes {
-      display: inline-flex; align-items: center; gap: 4px;
-      font-size: 11px; color: #fca5a5; font-weight: 600;
-    }
-    .blackout-no { font-size: 11px; color: var(--color-text-faint); }
-    .interp-badge {
-      display: inline-block; padding: 2px 8px;
-      border-radius: var(--radius-full); font-size: 11px; font-weight: 600;
-    }
-    .interp-accumulate { background: rgba(16,185,129,0.12); color: #6ee7b7; }
-    .interp-neutral { background: rgba(107,114,128,0.15); color: #9ca3af; }
-    .interp-avoid { background: rgba(245,158,11,0.12); color: #fde68a; }
-    .interp-monitor { background: rgba(139,92,246,0.12); color: #c4b5fd; }
-    .alert-threshold {
-      margin-top: var(--space-4);
-      display: flex; align-items: center; gap: var(--space-2);
-      font-size: var(--text-xs); color: var(--color-text-faint);
-    }
-    .alert-line { flex: 1; height: 1px; background: rgba(239,68,68,0.3); }
-    .alert-label { color: #fca5a5; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; }
-
-    /* ─── Charts Section ────────────────────────────────────────────── */
-    .charts-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--space-5);
-    }
-    .chart-card {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      padding: var(--space-5);
-      box-shadow: var(--shadow-sm);
-    }
-    .chart-title { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: var(--space-4); }
-    .chart-wrap { position: relative; width: 100%; height: 220px; }
-
-    /* ─── Parameters Panel ──────────────────────────────────────────── */
-    .params-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--space-5);
-    }
-    .param-group { }
-    .param-group-title {
-      font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--color-accent); margin-bottom: var(--space-4);
-      padding-bottom: var(--space-2); border-bottom: 1px solid var(--color-border);
-    }
-    .param-row {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: var(--space-2) 0;
-      border-bottom: 1px solid var(--color-divider);
-      gap: var(--space-3);
-    }
-    .param-row:last-child { border-bottom: none; }
-    .param-name { font-size: var(--text-xs); color: var(--color-text-muted); flex: 1; }
-    .param-value { font-size: var(--text-xs); font-weight: 700; color: #f9fafb; font-variant-numeric: tabular-nums; min-width: 48px; text-align: right; }
-    .weight-bar-wrap { display: flex; align-items: center; gap: var(--space-2); min-width: 120px; }
-    .weight-bar-track { flex: 1; height: 4px; background: var(--color-border); border-radius: var(--radius-full); overflow: hidden; }
-    .weight-bar-fill { height: 100%; background: var(--color-accent); border-radius: var(--radius-full); }
-    .watchlist-chips { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-3); }
-    .ticker-chip {
-      padding: 3px 10px; border-radius: var(--radius-full);
-      background: var(--color-accent-dim); border: 1px solid rgba(59,130,246,0.25);
-      font-size: 11px; font-weight: 700; color: #93c5fd; letter-spacing: 0.06em;
-    }
-
-    /* ─── Methodology ───────────────────────────────────────────────── */
-    .method-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--space-5);
-    }
-    .method-card {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      padding: var(--space-5);
-    }
-    .method-card-title {
-      font-size: var(--text-sm); font-weight: 700; color: #f9fafb;
-      margin-bottom: var(--space-2); display: flex; align-items: center; gap: var(--space-2);
-    }
-    .method-icon { font-size: 14px; }
-    .method-body { font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.65; }
-    .method-body p { margin-bottom: var(--space-2); }
-    .method-ref { font-size: 11px; color: var(--color-text-faint); border-top: 1px solid var(--color-divider); margin-top: var(--space-3); padding-top: var(--space-3); }
-    .formula { font-family: 'SF Mono','Fira Code','Consolas',monospace; background: var(--color-surface-offset); padding: 2px 6px; border-radius: var(--radius-sm); font-size: 11px; color: #93c5fd; }
-
-    /* ─── Modal ─────────────────────────────────────────────────────── */
-    .modal-overlay {
-      display: none; position: fixed; inset: 0; z-index: 1000;
-      background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
-      align-items: center; justify-content: center;
-    }
-    .modal-overlay.open { display: flex; }
-    .modal {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      padding: var(--space-8);
-      max-width: 480px; width: 90%;
-      box-shadow: var(--shadow-lg);
-      animation: modalIn 0.2s cubic-bezier(0.16,1,0.3,1);
-    }
-    @keyframes modalIn { from { opacity: 0; transform: scale(0.95) translateY(8px); } to { opacity: 1; transform: scale(1) translateY(0); } }
-    .modal-title { font-size: var(--text-base); font-weight: 700; color: #f9fafb; margin-bottom: var(--space-3); }
-    .modal-body { font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.65; }
-    .modal-body pre {
-      background: var(--color-bg); border: 1px solid var(--color-border);
-      border-radius: var(--radius-md); padding: var(--space-4); margin: var(--space-3) 0;
-      font-size: 11px; font-family: 'SF Mono','Fira Code','Consolas',monospace;
-      color: #93c5fd; overflow-x: auto; white-space: pre-wrap; line-height: 1.5;
-    }
-    .modal-footer { display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-5); }
-    .scan-status {
-      display: flex; align-items: center; gap: var(--space-3);
-      padding: var(--space-3) var(--space-4);
-      background: var(--color-success-dim); border: 1px solid rgba(16,185,129,0.3);
-      border-radius: var(--radius-md); margin-top: var(--space-3);
-    }
-    .scan-status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-success); flex-shrink: 0; }
-    .scan-status-text { font-size: var(--text-xs); color: #6ee7b7; }
-
-    /* ─── Responsive ────────────────────────────────────────────────── */
-    @media (max-width: 768px) {
-      .header-inner { padding: var(--space-3) var(--space-4); }
-      .main-content, .nav-tabs { padding-left: var(--space-4); padding-right: var(--space-4); }
-      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 480px) {
-      .metrics-grid { grid-template-columns: 1fr 1fr; }
-      .header-right { gap: var(--space-2); }
-    }
-
-    /* ─── Misc Utils ────────────────────────────────────────────────── */
-    .divider { height: 1px; background: var(--color-divider); margin: var(--space-6) 0; }
-    .text-mono { font-family: 'SF Mono','Fira Code','Consolas',monospace; }
-    .tag {
-      display: inline-block; padding: 2px 8px; border-radius: var(--radius-full);
-      font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
-    }
-    .tag-blue { background: rgba(59,130,246,0.15); color: #93c5fd; }
-    .tag-amber { background: rgba(245,158,11,0.15); color: #fde68a; }
-    .loading-spinner {
-      width: 16px; height: 16px;
-      border: 2px solid var(--color-border);
-      border-top-color: var(--color-accent);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      display: none;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RetailEdge Signal Engine</title>
+<style>
+  :root {
+    --bg: #0e1117;
+    --panel: #161b22;
+    --panel-2: #1f2630;
+    --border: #2a313c;
+    --text: #d7dde4;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --red: #f85149;
+    --amber: #d29922;
+    --grey: #6e7681;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  header {
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 20px;
+  }
+  .title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  h1 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+  }
+  .as-of {
+    color: var(--muted);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+  .header-bar {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+  }
+  .pill {
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .pill .label {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .pill .value {
+    font-size: 14px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    border: 1px solid;
+  }
+  .badge-green { color: var(--green); border-color: var(--green); background: rgba(63,185,80,0.08); }
+  .badge-red { color: var(--red); border-color: var(--red); background: rgba(248,81,73,0.08); }
+  .badge-amber { color: var(--amber); border-color: var(--amber); background: rgba(210,153,34,0.08); }
+  .badge-grey { color: var(--grey); border-color: var(--grey); background: rgba(110,118,129,0.08); }
+  nav.tabs {
+    display: flex;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    padding: 0 20px;
+    gap: 4px;
+    overflow-x: auto;
+  }
+  nav.tabs button {
+    background: none;
+    border: none;
+    color: var(--muted);
+    padding: 12px 16px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+  }
+  nav.tabs button:hover { color: var(--text); }
+  nav.tabs button.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  main {
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  .card h2 {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+  .card h3 {
+    margin: 16px 0 8px 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+  }
+  .kv {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .kv:last-child { border-bottom: none; }
+  .kv .k { color: var(--muted); }
+  .kv .v { font-variant-numeric: tabular-nums; font-weight: 500; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+  th, td {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    color: var(--muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+  }
+  td.num, th.num { text-align: right; }
+  .loading { color: var(--muted); font-style: italic; }
+  .error {
+    color: var(--red);
+    background: rgba(248,81,73,0.08);
+    border: 1px solid var(--red);
+    padding: 12px;
+    border-radius: 6px;
+    margin: 16px 0;
+  }
+  .warn-list {
+    font-size: 12px;
+    color: var(--amber);
+    max-height: 180px;
+    overflow-y: auto;
+  }
+  .warn-list div {
+    padding: 4px 0;
+    border-bottom: 1px dotted var(--border);
+  }
+  .small { font-size: 11px; color: var(--muted); }
+  .tier-label {
+    display: inline-block;
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    color: var(--muted);
+    margin: 12px 0 6px 0;
+  }
+</style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════════════════════════════
-     HEADER
-═══════════════════════════════════════════════════════════════════ -->
-<header class="site-header">
-  <div class="header-inner">
-    <div class="header-brand">
-      <!-- SVG Logo: stylized "RE" signal icon -->
-      <svg class="brand-logo" viewBox="0 0 38 38" fill="none" aria-label="RetailEdge logo">
-        <rect width="38" height="38" rx="8" fill="#1d4ed8" fill-opacity="0.2"/>
-        <rect width="38" height="38" rx="8" stroke="#3b82f6" stroke-width="1" fill="none"/>
-        <!-- signal bars -->
-        <rect x="7" y="26" width="4" height="4" rx="1" fill="#3b82f6" opacity="0.5"/>
-        <rect x="13" y="20" width="4" height="10" rx="1" fill="#3b82f6" opacity="0.75"/>
-        <rect x="19" y="14" width="4" height="16" rx="1" fill="#3b82f6"/>
-        <rect x="25" y="8" width="4" height="22" rx="1" fill="#60a5fa"/>
-        <!-- arrow down -->
-        <path d="M28 5.5 L30.5 8.5 L25.5 8.5 Z" fill="#ef4444"/>
-      </svg>
-      <div class="brand-text">
-        <div class="brand-title"><span>RetailEdge</span> — Retail Flow Contrarian Signal Engine</div>
-        <div class="brand-subtitle">Wide Spread Capital · Internal Research Tool · Strictly Confidential</div>
-      </div>
-    </div>
-    <div class="header-right">
-      <div>
-        <div id="live-timestamp" class="timestamp">Loading…</div>
-        <div class="timestamp" style="color:var(--color-text-faint); font-size:10px; margin-top:1px;"><span id="last-scan-time">Last Scan: --</span></div>
-      </div>
-      <div>
-        <div class="regime-badge closed" id="regime-badge">
-          <span class="dot"></span>
-          GATE: CLOSED
-        </div>
-        <div class="regime-detail" style="margin-top:4px;text-align:right">VIX Elevated · Conf 64%</div>
-      </div>
-      <div class="action-btns">
-        <div class="loading-spinner" id="scan-spinner"></div>
-        <button class="btn btn-primary" onclick="runScan()">▶ Run Scan</button>
-        <button class="btn btn-secondary" onclick="exportScorecard()">↓ Export</button>
-      </div>
-    </div>
+<header>
+  <div class="title-row">
+    <h1>RetailEdge Signal Engine</h1>
+    <div class="as-of" id="as-of">Loading…</div>
   </div>
-  <!-- Tab Navigation -->
-  <nav class="nav-tabs" role="tablist" aria-label="Dashboard sections">
-    <button class="nav-tab active" role="tab" onclick="switchTab('market')" id="tab-market">Market Conditions</button>
-    <button class="nav-tab" role="tab" onclick="switchTab('gate')" id="tab-gate">Regime Gate</button>
-    <button class="nav-tab" role="tab" onclick="switchTab('signals')" id="tab-signals">Signal Scorecard</button>
-    <button class="nav-tab" role="tab" onclick="switchTab('charts')" id="tab-charts">Signal Charts</button>
-    <button class="nav-tab" role="tab" onclick="switchTab('params')" id="tab-params">Parameters</button>
-    <button class="nav-tab" role="tab" onclick="switchTab('method')" id="tab-method">Methodology</button>
-    <button class="nav-tab" role="tab" onclick="switchTab('integrity')" id="tab-integrity">Data Integrity</button>
-  </nav>
+  <div class="header-bar" id="header-bar">
+    <div class="pill"><span class="label">Regime Gate</span><span class="value" id="hdr-gate">—</span></div>
+    <div class="pill"><span class="label">SSI Cluster</span><span class="value" id="hdr-ssi">—</span></div>
+    <div class="pill"><span class="label">Capitulation</span><span class="value" id="hdr-cap">—</span></div>
+    <div class="pill"><span class="label">Euphoria</span><span class="value" id="hdr-euph">—</span></div>
+    <div class="pill"><span class="label">Inflection</span><span class="value" id="hdr-inflection">—</span></div>
+    <div class="pill"><span class="label">GEX SPY</span><span class="value" id="hdr-gex">—</span></div>
+  </div>
 </header>
 
-<main class="main-content page-wrap">
+<nav class="tabs">
+  <button id="btn-overview" class="active" onclick="showTab('overview')">Overview</button>
+  <button id="btn-gex" onclick="showTab('gex')">GEX</button>
+  <button id="btn-inflection" onclick="showTab('inflection')">Inflection</button>
+  <button id="btn-ssi" onclick="showTab('ssi')">SSI / Cap / Euph</button>
+  <button id="btn-letf" onclick="showTab('letf')">Single-Stock LETFs</button>
+</nav>
 
-  <!-- ══════════════════════════════════════════════════════════════
-       SECTION 1: MARKET CONDITIONS
-  ═══════════════════════════════════════════════════════════════ -->
-  <section class="section active" id="sec-market">
-    <div class="section-header">
-      <div class="section-title">
-        <svg class="section-title-icon" viewBox="0 0 18 18" fill="none">
-          <path d="M2 13 L6 8 L10 10 L16 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="16" cy="4" r="1.5" fill="currentColor"/>
-        </svg>
-        Market Conditions
+<main>
+  <div id="error-banner"></div>
+
+  <section id="tab-overview" class="tab-panel active">
+    <div class="grid-2">
+      <div class="card">
+        <h2>Regime</h2>
+        <div id="ov-regime" class="loading">Loading…</div>
       </div>
-      <div class="section-meta"><span id="market-as-of">As of --</span> · T+0 close</div>
+      <div class="card">
+        <h2>Signal Roll-Up</h2>
+        <div id="ov-rollup" class="loading">Loading…</div>
+      </div>
     </div>
-
-    <div class="metrics-grid">
-
-      <div class="card metric-card accent-red" id="vix-card">
-        <div class="card-label">VIX Spot</div>
-        <div class="card-value" style="color:#fca5a5" id="mc-vix-spot">--</div>
-        <div class="card-sub"><span id="mc-vix-avg">28d Avg: --</span></div>
-        <div class="card-delta delta-up">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 2 L10 7 L2 7 Z" fill="currentColor"/></svg>
-          +6.2% vs 28d Avg
-        </div>
-        <div style="margin-top:var(--space-3); height:1px; background:var(--color-divider)"></div>
-        <div class="card-sub" style="margin-top:var(--space-2)">1yr Range: 13.8 – 36.4 · Pctile 58th</div>
-      </div>
-
-      <div class="card metric-card accent-yellow">
-        <div class="card-label">VVIX</div>
-        <div class="card-value" style="color:#fde68a" id="mc-vvix">--</div>
-        <div class="card-sub">Vol-of-vol index</div>
-        <div class="card-delta delta-down">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10 L10 5 L2 5 Z" fill="currentColor"/></svg>
-          –2.4 pts (WoW)
-        </div>
-        <div style="margin-top:var(--space-3); height:1px; background:var(--color-divider)"></div>
-        <div class="card-sub" style="margin-top:var(--space-2)">Bonus trigger: ≥100 · Status: <span style="color:var(--color-text-faint)">Inactive</span></div>
-      </div>
-
-      <div class="card metric-card accent-blue">
-        <div class="card-label">Regime Confidence</div>
-        <div class="card-value" style="color:#93c5fd" id="mc-regime-conf">--</div>
-        <div class="card-sub">Elevated regime classification</div>
-        <div style="margin-top:var(--space-3); background:var(--color-border); border-radius:var(--radius-full); height:4px; overflow:hidden">
-          <div style="width:64%;height:100%;background:var(--color-accent);border-radius:var(--radius-full)"></div>
-        </div>
-        <div class="card-sub" style="margin-top:var(--space-2)">Calm threshold: &lt;40% · Active: 0/4 gates</div>
-      </div>
-
-      <div class="card metric-card accent-yellow">
-        <div class="card-label">0DTE P/C Ratio</div>
-        <div class="card-value" style="color:#fde68a" id="mc-dte0-pc">--</div>
-        <div class="card-sub">Score: 76.2 · 91st pctile</div>
-        <div class="card-delta delta-up">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 2 L10 7 L2 7 Z" fill="currentColor"/></svg>
-          Elevated retail put buying
-        </div>
-        <div style="margin-top:var(--space-3); height:1px; background:var(--color-divider)"></div>
-        <div class="card-sub" style="margin-top:var(--space-2)">5d MA: 1.38 · Δ vs 5d: +2.9%</div>
-      </div>
-
-      <div class="card metric-card accent-purple">
-        <div class="card-label">Sentiment Score</div>
-        <div class="card-value" style="color:#c4b5fd">34</div>
-        <div class="card-sub">CNN Fear &amp; Greed composite</div>
-        <div class="card-delta delta-neutral">
-          ◈ Fear territory (0–40)
-        </div>
-        <div style="margin-top:var(--space-3); background:var(--color-border); border-radius:var(--radius-full); height:4px; overflow:hidden">
-          <div style="width:34%;height:100%;background:var(--color-purple);border-radius:var(--radius-full)"></div>
-        </div>
-        <div class="card-sub" style="margin-top:var(--space-2)">WoW: 41 → 34 · Contrarian signal: moderate</div>
-      </div>
-
-      <div class="card metric-card accent-green">
-        <div class="card-label">GEX Bucket</div>
-        <div class="card-value" style="color:#6ee7b7; font-size:var(--text-lg)">Positive</div>
-        <div class="card-sub">Gamma Exposure Index</div>
-        <div class="card-delta delta-up">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 2 L10 7 L2 7 Z" fill="currentColor"/></svg>
-          Dealer long gamma → dampened vol
-        </div>
-        <div style="margin-top:var(--space-3); height:1px; background:var(--color-divider)"></div>
-        <div class="card-sub" style="margin-top:var(--space-2)">GEX: +$4.2B · Flip level: SPX 5,180</div>
-      </div>
-
-    </div>
-
-    <div class="divider"></div>
-    <div style="padding:var(--space-4) var(--space-5); background:var(--color-surface); border:1px solid var(--color-border); border-radius:var(--radius-lg);">
-      <div class="section-title" style="font-size:var(--text-xs); margin-bottom:var(--space-3);">
-        <svg class="section-title-icon" viewBox="0 0 18 18" fill="none" style="width:14px;height:14px">
-          <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M9 5v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        Session Summary
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:var(--space-3);">
-        <div><div class="card-label">SPX Close</div><div class="text-mono" style="font-size:var(--text-sm);font-weight:700;color:#f9fafb" id="ss-spx-close">--</div><div class="card-delta" style="font-size:11px" id="ss-spx-chg">--</div></div>
-        <div><div class="card-label">QQQ Close</div><div class="text-mono" style="font-size:var(--text-sm);font-weight:700;color:#f9fafb" id="ss-qqq-close">--</div><div class="card-delta" style="font-size:11px" id="ss-qqq-chg">--</div></div>
-        <div><div class="card-label">IWM Close</div><div class="text-mono" style="font-size:var(--text-sm);font-weight:700;color:#f9fafb" id="ss-iwm-close">--</div><div class="card-delta" style="font-size:11px" id="ss-iwm-chg">--</div></div>
-        <div><div class="card-label">HYG Spread</div><div class="text-mono" style="font-size:var(--text-sm);font-weight:700;color:#fde68a" id="ss-hyg-close">--</div><div class="card-delta" style="font-size:11px" id="ss-hyg-chg">--</div></div>
-        <div><div class="card-label">10Y Yield</div><div class="text-mono" style="font-size:var(--text-sm);font-weight:700;color:#f9fafb" id="ss-10y-close">--</div><div class="card-delta" style="font-size:11px" id="ss-10y-chg">--</div></div>
-        <div><div class="card-label">DXY</div><div class="text-mono" style="font-size:var(--text-sm);font-weight:700;color:#f9fafb" id="ss-dxy-close">--</div><div class="card-delta" style="font-size:11px" id="ss-dxy-chg">--</div></div>
-      </div>
+    <div class="card">
+      <h2>Freshness Warnings</h2>
+      <div id="ov-warnings" class="warn-list loading">Loading…</div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════════════════════
-       SECTION 2: REGIME GATE
-  ═══════════════════════════════════════════════════════════════ -->
-  <section class="section" id="sec-gate">
-    <div class="section-header">
-      <div class="section-title">
-        <svg class="section-title-icon" viewBox="0 0 18 18" fill="none">
-          <rect x="3" y="7" width="12" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M6 7V5a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="9" cy="12" r="1.5" fill="currentColor"/>
-        </svg>
-        Regime Gate Conditions
+  <section id="tab-gex" class="tab-panel">
+    <div class="grid-2">
+      <div class="card">
+        <h2>SPY GEX</h2>
+        <div id="gex-spy" class="loading">Loading…</div>
       </div>
-      <div class="section-meta">4 primary conditions + 1 bonus · Require ≥3 to open gate</div>
-    </div>
-
-    <div class="gate-grid">
-
-      <div class="gate-item not-met">
-        <div class="gate-flag">✗</div>
-        <div>
-          <div class="gate-name">VIX Spike (&gt;25)</div>
-          <div class="gate-value">Current VIX: <strong id="gate-vix-val">--</strong> · Threshold: 25.00 · Gap: –3.96 pts</div>
-          <div class="gate-status-text">NOT MET</div>
-        </div>
-      </div>
-
-      <div class="gate-item not-met">
-        <div class="gate-flag">✗</div>
-        <div>
-          <div class="gate-name">VIX Above 28d Avg (+5%)</div>
-          <div class="gate-value">VIX: <span id="gate-vix-ref">--</span> · <span id="mc-vix-avg">28d Avg: --</span> · Spread: +6.2% · Required: +5%</div>
-          <div class="gate-status-text" style="color:#f97316">BORDERLINE — +6.2% (met threshold, but VIX &lt;25)</div>
-          <div style="font-size:11px;color:var(--color-text-faint);margin-top:2px">Both conditions must co-trigger</div>
-        </div>
-      </div>
-
-      <div class="gate-item not-met">
-        <div class="gate-flag">✗</div>
-        <div>
-          <div class="gate-name">GEX Negative</div>
-          <div class="gate-value">GEX: +$4.2B (Positive) · Flip level: SPX 5,180 · Below flip: 102 pts</div>
-          <div class="gate-status-text">NOT MET — dealer long gamma stabilizing</div>
-        </div>
-      </div>
-
-      <div class="gate-item not-met">
-        <div class="gate-flag">✗</div>
-        <div>
-          <div class="gate-name">Dip-Buy Exhaustion (z &lt; −1.0)</div>
-          <div class="gate-value">Dip-Buy Ratio z-score: <strong>–0.41</strong> · Threshold: –1.00</div>
-          <div class="gate-status-text">NOT MET — z-score: –0.41 (softening but not exhausted)</div>
-        </div>
-      </div>
-
-    </div>
-
-    <div style="margin-top:var(--space-4);">
-      <div class="gate-item bonus" style="max-width:400px">
-        <div class="gate-flag">◈</div>
-        <div>
-          <div class="gate-name">VVIX Bonus Flag (≥100)</div>
-          <div class="gate-value">VVIX: <strong>98.3</strong> · Threshold: 100.0 · Gap: –1.7 pts</div>
-          <div class="gate-status-text" style="color:#a78bfa">INACTIVE — near threshold, monitor</div>
-        </div>
+      <div class="card">
+        <h2>FA GEX Summary</h2>
+        <div id="gex-fa" class="loading">Loading…</div>
       </div>
     </div>
-
-    <div class="gate-summary">
-      <div>
-        <div class="card-label">Conditions Met</div>
-        <div class="gate-count">0 / 4</div>
-      </div>
-      <div style="width:1px;height:40px;background:var(--color-border)"></div>
-      <div>
-        <div class="gate-sum-text"><strong>Gate Status: CLOSED</strong></div>
-        <div class="gate-sum-text" style="margin-top:2px">Require ≥3 primary conditions to open. Signal scores are attenuated while gate is closed — use for monitoring and watchlist preparation only.</div>
-      </div>
-      <div style="margin-left:auto">
-        <span class="regime-badge closed">
-          <span class="dot"></span>
-          GATE CLOSED
-        </span>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-    <div style="padding:var(--space-4) var(--space-5); background:var(--color-surface); border:1px solid var(--color-border); border-radius:var(--radius-lg);">
-      <div class="card-label" style="margin-bottom:var(--space-3)">Interpretation</div>
-      <div style="font-size:var(--text-xs); color:var(--color-text-muted); line-height:1.7; max-width:800px">
-        The Regime Gate filters out periods where retail crowding signals may reflect genuine fundamental panic rather than reflexive retail overreaction. With VIX at 21.04 — elevated but below the primary spike threshold — the system is in a <span class="tag tag-amber">Yellow Zone</span>: conditions are softening but have not reached the extreme levels that historically generate high-confidence contrarian entries. Maintain watchlist, do not initiate new positions based on score alone. Revisit if VIX exceeds 25 with concurrent GEX flip or dip-buy exhaustion.
-      </div>
+    <div class="card">
+      <h2>Squeeze Signal</h2>
+      <div id="gex-squeeze" class="loading">Loading…</div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════════════════════
-       SECTION 3: SIGNAL SCORECARD
-  ═══════════════════════════════════════════════════════════════ -->
-  <section class="section" id="sec-signals">
-    <div class="section-header">
-      <div class="section-title">
-        <svg class="section-title-icon" viewBox="0 0 18 18" fill="none">
-          <path d="M3 3h12v2H3zM3 8h9v2H3zM3 13h6v2H3z" fill="currentColor"/>
-        </svg>
-        Signal Scorecard
-      </div>
-      <div class="section-meta">Top 10 tickers · Composite score 0–100 · Gate: CLOSED (attenuated)</div>
+  <section id="tab-inflection" class="tab-panel">
+    <div class="card">
+      <h2>Inflection Composite</h2>
+      <div id="infl-summary" class="loading">Loading…</div>
     </div>
-
-    <div class="alert-threshold">
-      <div class="alert-line"></div>
-      <div class="alert-label">⚠ Alert Threshold: 75</div>
-      <div class="alert-line"></div>
-    </div>
-    <div style="margin-top:var(--space-1);margin-bottom:var(--space-4);font-size:11px;color:var(--color-text-faint);text-align:center">
-      Scores above 75 trigger position-level alert. Gate closed — no actionable signals at this time.
-    </div>
-
-    <div class="table-wrap">
-      <table class="signal-table" aria-label="Signal scorecard">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Ticker</th>
-            <th>Composite Score</th>
-            <th class="right">Crowding</th>
-            <th class="right">Dip-Buy</th>
-            <th class="right">0DTE</th>
-            <th class="right">Sentiment</th>
-            <th>GEX</th>
-            <th>Blackout</th>
-            <th>Signal</th>
-          </tr>
-        </thead>
-        <tbody id="scorecard-tbody">
-          <!-- populated by JS -->
-        </tbody>
-      </table>
-    </div>
-
-    <div class="divider"></div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:var(--space-3);">
-      <div class="card" style="padding:var(--space-3) var(--space-4)">
-        <div class="card-label">Score Legend</div>
-        <div style="margin-top:var(--space-2);display:flex;flex-direction:column;gap:4px">
-          <div style="display:flex;align-items:center;gap:8px;font-size:11px"><span style="width:10px;height:10px;border-radius:50%;background:#10b981;display:inline-block"></span><span class="score-low">0–34: Accumulate</span></div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:11px"><span style="width:10px;height:10px;border-radius:50%;background:#f59e0b;display:inline-block"></span><span class="score-med">35–54: Neutral</span></div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:11px"><span style="width:10px;height:10px;border-radius:50%;background:#f97316;display:inline-block"></span><span class="score-high">55–74: Avoid</span></div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:11px"><span style="width:10px;height:10px;border-radius:50%;background:#ef4444;display:inline-block"></span><span class="score-crit">75+: Alert ⚠</span></div>
-        </div>
-      </div>
-      <div class="card" style="padding:var(--space-3) var(--space-4)">
-        <div class="card-label">Watchlist Stats</div>
-        <div style="margin-top:var(--space-2);display:flex;flex-direction:column;gap:4px">
-          <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--color-text-muted)">Avg Composite</span><span style="color:#f9fafb;font-weight:700">27.4</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--color-text-muted)">Max Score</span><span style="color:#f59e0b;font-weight:700">46.8 (MSTR)</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--color-text-muted)">Blackout Flags</span><span style="color:#fca5a5;font-weight:700">2 tickers</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--color-text-muted)">Alerts (≥75)</span><span style="color:var(--color-text-faint);font-weight:700">0</span></div>
-        </div>
-      </div>
-      <div class="card" style="padding:var(--space-3) var(--space-4)">
-        <div class="card-label">Gate Impact</div>
-        <div style="font-size:11px;color:var(--color-text-muted);margin-top:var(--space-2);line-height:1.6">
-          Gate CLOSED applies a 0.45× attenuation multiplier to all composite scores. True scores are approximately 1.8× shown values when gate opens.
-        </div>
-      </div>
+    <div class="card">
+      <h2>6-Flip Detail</h2>
+      <div id="infl-flips" class="loading">Loading…</div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════════════════════
-       SECTION 4: SIGNAL CHARTS
-  ═══════════════════════════════════════════════════════════════ -->
-  <section class="section" id="sec-charts">
-    <div class="section-header">
-      <div class="section-title">
-        <svg class="section-title-icon" viewBox="0 0 18 18" fill="none">
-          <polyline points="2,14 6,9 10,11 16,5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        Signal Charts
-      </div>
-      <div class="section-meta">Interactive — hover for tooltips · 252-session history (Apr 2025 – Apr 2026)</div>
+  <section id="tab-ssi" class="tab-panel">
+    <div class="card">
+      <h2>SSI Cluster (Bull/Bear/Bench)</h2>
+      <div id="ssi-table" class="loading">Loading…</div>
     </div>
-
-    <div class="charts-grid">
-
-      <div class="chart-card">
-        <div class="chart-title">VIX History — 252 Sessions · 28d MA Overlay</div>
-        <div class="chart-wrap"><canvas id="vix-chart"></canvas></div>
-        <div style="margin-top:var(--space-3);display:flex;gap:var(--space-4);flex-wrap:wrap">
-          <div style="display:flex;align-items:center;gap:6px;font-size:11px"><span style="width:16px;height:2px;background:#60a5fa;display:inline-block"></span><span style="color:var(--color-text-muted)">VIX Spot</span></div>
-          <div style="display:flex;align-items:center;gap:6px;font-size:11px"><span style="width:16px;height:2px;background:#a78bfa;display:inline-block;opacity:0.8"></span><span style="color:var(--color-text-muted)">28d MA</span></div>
-          <div style="display:flex;align-items:center;gap:6px;font-size:11px"><span style="width:16px;height:2px;background:#ef4444;display:inline-block;border-top:2px dashed #ef4444;background:none"></span><span style="color:var(--color-text-muted)">Threshold 25</span></div>
-          <div style="display:flex;align-items:center;gap:6px;font-size:11px"><span style="width:16px;height:2px;background:none;border-top:2px dashed #f59e0b;display:inline-block"></span><span style="color:var(--color-text-muted)">Caution 18</span></div>
-        </div>
-      </div>
-
-      <div class="chart-card">
-        <div class="chart-title">Composite Score Distribution — Watchlist</div>
-        <div class="chart-wrap"><canvas id="score-chart"></canvas></div>
-        <div style="margin-top:var(--space-3);font-size:11px;color:var(--color-text-faint)">Bar color indicates signal strength. Dashed line = alert threshold (75).</div>
-      </div>
-
-      <div class="chart-card">
-        <div class="chart-title">Dip-Buy Ratio Trend — 60 Sessions</div>
-        <div class="chart-wrap"><canvas id="dipbuy-chart"></canvas></div>
-        <div style="margin-top:var(--space-3);display:flex;gap:var(--space-4);flex-wrap:wrap">
-          <div style="display:flex;align-items:center;gap:6px;font-size:11px"><span style="width:16px;height:2px;background:#10b981;display:inline-block"></span><span style="color:var(--color-text-muted)">Dip-Buy Ratio</span></div>
-          <div style="display:flex;align-items:center;gap:6px;font-size:11px"><span style="width:16px;height:2px;background:none;border-top:2px dashed #ef4444;display:inline-block"></span><span style="color:var(--color-text-muted)">Exhaustion threshold (z = –1.0)</span></div>
-        </div>
-      </div>
-
+    <div class="card">
+      <h2>Capitulation Pairs (z ≥ 2.0 fires)</h2>
+      <div id="cap-table" class="loading">Loading…</div>
+    </div>
+    <div class="card">
+      <h2>Euphoria Pairs (z ≥ 2.0 fires)</h2>
+      <div id="euph-table" class="loading">Loading…</div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════════════════════
-       SECTION 5: PARAMETERS
-  ═══════════════════════════════════════════════════════════════ -->
-  <section class="section" id="sec-params">
-    <div class="section-header">
-      <div class="section-title">
-        <svg class="section-title-icon" viewBox="0 0 18 18" fill="none">
-          <circle cx="6" cy="5" r="2" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="12" cy="13" r="2" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M6 7v8M12 3v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        Configuration Parameters
-      </div>
-      <div class="section-meta">Read-only display · Modify via config.yaml · v2.3.1</div>
-    </div>
-
-    <div class="params-grid">
-
-      <div class="card param-group">
-        <div class="param-group-title">Regime Gate Thresholds</div>
-        <div class="param-row">
-          <span class="param-name">VIX spike threshold</span>
-          <span class="param-value">25.0</span>
-        </div>
-        <div class="param-row">
-          <span class="param-name">VIX vs 28d avg spread</span>
-          <span class="param-value">+5.0%</span>
-        </div>
-        <div class="param-row">
-          <span class="param-name">GEX condition</span>
-          <span class="param-value">Negative</span>
-        </div>
-        <div class="param-row">
-          <span class="param-name">Dip-buy z-score threshold</span>
-          <span class="param-value">&lt; −1.0σ</span>
-        </div>
-        <div class="param-row">
-          <span class="param-name">VVIX bonus threshold</span>
-          <span class="param-value">≥ 100</span>
-        </div>
-        <div class="param-row">
-          <span class="param-name">Min conditions to open gate</span>
-          <span class="param-value">3 / 4</span>
-        </div>
-        <div class="param-row">
-          <span class="param-name">Gate-closed attenuation factor</span>
-          <span class="param-value">0.45×</span>
-        </div>
-      </div>
-
-      <div class="card param-group">
-        <div class="param-group-title">Signal Weights</div>
-        <div class="param-row">
-          <span class="param-name">Retail Crowding Score</span>
-          <div class="weight-bar-wrap">
-            <div class="weight-bar-track"><div class="weight-bar-fill" style="width:30%"></div></div>
-            <span class="param-value">0.30</span>
-          </div>
-        </div>
-        <div class="param-row">
-          <span class="param-name">Dip-Buy Ratio Score</span>
-          <div class="weight-bar-wrap">
-            <div class="weight-bar-track"><div class="weight-bar-fill" style="width:25%"></div></div>
-            <span class="param-value">0.25</span>
-          </div>
-        </div>
-        <div class="param-row">
-          <span class="param-name">0DTE Options Score</span>
-          <div class="weight-bar-wrap">
-            <div class="weight-bar-track"><div class="weight-bar-fill" style="width:25%"></div></div>
-            <span class="param-value">0.25</span>
-          </div>
-        </div>
-        <div class="param-row">
-          <span class="param-name">Sentiment Score</span>
-          <div class="weight-bar-wrap">
-            <div class="weight-bar-track"><div class="weight-bar-fill" style="width:20%"></div></div>
-            <span class="param-value">0.20</span>
-          </div>
-        </div>
-        <div class="param-row" style="border-top:1px dashed var(--color-border);padding-top:var(--space-3);margin-top:var(--space-1)">
-          <span class="param-name">Total weights</span>
-          <span class="param-value" style="color:var(--color-success)">1.00 ✓</span>
-        </div>
-        <div class="param-row">
-          <span class="param-name">Alert threshold (composite)</span>
-          <span class="param-value" style="color:#fca5a5">75.0</span>
-        </div>
-        <div class="param-row">
-          <span class="param-name">Lookback window (0DTE)</span>
-          <span class="param-value">5d</span>
-        </div>
-        <div class="param-row">
-          <span class="param-name">Crowding percentile window</span>
-          <span class="param-value">252d</span>
-        </div>
-      </div>
-
-      <div class="card param-group">
-        <div class="param-group-title">Data Sources</div>
-        <div class="param-row">
-          <span class="param-name">Retail flow data</span>
-          <span class="param-value" style="color:#93c5fd">Vanda Research</span>
-        </div>
-        <div class="param-row">
-          <span class="param-name">Options data (0DTE)</span>
-          <span class="param-value" style="color:#93c5fd">ORATS</span>
-        </div>
-        <div class="param-row">
-          <span class="param-name">GEX calculation</span>
-          <span class="param-value" style="color:#93c5fd">SpotGamma</span>
-        </div>
-        <div class="param-row">
-          <span class="param-name">Sentiment composite</span>
-          <span class="param-value" style="color:#93c5fd">CNN F&amp;G / AAII</span>
-        </div>
-        <div class="param-row">
-          <span class="param-name">VIX / VVIX</span>
-          <span class="param-value" style="color:#93c5fd">CBOE EOD</span>
-        </div>
-        <div class="param-row">
-          <span class="param-name">Scan frequency</span>
-          <span class="param-value">Daily, T+30min</span>
-        </div>
-        <div class="param-row">
-          <span class="param-name">Blackout events calendar</span>
-          <span class="param-value" style="color:#93c5fd">FactSet</span>
-        </div>
-      </div>
-
-      <div class="card param-group" style="grid-column:span 2">
-        <div class="param-group-title">Active Watchlist (20 tickers)</div>
-        <div class="watchlist-chips" id="watchlist-chips">
-          <!-- populated by JS -->
-        </div>
-        <div style="margin-top:var(--space-4);font-size:11px;color:var(--color-text-faint)">
-          Sectors: Technology (7) · Consumer Discretionary (4) · Financials (3) · Energy (2) · Healthcare (2) · Crypto-equity (1) · ETF (1)
-        </div>
-      </div>
-
+  <section id="tab-letf" class="tab-panel">
+    <div class="card">
+      <h2>Single-Stock LETF Pairs</h2>
+      <div id="ss-table" class="loading">Loading…</div>
     </div>
   </section>
-
-  <!-- ══════════════════════════════════════════════════════════════
-       SECTION 6: METHODOLOGY
-  ═══════════════════════════════════════════════════════════════ -->
-  <section class="section" id="sec-method">
-    <div class="section-header">
-      <div class="section-title">
-        <svg class="section-title-icon" viewBox="0 0 18 18" fill="none">
-          <path d="M4 4h10M4 8h8M4 12h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        Methodology & Signal Construction
-      </div>
-      <div class="section-meta">RetailEdge v2.3 · WSC Internal Research · Not for distribution</div>
-    </div>
-
-    <div class="method-grid">
-
-      <div class="method-card">
-        <div class="method-card-title"><span class="method-icon">📡</span> Retail Crowding Score (Weight: 0.30)</div>
-        <div class="method-body">
-          <p>Measures the degree to which retail investors (identified via Vanda Research net buy data and Robinhood popularity rankings) are crowded into a position relative to their trailing 252-day history. Computed as the percentile rank of 5-day net retail buy flow divided by ADV.</p>
-          <p>Formula: <span class="formula">CrowdScore = Pctile(NetRetailBuy₅d / ADV, 252d window)</span></p>
-          <p>High score (>70) indicates retail is heavily concentrated in the name — consistent with contrarian short-term mean-reversion opportunity when regime gate is open.</p>
-        </div>
-        <div class="method-ref">
-          Ref: Barber &amp; Odean (2008) "All That Glitters: The Effect of Attention and News on the Buying Behavior of Individual and Institutional Investors." <em>RFS</em> 21(2).
-          Vanda Research Retail Tracking Methodology, 2024.
-        </div>
-      </div>
-
-      <div class="method-card">
-        <div class="method-card-title"><span class="method-icon">📉</span> Dip-Buy Ratio Score (Weight: 0.25)</div>
-        <div class="method-body">
-          <p>Tracks the ratio of retail buy-on-dip volume to total retail buy volume over rolling 5-day windows. A declining ratio signals "dip-buy exhaustion" — retail capitulation that historically precedes mean-reversion recoveries.</p>
-          <p>Formula: <span class="formula">DipBuyZ = (DipRatio₅d − μ₆₃d) / σ₆₃d</span></p>
-          <p>The z-score below −1.0 is required to pass the regime gate exhaustion condition. The raw ratio is used as the per-ticker sub-score (0–100 percentile).</p>
-        </div>
-        <div class="method-ref">
-          Ref: Da, Engelberg &amp; Gao (2011) "In Search of Attention." <em>J. Finance</em> 66(5).
-          Welch (2022) "The Wisdom of the Robinhood Crowd." <em>J. Finance</em> 77(3).
-        </div>
-      </div>
-
-      <div class="method-card">
-        <div class="method-card-title"><span class="method-icon">⚡</span> 0DTE Options Score (Weight: 0.25)</div>
-        <div class="method-body">
-          <p>Zero-days-to-expiry put/call ratio captures speculative retail hedging behavior. Elevated put buying from retail (identified via small-lot &lt;10 contract screens from ORATS) at extreme percentiles indicates fear-driven overhedging.</p>
-          <p>Formula: <span class="formula">ZDTEScore = Pctile(SmallLot_PC_Ratio₅d, 252d)</span></p>
-          <p>Current aggregate 0DTE score: <strong>76.2</strong> (91st percentile). High 0DTE put buying is a strong contrarian signal when concurrent with VIX spike and GEX negative conditions.</p>
-        </div>
-        <div class="method-ref">
-          Ref: Manaster &amp; Rendleman (1982); Muravyev, Pearson &amp; Broussard (2013).
-          SpotGamma 0DTE Flow Analysis, 2024. ORATS Data Dictionary v4.1.
-        </div>
-      </div>
-
-      <div class="method-card">
-        <div class="method-card-title"><span class="method-icon">🧠</span> Sentiment Score (Weight: 0.20)</div>
-        <div class="method-body">
-          <p>A composite of CNN Fear &amp; Greed Index (40% weight), AAII Bull-Bear spread (30%), NAAIM Exposure Index (20%), and social media sentiment proxy from StockTwits volume/sentiment ratio (10%). Normalized to 0–100 (0 = extreme fear, 100 = extreme greed).</p>
-          <p>Formula: <span class="formula">SentScore = 100 − NormalizedFear</span> (inverted: high = greed = more retail crowding)</p>
-          <p>Current: 34 (Fear zone) — moderate contrarian signal. Extreme fear readings (&lt;20) historically correlate with best forward returns.</p>
-        </div>
-        <div class="method-ref">
-          Ref: Baker &amp; Wurgler (2006) "Investor Sentiment and the Cross-Section of Stock Returns." <em>J. Finance</em> 61(4).
-          Brown &amp; Cliff (2004) "Investor Sentiment and the Near-Term Stock Market." <em>J. Empirical Finance</em> 11(1).
-        </div>
-      </div>
-
-      <div class="method-card">
-        <div class="method-card-title"><span class="method-icon">🔒</span> Composite Score &amp; Gate Logic</div>
-        <div class="method-body">
-          <p>The composite score is a weighted linear combination of sub-scores: <span class="formula">C = 0.30×Crowd + 0.25×DipBuy + 0.25×ZDTE + 0.20×Sent</span></p>
-          <p>When the Regime Gate is closed, all composite scores are multiplied by 0.45× to reflect lower confidence in the contrarian signal during non-extreme regimes. Gate opens when ≥3 of 4 primary conditions are simultaneously met.</p>
-          <p>Alert threshold at 75 triggers a position-level notification to the portfolio management team. Blackout flags suppress signals during earnings windows (±3 days) and FOMC meeting days.</p>
-        </div>
-        <div class="method-ref">
-          Internal calibration: WSC Research, Jan 2024–Apr 2026 (494 trading days).
-          Signal decay tested against SPX forward returns T+1, T+5, T+20.
-        </div>
-      </div>
-
-      <div class="method-card">
-        <div class="method-card-title"><span class="method-icon">⚙️</span> GEX &amp; Regime Classification</div>
-        <div class="method-body">
-          <p>Gamma Exposure (GEX) measures the aggregate dealer gamma position across the options market. Positive GEX (dealers long gamma) dampens realized vol as dealers sell into rallies and buy dips. Negative GEX (dealers short gamma) amplifies moves.</p>
-          <p>Regime Classification: Uses a Hidden Markov Model with 3 states (Calm, Elevated, Crisis) trained on VIX, VVIX, HYG spread, and SPX realized vol (21-day). Regime confidence reflects HMM state probability for the current state.</p>
-          <p>Current state: <strong>Elevated</strong> (64% confidence). Previous: Calm (Feb 2026). Transition trigger: VIX spike to 36.4 on Mar 4, 2026.</p>
-        </div>
-        <div class="method-ref">
-          Ref: SpotGamma GEX Methodology; Hull (2018) <em>Options, Futures &amp; Other Derivatives</em> Ch. 19.
-          Hamilton (1989) "A New Approach to the Economic Analysis of Nonstationary Time Series." <em>Econometrica</em> 57(2).
-        </div>
-      </div>
-
-    </div>
-
-    <div class="divider"></div>
-    <div style="padding:var(--space-4) var(--space-5); background:var(--color-surface); border:1px solid var(--color-border); border-radius:var(--radius-lg);">
-      <div class="card-label" style="margin-bottom:var(--space-2)">Disclaimer</div>
-      <div style="font-size:11px;color:var(--color-text-faint);line-height:1.65;max-width:900px">
-        RetailEdge is an internal quantitative research tool developed for exploratory signal generation. Scores and signals are not investment recommendations. Past signal performance does not guarantee future results. This tool should be used in conjunction with fundamental analysis and portfolio-level risk management. Wide Spread Capital is a registered investment adviser. This material is confidential and intended solely for internal use.
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════════════════════════
-       SECTION 7: DATA INTEGRITY
-  ═══════════════════════════════════════════════════════════════ -->
-  <section class="section" id="sec-integrity">
-    <div class="section-header">
-      <div class="section-title">
-        <svg class="section-title-icon" viewBox="0 0 18 18" fill="none">
-          <path d="M9 2L2 6v5c0 3.5 3 6.5 7 7 4-.5 7-3.5 7-7V6L9 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-          <path d="M6 9l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        Data Integrity Monitor
-      </div>
-      <div class="section-meta">Per-source status evaluated every scan &middot; Silent fallbacks = zero</div>
-    </div>
-
-    <div class="integrity-summary" id="integrity-summary">
-      <!-- populated by JS -->
-    </div>
-
-    <div class="table-wrap">
-      <table class="signal-table" aria-label="Data integrity per source">
-        <thead>
-          <tr>
-            <th>Source</th>
-            <th>Status</th>
-            <th>Detail</th>
-            <th>Value</th>
-          </tr>
-        </thead>
-        <tbody id="integrity-tbody">
-          <!-- populated by JS -->
-        </tbody>
-      </table>
-    </div>
-
-    <div class="divider"></div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--space-3);">
-      <div class="card" style="padding:var(--space-3) var(--space-4)">
-        <div class="card-label">Status Legend</div>
-        <div style="margin-top:var(--space-2);display:flex;flex-direction:column;gap:6px">
-          <div style="display:flex;align-items:center;gap:8px;font-size:11px"><span class="integrity-badge live"><span class="status-dot"></span>LIVE</span> Fresh data from primary API</div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:11px"><span class="integrity-badge stale"><span class="status-dot"></span>STALE</span> Data older than expected freshness window</div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:11px"><span class="integrity-badge synthetic"><span class="status-dot"></span>SYNTHETIC</span> Generated/cached fallback (not real-time)</div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:11px"><span class="integrity-badge failed"><span class="status-dot"></span>FAILED</span> API error or missing data</div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:11px"><span class="integrity-badge skipped"><span class="status-dot"></span>SKIPPED</span> Source not evaluated this scan</div>
-        </div>
-      </div>
-      <div class="card" style="padding:var(--space-3) var(--space-4)">
-        <div class="card-label">Policy</div>
-        <div style="font-size:11px;color:var(--color-text-muted);margin-top:var(--space-2);line-height:1.6">
-          If any source degrades to SYNTHETIC or STALE, the digest email flags it and the pipeline log records the fallback. FAILED sources trigger immediate escalation. Zero silent fallbacks: every data path is audited.
-        </div>
-      </div>
-      <div class="card" style="padding:var(--space-3) var(--space-4)">
-        <div class="card-label">Coverage</div>
-        <div style="font-size:11px;color:var(--color-text-muted);margin-top:var(--space-2);line-height:1.6">
-          15 sources monitored: Vanda, VIX, FlashAlpha, SqzMe, RTAT, Polygon 0DTE, Polygon Engine, Unusual Whales, FINRA, EDGAR, CBOE, WSB, Congress, SentimentTrader, CTA Regime.
-        </div>
-      </div>
-    </div>
-  </section>
-
 </main>
 
-<!-- Modals -->
-<div class="modal-overlay" id="scan-modal">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="scan-modal-title">
-    <div class="modal-title" id="scan-modal-title">▶ Scan Complete</div>
-    <div class="modal-body">
-      <div class="scan-status">
-        <div class="scan-status-dot"></div>
-        <div class="scan-status-text"><span id="scan-status-text">All 20 tickers processed</span></div>
-      </div>
-      <pre id="scan-output"></pre>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-secondary" onclick="closeModal('scan-modal')">Close</button>
-    </div>
-  </div>
-</div>
-
-<div class="modal-overlay" id="export-modal">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="export-modal-title">
-    <div class="modal-title" id="export-modal-title">↓ Export Scorecard</div>
-    <div class="modal-body">
-      <p style="margin-bottom:var(--space-3)">Scorecard data formatted for export:</p>
-      <pre id="export-output"></pre>
-      <p style="font-size:11px;color:var(--color-text-faint);margin-top:var(--space-2)">In production, this would POST to <span class="formula">/api/v1/export?format=csv</span> and trigger a file download.</p>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-secondary" onclick="closeModal('export-modal')">Close</button>
-      <button class="btn btn-primary" onclick="closeModal('export-modal')">Copy to Clipboard</button>
-    </div>
-  </div>
-</div>
-
-<script>window.SNAPSHOT_DATA = {"as_of":"2026-05-18T20:20:17.220320-04:00","regime":{"gate_open":false,"confidence":0.3,"vix_regime":"elevated","vvix_bonus":false,"n_conditions_met":1,"summary":"Gate: CLOSED | Regime: ELEVATED | Confidence: 30% | Conditions met: 1/5","cond_vix_spike":false,"cond_vix_above_avg":false,"cond_gex_negative":true,"cond_dipbuy_cracking":false,"cond_rtat_risk_off":false,"cond_poly_0dte_regime":"neutral_0dte","cond_poly_0dte_pc_ratio":1.0337,"cond_poly_unusual_vol":"True","cond_uw_bearish_flow":"False","cond_uw_bearish_delta":"True","cond_uw_high_sweep":true,"cond_uw_flow_sentiment":-0.1015},"vix_snapshot":{"vix_spot":18.43,"vix_28d_avg":18.28,"vvix":92.94},"dte0":{"pc_ratio":1.964,"pc_percentile":null,"dte0_score":0.0,"spike_flag":true,"interpretation":"Normal 0DTE activity \u2014 no panic signal","pc_pct_rank":null},"dte0_source":"polygon_cache","sentiment":{"sentiment_score":0.0,"divergence_z":0.0,"divergence_mode":"no_wsb_data","sentiment_index":0.0,"z_score":null,"wsb_signal":null,"interpretation":"WSB data unavailable \u2014 sentiment signal offline"},"cross_asset":{"credit_stress":false,"hyg_lqd_ratio":0.7388,"cot":{"error":"HTTP Error 403: Forbidden"},"gex_value":-3.7482,"gex_bucket":"slightly_negative","fa_atm_iv":14.55,"fa_rv_20d":10.67,"fa_vrp_assessment":"moderate_premium","fa_rv_5d":12.35,"fa_rv_10d":11.81,"fa_rv_30d":11.91,"fa_rv_60d":14.96,"insider_watchlist_bias":"selling","insider_n_buying":0,"insider_n_selling":8},"gex_spy":-3.7482,"gex_flip_spy":739.3461512867336,"fa_0dte_regime":"negative_gamma","fa_spy_vol":{"atm_iv":14.55,"rv_20d":10.67,"vrp_assessment":"moderate_premium","rv_5d":12.35,"rv_10d":11.81,"rv_30d":11.91,"rv_60d":14.96,"vrp_5d":2.2,"vrp_10d":2.74},"fa_gex_summary":{"spy_gex":-3.748,"spy_flip":739.35,"n_pos_gex":33,"n_neg_gex":12,"n_neg_gamma":7,"n_pos_gamma":6,"avg_vrp":18.52,"avg_skew":0.1,"vrp_assessments":{"very_high_premium":20,"danger_zone":7,"moderate_premium":7,"healthy_premium":5,"thin_premium":3,"negative_spread":3},"top_skew":[{"symbol":"EWZ","skew_25d":166.83},{"symbol":"XLK","skew_25d":152.25},{"symbol":"XLB","skew_25d":63.93}],"n_symbols":45,"status":"live"},"fa_regime":"negative_gamma","finra_market_ratio":0.4712,"finra_market_z":-1.763,"finra_elevated":["SMCI"],"rtat_risk_ratio":1.1081,"rtat_risk_regime":"neutral","rtat_risk_ratio_z":0.578,"poly_engine_summary":{"n_tickers":24,"n_with_0dte":3,"avg_0dte_pc_ratio":1.125,"max_0dte_pc_ratio":1.3546,"min_0dte_pc_ratio":0.9867,"n_unusual_volume":2,"avg_dp_pct":37.24},"uw_engine_summary":{"n_tickers":24,"n_with_flow_data":24,"avg_flow_sentiment":0.0338,"total_sweeps":1065,"avg_dp_trades":389.0,"total_dp_trades":9329,"n_bearish_flow":2,"n_bullish_flow":3},"soxl_contrarian":{"soxl_activity":0.0149,"soxl_sentiment":-1,"soxl_activity_percentile":92,"soxl_signal_status":"INACTIVE","soxl_signal_label":"","soxl_signal_strength":"","soxl_secondary_signal":false,"soxl_secondary_label":""},"quad_signal":{"quad_fires":false,"quad_fires_base":false,"quad_n_conditions":3,"quad_conviction":"watch","quad_tlt_independent":true,"quad_summary":"Quad Signal: INACTIVE | 3/5 conditions | Conviction: WATCH","quad_spy_pnn":0.137,"quad_spy_div":-0.1553,"quad_spy_gnorm":0.0369,"quad_spy_pnorm":0.2923,"quad_vea_pnn":0.0817,"quad_vea_div":0.5373,"quad_vea_gnorm":0.0588,"quad_vea_pnorm":-0.4556,"quad_iwm_pnn":0.121,"quad_iwm_div":0.5165,"quad_iwm_gnorm":-0.5094,"quad_iwm_pnorm":-0.3955,"quad_uvix_pnn":-0.1058,"quad_uvix_div":-0.07450000000000001,"quad_uvix_gnorm":0.1206,"quad_uvix_pnorm":-0.0313,"quad_tlt_pnn":0.0389,"quad_tlt_div":0.7678,"quad_tlt_gnorm":-0.8793,"quad_tlt_pnorm":-0.7289,"quad_cond_spy":false,"quad_cond_vea":true,"quad_cond_iwm":true,"quad_cond_uvix":false,"quad_cond_tlt":true},"breadth":{"breadth_count":2,"breadth_active":false,"breadth_diverging":"JPM,BAC","breadth_tier":0,"breadth_tier_label":"Inactive \u2014 breadth below threshold","breadth_vehicle":"","breadth_summary":"Breadth: INACTIVE | 2/20 diverging | Tier 0 | Inactive \u2014 breadth below threshold"},"narratives":{"AAPL":{"ticker":"AAPL","signal_strength":"LOW","conviction_score":18,"flow_interpretation":"UW flow data unavailable.","options_structure":"Polygon 0DTE data unavailable.","sqzme_pnn_interpretation":"**P_NN +0.1438**: Strong bullish k-NN forecast \u2014 historical analogs with similar G/D/V/P produced strong 21d returns.","sqzme_axes_interpretation":"G_NORM=+0.512: Call-heavy gamma positioning \u2014 bullish momentum or complacency. D_NORM=+0.277: Dark pool activity in normal range. V_NORM=-0.149: Volatility in normal range. VRP: IV (23.3) > annualized RV (18.5) \u2014 options expensive relative to realized moves.","confirmation_summary":"2/7 sources confirm contrarian signal. 1 contradict. Confirming: SqzMe P_NN, RTAT sentiment.","risk_factors":"Regime gate CLOSED (30% confidence). VIX 18.43 above 28d avg 18.28.","actionable":false,"trade_suggestion":"Insufficient confirmation for trade entry.","narrative_summary":"LOW (18%) | P_NN=+0.1438 | 2/7 confirm","finra_interpretation":"Low short ratio ratio=0.314 (z=-1.70) = buying conviction intact.","insider_interpretation":"Insider activity: selling.","rtat_interpretation":"Extreme retail bearishness (sentiment=-7) \u2014 historically contrarian bullish.","congress_interpretation":"Congressional trading neutral.","n_confirming":2,"n_contradicting":1},"AMD":{"ticker":"AMD","signal_strength":"LOW","conviction_score":0,"flow_interpretation":"UW flow data unavailable.","options_structure":"Polygon 0DTE data unavailable.","sqzme_pnn_interpretation":"P_NN +0.0268 \u2014 neutral range, no strong directional signal.","sqzme_axes_interpretation":"G_NORM=+0.081: Balanced gamma positioning. D_NORM=+0.408: Dark pool activity in normal range. V_NORM=+0.587: Realized volatility accelerating \u2014 heightened risk regime. VRP: IV (65.5) \u2248 annualized RV (73.9) \u2014 balanced.","confirmation_summary":"1 contradict.","risk_factors":"Regime gate CLOSED (30% confidence). VIX 18.43 above 28d avg 18.28.","actionable":false,"trade_suggestion":"Insufficient confirmation for trade entry.","narrative_summary":"LOW (0%) | P_NN=+0.0268","finra_interpretation":"Low short ratio ratio=0.394 (z=-2.28) = buying conviction intact.","insider_interpretation":"Insider activity: selling.","rtat_interpretation":"RTAT sentiment=0 \u2014 neutral range.","congress_interpretation":"Congressional trading neutral.","n_confirming":0,"n_contradicting":1},"AMZN":{"ticker":"AMZN","signal_strength":"LOW","conviction_score":14,"flow_interpretation":"UW flow data unavailable.","options_structure":"Polygon 0DTE data unavailable.","sqzme_pnn_interpretation":"**P_NN +0.0783**: Mildly bullish k-NN forecast \u2014 historical analogs lean positive over 21 days.","sqzme_axes_interpretation":"G_NORM=+0.396: Balanced gamma positioning. D_NORM=+0.567: Elevated dark pool short volume \u2014 institutional accumulation (contrarian bullish). V_NORM=-0.512: Volatility compressing \u2014 calm regime. VRP: IV (28.5) > annualized RV (17.7) \u2014 options expensive relative to realized moves.","confirmation_summary":"1/7 sources confirm contrarian signal. Confirming: SqzMe P_NN.","risk_factors":"Regime gate CLOSED (30% confidence). VIX 18.43 above 28d avg 18.28.","actionable":false,"trade_suggestion":"Insufficient confirmation for trade entry.","narrative_summary":"LOW (14%) | P_NN=+0.0783 | 1/7 confirm","finra_interpretation":"FINRA short volume neutral ratio=0.308 (z=-0.76).","insider_interpretation":"Insider activity: selling.","rtat_interpretation":"RTAT sentiment=-2 \u2014 neutral range.","congress_interpretation":"Congressional trading neutral.","n_confirming":1,"n_contradicting":0},"CHAT":{"ticker":"CHAT","signal_strength":"LOW","conviction_score":0,"flow_interpretation":"UW flow data unavailable.","options_structure":"Polygon 0DTE data unavailable.","sqzme_pnn_interpretation":"**P_NN +0.2549**: Strong bullish k-NN forecast \u2014 historical analogs with similar G/D/V/P produced strong 21d returns.","sqzme_axes_interpretation":"G_NORM=-0.995: Put-heavy gamma = fear/hedging \u2014 contrarian bullish. D_NORM=+0.379: Dark pool activity in normal range. V_NORM=+0.349: Volatility in normal range. VRP: IV (43.1) > annualized RV (34.4) \u2014 options expensive relative to realized moves.","confirmation_summary":"1/7 sources confirm contrarian signal. 2 contradict. Confirming: SqzMe P_NN.","risk_factors":"Regime gate CLOSED (30% confidence). VIX 18.43 above 28d avg 18.28.","actionable":false,"trade_suggestion":"Insufficient confirmation for trade entry.","narrative_summary":"LOW (0%) | P_NN=+0.2549 | 1/7 confirm","finra_interpretation":"Low short ratio ratio=0.367 (z=-2.08) = buying conviction intact.","insider_interpretation":"Insider activity: neutral.","rtat_interpretation":"Extreme retail bullishness (sentiment=6) \u2014 contrarian bearish.","congress_interpretation":"Congressional trading neutral.","n_confirming":1,"n_contradicting":2},"DRIP":{"ticker":"DRIP","signal_strength":"LOW","conviction_score":0,"flow_interpretation":"Neutral options flow \u2014 no strong directional signal. 22 sweeps detected \u2014 urgency in positioning.","options_structure":"Polygon 0DTE data unavailable.","sqzme_pnn_interpretation":"**P_NN -0.1314**: Bearish k-NN forecast \u2014 similar historical conditions resolved lower.","sqzme_axes_interpretation":"G_NORM=+0.646: Call-heavy gamma positioning \u2014 bullish momentum or complacency. D_NORM=+0.074: Dark pool activity in normal range. V_NORM=-0.654: Volatility compressing \u2014 calm regime. VRP: IV (79.7) > annualized RV (51.1) \u2014 options expensive relative to realized moves.","confirmation_summary":"1 contradict.","risk_factors":"Regime gate CLOSED (30% confidence). VIX 18.43 above 28d avg 18.28. Leveraged ETF path-dependency risk for multi-day holds \u2014 prefer XLE over DRIP.","actionable":false,"trade_suggestion":"Insufficient confirmation for trade entry.","narrative_summary":"LOW (0%) | P_NN=-0.1314","finra_interpretation":"FINRA short volume neutral ratio=0.371 (z=-1.00).","insider_interpretation":"Insider activity: neutral.","rtat_interpretation":"RTAT sentiment=0 \u2014 neutral range.","congress_interpretation":"Congressional trading neutral.","n_confirming":0,"n_contradicting":1},"EEM":{"ticker":"EEM","signal_strength":"LOW","conviction_score":0,"flow_interpretation":"Neutral options flow \u2014 no strong directional signal. 43 sweeps detected \u2014 urgency in positioning.","options_structure":"Polygon 0DTE data unavailable.","sqzme_pnn_interpretation":"P_NN +0.0036 \u2014 neutral range, no strong directional signal.","sqzme_axes_interpretation":"G_NORM=-0.113: Balanced gamma positioning. D_NORM=-0.422: Dark pool activity in normal range. V_NORM=+0.128: Volatility in normal range. VRP: IV (28.2) > annualized RV (22.3) \u2014 options expensive relative to realized moves.","confirmation_summary":"1 contradict.","risk_factors":"Regime gate CLOSED (30% confidence). VIX 18.43 above 28d avg 18.28.","actionable":false,"trade_suggestion":"Insufficient confirmation for trade entry.","narrative_summary":"LOW (0%) | P_NN=+0.0036","finra_interpretation":"FINRA short volume neutral ratio=0.668 (z=0.04).","insider_interpretation":"Insider activity: neutral.","rtat_interpretation":"Extreme retail bullishness (sentiment=6) \u2014 contrarian bearish.","congress_interpretation":"Congressional trading neutral.","n_confirming":0,"n_contradicting":1},"EWZ":{"ticker":"EWZ","signal_strength":"LOW","conviction_score":0,"flow_interpretation":"Neutral options flow \u2014 no strong directional signal. 30 sweeps detected \u2014 urgency in positioning.","options_structure":"Polygon 0DTE data unavailable.","sqzme_pnn_interpretation":"P_NN +0.0434 \u2014 neutral range, no strong directional signal.","sqzme_axes_interpretation":"G_NORM=-0.309: Put-heavy gamma = fear/hedging \u2014 contrarian bullish. D_NORM=-0.539: Depressed dark pool activity \u2014 reduced institutional interest. V_NORM=+0.514: Realized volatility accelerating \u2014 heightened risk regime. VRP: IV (29.7) > annualized RV (21.1) \u2014 options expensive relative to realized moves.","confirmation_summary":"No strong confirmation across sources.","risk_factors":"Regime gate CLOSED (30% confidence). VIX 18.43 above 28d avg 18.28.","actionable":false,"trade_suggestion":"Insufficient confirmation for trade entry.","narrative_summary":"LOW (0%) | P_NN=+0.0434","finra_interpretation":"FINRA short volume neutral ratio=0.464 (z=-0.54).","insider_interpretation":"Insider activity: neutral.","rtat_interpretation":"RTAT sentiment=1 \u2014 neutral range.","congress_interpretation":"Congressional trading neutral.","n_confirming":0,"n_contradicting":0},"FXI":{"ticker":"FXI","signal_strength":"LOW","conviction_score":4,"flow_interpretation":"Neutral options flow \u2014 no strong directional signal. 37 sweeps detected \u2014 urgency in positioning.","options_structure":"Polygon 0DTE data unavailable.","sqzme_pnn_interpretation":"**P_NN +0.0784**: Mildly bullish k-NN forecast \u2014 historical analogs lean positive over 21 days.","sqzme_axes_interpretation":"G_NORM=-0.574: Put-heavy gamma = fear/hedging \u2014 contrarian bullish. D_NORM=+0.237: Dark pool activity in normal range. V_NORM=+0.672: Realized volatility accelerating \u2014 heightened risk regime. VRP: IV (20.1) > annualized RV (16.0) \u2014 options expensive relative to realized moves.","confirmation_summary":"1/7 sources confirm contrarian signal. 1 contradict. Confirming: SqzMe P_NN.","risk_factors":"Regime gate CLOSED (30% confidence). VIX 18.43 above 28d avg 18.28.","actionable":false,"trade_suggestion":"Insufficient confirmation for trade entry.","narrative_summary":"LOW (4%) | P_NN=+0.0784 | 1/7 confirm","finra_interpretation":"Low short ratio ratio=0.557 (z=-1.16) = buying conviction intact.","insider_interpretation":"Insider activity: neutral.","rtat_interpretation":"RTAT sentiment=-2 \u2014 neutral range.","congress_interpretation":"Congressional trading neutral.","n_confirming":1,"n_contradicting":1},"GDX":{"ticker":"GDX","signal_strength":"LOW","conviction_score":4,"flow_interpretation":"Neutral options flow \u2014 no strong directional signal. 32 sweeps detected \u2014 urgency in positioning.","options_structure":"Polygon 0DTE data unavailable.","sqzme_pnn_interpretation":"**P_NN +0.0525**: Mildly bullish k-NN forecast \u2014 historical analogs lean positive over 21 days.","sqzme_axes_interpretation":"G_NORM=-0.866: Put-heavy gamma = fear/hedging \u2014 contrarian bullish. D_NORM=-0.164: Dark pool activity in normal range. V_NORM=+0.419: Volatility in normal range. VRP: IV (47.0) \u2248 annualized RV (40.9) \u2014 balanced.","confirmation_summary":"1/7 sources confirm contrarian signal. 1 contradict. Confirming: SqzMe P_NN.","risk_factors":"Regime gate CLOSED (30% confidence). VIX 18.43 above 28d avg 18.28.","actionable":false,"trade_suggestion":"Insufficient confirmation for trade entry.","narrative_summary":"LOW (4%) | P_NN=+0.0525 | 1/7 confirm","finra_interpretation":"Low short ratio ratio=0.221 (z=-1.75) = buying conviction intact.","insider_interpretation":"Insider activity: neutral.","rtat_interpretation":"RTAT sentiment=-1 \u2014 neutral range.","congress_interpretation":"Congressional trading neutral.","n_confirming":1,"n_contradicting":1},"GOOGL":{"ticker":"GOOGL","signal_strength":"LOW","conviction_score":28,"flow_interpretation":"UW flow data unavailable.","options_structure":"Polygon 0DTE data unavailable.","sqzme_pnn_interpretation":"**P_NN +0.1024**: Strong bullish k-NN forecast \u2014 historical analogs with similar G/D/V/P produced strong 21d returns.","sqzme_axes_interpretation":"G_NORM=+0.292: Balanced gamma positioning. D_NORM=-0.007: Dark pool activity in normal range. V_NORM=-0.220: Volatility in normal range. VRP: IV (32.4) > annualized RV (24.7) \u2014 options expensive relative to realized moves.","confirmation_summary":"2/7 sources confirm contrarian signal. Confirming: SqzMe P_NN, RTAT sentiment.","risk_factors":"Regime gate CLOSED (30% confidence). VIX 18.43 above 28d avg 18.28.","actionable":false,"trade_suggestion":"Insufficient confirmation for trade entry.","narrative_summary":"LOW (28%) | P_NN=+0.1024 | 2/7 confirm","finra_interpretation":"FINRA short volume neutral ratio=0.348 (z=-0.95).","insider_interpretation":"Insider activity: selling.","rtat_interpretation":"Extreme retail bearishness (sentiment=-5) \u2014 historically contrarian bullish.","congress_interpretation":"Congressional trading neutral.","n_confirming":2,"n_contradicting":0}},"top5":[{"ticker":"AAPL","composite":0.0,"crowding_score":0.0,"dipbuy_score":0.0,"dte0_score":0.0,"sentiment_score":0.0,"crowding_z":0.0,"dipbuy_z":0.0,"gex_bucket":"slightly_negative","in_blackout":false,"alert_flag":false,"interpretation":"Weak / no contrarian setup (reduced by negative GEX environment)","congress_modifier":1.0,"congress_net_sells":0,"sqzme_g":0.8181,"sqzme_g_norm":0.5116,"sqzme_d":0.477,"sqzme_d_norm":0.2774,"sqzme_v":-0.1133,"sqzme_v_norm":-0.1487,"sqzme_p":0.4108,"sqzme_p_norm":0.4187,"sqzme_iv":23.303,"sqzme_iv_norm":-0.4231,"sqzme_p_nn":0.1438,"sqzme_adm21":1.165,"insider_bias":"selling","insider_net_score":-4.0,"insider_alignment":"neutral","finra_short_ratio":0.3138,"finra_short_ratio_z":-1.695,"finra_flow_signal":"momentum","poly_0dte_pc_ratio":NaN,"poly_0dte_net_premium":NaN,"poly_0dte_total_premium":NaN,"poly_opt_volume_ratio":NaN,"poly_opt_vol_oi_ratio":NaN,"poly_dp_pct_of_total":NaN,"poly_dp_avg_size":NaN,"poly_dp_largest_print":NaN,"uw_dp_trade_count":NaN,"uw_dp_avg_size":NaN,"uw_dp_largest_print":NaN,"uw_dp_pct_above_nbbo_mid":NaN,"uw_net_delta_flow":NaN,"uw_net_vega_flow":NaN,"uw_otm_delta_flow":NaN,"uw_delta_flow_trend":NaN,"uw_sweep_count":NaN,"uw_block_count":NaN,"uw_flow_sentiment":NaN,"uw_total_alert_premium":NaN,"uw_net_premium":NaN,"uw_premium_pc_ratio":NaN,"uw_max_oi_strike":NaN,"uw_max_oi_put_strike":NaN,"uw_oi_concentration":NaN,"fa_gex_value":1469151555.0,"fa_gamma_flip":298.2825,"fa_dist_from_flip_pct":0.436,"fa_gex_bucket":"strongly_positive","fa_regime_label":"positive_gamma","fa_0dte_regime":"positive_gamma","fa_0dte_pin_risk":71.0,"fa_0dte_expected_move":7.7321,"fa_spot_vs_flip":"above","fa_atm_iv":21.25,"fa_rv_5d":13.59,"fa_rv_20d":23.3,"fa_vrp_assessment":"negative_spread","fa_regime":"positive_gamma"},{"ticker":"AMD","composite":0.0,"crowding_score":0.0,"dipbuy_score":0.0,"dte0_score":0.0,"sentiment_score":0.0,"crowding_z":0.0,"dipbuy_z":0.0,"gex_bucket":"slightly_negative","in_blackout":false,"alert_flag":false,"interpretation":"Weak / no contrarian setup (reduced by negative GEX environment)","congress_modifier":1.0,"congress_net_sells":0,"sqzme_g":0.6487,"sqzme_g_norm":0.0807,"sqzme_d":0.5704,"sqzme_d_norm":0.4084,"sqzme_v":0.7311,"sqzme_v_norm":0.5867,"sqzme_p":0.4657,"sqzme_p_norm":0.2809,"sqzme_iv":65.452,"sqzme_iv_norm":0.4668,"sqzme_p_nn":0.0268,"sqzme_adm21":4.6547,"insider_bias":"selling","insider_net_score":-24.0,"insider_alignment":"neutral","finra_short_ratio":0.3941,"finra_short_ratio_z":-2.282,"finra_flow_signal":"momentum","poly_0dte_pc_ratio":NaN,"poly_0dte_net_premium":NaN,"poly_0dte_total_premium":NaN,"poly_opt_volume_ratio":NaN,"poly_opt_vol_oi_ratio":NaN,"poly_dp_pct_of_total":NaN,"poly_dp_avg_size":NaN,"poly_dp_largest_print":NaN,"uw_dp_trade_count":NaN,"uw_dp_avg_size":NaN,"uw_dp_largest_print":NaN,"uw_dp_pct_above_nbbo_mid":NaN,"uw_net_delta_flow":NaN,"uw_net_vega_flow":NaN,"uw_otm_delta_flow":NaN,"uw_delta_flow_trend":NaN,"uw_sweep_count":NaN,"uw_block_count":NaN,"uw_flow_sentiment":NaN,"uw_total_alert_premium":NaN,"uw_net_premium":NaN,"uw_premium_pc_ratio":NaN,"uw_max_oi_strike":NaN,"uw_max_oi_put_strike":NaN,"uw_oi_concentration":NaN,"fa_gex_value":173268107.0,"fa_gamma_flip":397.7867,"fa_dist_from_flip_pct":5.905,"fa_gex_bucket":"strongly_positive","fa_regime_label":"positive_gamma","fa_0dte_regime":"nan","fa_0dte_pin_risk":NaN,"fa_0dte_expected_move":NaN,"fa_spot_vs_flip":"nan","fa_atm_iv":70.48,"fa_rv_5d":41.04,"fa_rv_20d":97.1,"fa_vrp_assessment":"danger_zone","fa_regime":"positive_gamma"},{"ticker":"AMZN","composite":0.0,"crowding_score":0.0,"dipbuy_score":0.0,"dte0_score":0.0,"sentiment_score":0.0,"crowding_z":0.0,"dipbuy_z":0.0,"gex_bucket":"slightly_negative","in_blackout":false,"alert_flag":false,"interpretation":"Weak / no contrarian setup (reduced by negative GEX environment)","congress_modifier":1.0,"congress_net_sells":0,"sqzme_g":0.7582,"sqzme_g_norm":0.3959,"sqzme_d":0.4007,"sqzme_d_norm":0.5671,"sqzme_v":-0.3424,"sqzme_v_norm":-0.5124,"sqzme_p":0.2466,"sqzme_p_norm":0.246,"sqzme_iv":28.521,"sqzme_iv_norm":-0.2669,"sqzme_p_nn":0.0783,"sqzme_adm21":1.1126,"insider_bias":"selling","insider_net_score":-6.0,"insider_alignment":"neutral","finra_short_ratio":0.3084,"finra_short_ratio_z":-0.762,"finra_flow_signal":"neutral","poly_0dte_pc_ratio":NaN,"poly_0dte_net_premium":NaN,"poly_0dte_total_premium":NaN,"poly_opt_volume_ratio":NaN,"poly_opt_vol_oi_ratio":NaN,"poly_dp_pct_of_total":NaN,"poly_dp_avg_size":NaN,"poly_dp_largest_print":NaN,"uw_dp_trade_count":NaN,"uw_dp_avg_size":NaN,"uw_dp_largest_print":NaN,"uw_dp_pct_above_nbbo_mid":NaN,"uw_net_delta_flow":NaN,"uw_net_vega_flow":NaN,"uw_otm_delta_flow":NaN,"uw_delta_flow_trend":NaN,"uw_sweep_count":NaN,"uw_block_count":NaN,"uw_flow_sentiment":NaN,"uw_total_alert_premium":NaN,"uw_net_premium":NaN,"uw_premium_pc_ratio":NaN,"uw_max_oi_strike":NaN,"uw_max_oi_put_strike":NaN,"uw_oi_concentration":NaN,"fa_gex_value":988051429.0,"fa_gamma_flip":252.3999,"fa_dist_from_flip_pct":5.369,"fa_gex_bucket":"strongly_positive","fa_regime_label":"positive_gamma","fa_0dte_regime":"positive_gamma","fa_0dte_pin_risk":66.0,"fa_0dte_expected_move":4.2961,"fa_spot_vs_flip":"above","fa_atm_iv":28.08,"fa_rv_5d":19.61,"fa_rv_20d":20.98,"fa_vrp_assessment":"healthy_premium","fa_regime":"positive_gamma"},{"ticker":"CHAT","composite":0.0,"crowding_score":0.0,"dipbuy_score":0.0,"dte0_score":0.0,"sentiment_score":0.0,"crowding_z":0.0,"dipbuy_z":0.0,"gex_bucket":"slightly_negative","in_blackout":false,"alert_flag":false,"interpretation":"Weak / no contrarian setup (reduced by negative GEX environment)","congress_modifier":1.0,"congress_net_sells":0,"sqzme_g":0.6547,"sqzme_g_norm":-0.9951,"sqzme_d":0.6651,"sqzme_d_norm":0.3785,"sqzme_v":0.1462,"sqzme_v_norm":0.3491,"sqzme_p":0.2656,"sqzme_p_norm":0.037,"sqzme_iv":43.143,"sqzme_iv_norm":0.5403,"sqzme_p_nn":0.2549,"sqzme_adm21":2.1694,"insider_bias":"neutral","insider_net_score":0.0,"insider_alignment":"neutral","finra_short_ratio":0.3671,"finra_short_ratio_z":-2.08,"finra_flow_signal":"momentum","poly_0dte_pc_ratio":NaN,"poly_0dte_net_premium":NaN,"poly_0dte_total_premium":NaN,"poly_opt_volume_ratio":NaN,"poly_opt_vol_oi_ratio":NaN,"poly_dp_pct_of_total":NaN,"poly_dp_avg_size":NaN,"poly_dp_largest_print":NaN,"uw_dp_trade_count":NaN,"uw_dp_avg_size":NaN,"uw_dp_largest_print":NaN,"uw_dp_pct_above_nbbo_mid":NaN,"uw_net_delta_flow":NaN,"uw_net_vega_flow":NaN,"uw_otm_delta_flow":NaN,"uw_delta_flow_trend":NaN,"uw_sweep_count":NaN,"uw_block_count":NaN,"uw_flow_sentiment":NaN,"uw_total_alert_premium":NaN,"uw_net_premium":NaN,"uw_premium_pc_ratio":NaN,"uw_max_oi_strike":NaN,"uw_max_oi_put_strike":NaN,"uw_oi_concentration":NaN,"fa_gex_value":142731.0,"fa_gamma_flip":84.6096,"fa_dist_from_flip_pct":-2.788,"fa_gex_bucket":"strongly_positive","fa_regime_label":"negative_gamma","fa_0dte_regime":"nan","fa_0dte_pin_risk":NaN,"fa_0dte_expected_move":NaN,"fa_spot_vs_flip":"nan","fa_atm_iv":44.56,"fa_rv_5d":55.69,"fa_rv_20d":41.18,"fa_vrp_assessment":"moderate_premium","fa_regime":"negative_gamma"},{"ticker":"DRIP","composite":0.0,"crowding_score":0.0,"dipbuy_score":0.0,"dte0_score":0.0,"sentiment_score":0.0,"crowding_z":0.0,"dipbuy_z":0.0,"gex_bucket":"slightly_negative","in_blackout":false,"alert_flag":false,"interpretation":"Weak / no contrarian setup (reduced by negative GEX environment)","congress_modifier":1.0,"congress_net_sells":0,"sqzme_g":0.9373,"sqzme_g_norm":0.6457,"sqzme_d":0.3537,"sqzme_d_norm":0.0736,"sqzme_v":-0.3889,"sqzme_v_norm":-0.654,"sqzme_p":-0.2893,"sqzme_p_norm":-0.2568,"sqzme_iv":79.664,"sqzme_iv_norm":0.5403,"sqzme_p_nn":-0.1314,"sqzme_adm21":3.2169,"insider_bias":"neutral","insider_net_score":0.0,"insider_alignment":"neutral","finra_short_ratio":0.3706,"finra_short_ratio_z":-0.998,"finra_flow_signal":"neutral","poly_0dte_pc_ratio":NaN,"poly_0dte_net_premium":0.0,"poly_0dte_total_premium":0.0,"poly_opt_volume_ratio":0.0,"poly_opt_vol_oi_ratio":NaN,"poly_dp_pct_of_total":40.21,"poly_dp_avg_size":2948.54,"poly_dp_largest_print":29485.0,"uw_dp_trade_count":29.0,"uw_dp_avg_size":44005.17,"uw_dp_largest_print":56800.0,"uw_dp_pct_above_nbbo_mid":44.83,"uw_net_delta_flow":77302.58,"uw_net_vega_flow":611.46,"uw_otm_delta_flow":67963.61,"uw_delta_flow_trend":-42552.6,"uw_sweep_count":22.0,"uw_block_count":3.0,"uw_flow_sentiment":0.3783,"uw_total_alert_premium":5294042.0,"uw_net_premium":-51.0,"uw_premium_pc_ratio":0.0,"uw_max_oi_strike":NaN,"uw_max_oi_put_strike":0.07,"uw_oi_concentration":67.35,"fa_gex_value":157063.0,"fa_gamma_flip":12.1341,"fa_dist_from_flip_pct":-177.669,"fa_gex_bucket":"strongly_positive","fa_regime_label":"negative_gamma","fa_0dte_regime":"nan","fa_0dte_pin_risk":NaN,"fa_0dte_expected_move":NaN,"fa_spot_vs_flip":"nan","fa_atm_iv":76.16,"fa_rv_5d":45.47,"fa_rv_20d":67.03,"fa_vrp_assessment":"very_high_premium","fa_regime":"negative_gamma"}],"alerts_fired":0,"scorecard_path":null,"cta_regime":{"cta_posture":"LONG","cta_conviction":3,"cta_signal":"HOLD","cta_ma_detail":{"20":{"above":true,"sma":725.3,"distance_pct":1.84},"50":{"above":true,"sma":691.04,"distance_pct":6.89},"200":{"above":true,"sma":673.89,"distance_pct":9.61}},"spy_price":738.65,"cot_lev_net":-432438,"cot_lev_net_chg":-26563,"cot_report_date":"2026-05-12","cot_lev_pct_oi":-21.03,"cot_percentile":4.4,"cot_z_score":-1.7,"cot_alert":"EXTREME_SHORT","cot_alert_detail":"Leveraged funds at P4 (-21.0% of OI). Historically extreme short \u2014 positioning risk overlay, NOT standalone buy signal.","move_level":86.07,"move_regime":"ELEVATED","move_5d_chg":15.33,"macro_regime_overlay":"CAUTIOUS","summary":"CTA: LONG (3/3) | MOVE: 86.1 (ELEVATED) | COT Lev: -432,438 P4 | \u26a0 COT ALERT: EXTREME_SHORT | Overlay: CAUTIOUS"},"data_integrity":{"results":[{"source":"FlashAlpha","status":"LIVE","evidence":"SPY net_gex: 9.2373 -> -3.7482 (delta=-12.9855), 45 symbols","key_values":{"spy_net_gex":-3.7482,"n_symbols":45},"error":""},{"source":"VIX","status":"LIVE","evidence":"VIX spot: 17.2600 -> 18.4300, VVIX=92.9","key_values":{"vix_spot":18.43,"vvix":92.94},"error":""},{"source":"SqzMe","status":"LIVE","evidence":"5780 securities","key_values":{"n_securities":5780,"spy_dix":null,"spy_gex":null},"error":""},{"source":"RTAT","status":"LIVE","evidence":"risk_ratio: 1.4384 -> 1.1081, 51 tickers","key_values":{"risk_ratio":1.1081,"n_tickers":51,"latest_date":null,"spy_volume_buy":0.0146},"error":""},{"source":"Polygon 0DTE","status":"LIVE","evidence":"score=0.0000, P/C=1.964","key_values":{"dte0_score":0.0,"pc_ratio":1.964},"error":""},{"source":"Polygon Engine","status":"LIVE","evidence":"24 tickers, 2 unusual vol, avg_0dte_pc=1.125","key_values":{"n_tickers":24,"n_unusual_volume":2,"avg_0dte_pc_ratio":1.125},"error":""},{"source":"Unusual Whales","status":"LIVE","evidence":"24 tickers, 1065 sweeps, 3 bullish / 2 bearish","key_values":{"total_sweeps":1065,"bullish_minus_bearish":1,"n_tickers":24},"error":""},{"source":"FINRA","status":"LIVE","evidence":"market_ratio: 0.5206 -> 0.4712, 45 tickers","key_values":{"market_ratio":0.4712,"n_tickers":45},"error":""},{"source":"EDGAR Insiders","status":"LIVE","evidence":"bias=selling, 0 buying / 8 selling","key_values":{"n_buying":0,"n_selling":8,"bias":"selling"},"error":""},{"source":"CBOE P/C","status":"LIVE","evidence":"Polygon (polygon_cache), P/C=1.9640","key_values":{"pc_ratio":1.964,"pc_source":"polygon_cache"},"error":""},{"source":"QuiverQuant WSB","status":"DOWN","evidence":"No data returned","key_values":{},"error":""},{"source":"Congress Trades","status":"DOWN","evidence":"No data returned","key_values":{},"error":""},{"source":"CTA Regime","status":"LIVE","evidence":"posture=LONG, signal=HOLD","key_values":{"posture":"LONG","signal":"HOLD"},"error":""}],"n_live":11,"n_stale":0,"n_degraded":0,"n_empty":0,"n_down":2,"n_disabled":0,"n_total":13,"all_live":false,"timestamp":"2026-05-19T00:26:35.203587+00:00","summary":"11/13 live | 2 DOWN: QuiverQuant WSB, Congress Trades","flipped_sources":[]},"session_summary":{"SPX":{"close":7403.05,"change_pct":-0.07},"QQQ":{"close":705.88,"change_pct":-0.43},"IWM":{"close":275.97,"change_pct":-0.59},"HYG":{"close":79.54,"change_pct":0.1}},"prices":{"NVDA":222.32,"TSLA":409.99,"PLTR":135.14,"SMCI":30.85,"MSTR":166.63,"AMD":420.99,"AMZN":264.86,"META":611.21,"MSFT":423.54,"AAPL":297.84,"GOOGL":396.94,"SPY":738.65,"QQQ":705.88,"IWM":275.97,"XLK":174.36,"XLE":60.58,"XLF":51.74,"XLV":145.72,"XLU":43.94,"XLB":50.22,"XLRE":43.75,"XLC":116.98,"MAGS":69.46,"CHAT":84.18,"SOXL":151.75,"TQQQ":74.32,"SQQQ":43.54,"IBIT":43.53,"TLT":83.56,"UVXY":34.79,"SOXS":9.95,"IGV":92.87,"TZA":5.05,"UVIX":4.94,"SPDN":8.82,"DRIP":4.24,"SLV":69.94,"SPTL":25.44,"HYG":79.54,"SPAB":25.26,"GDX":87.14,"KWEB":28.06,"FXI":36.16,"EEM":64.97,"EWZ":36.74},"scan_status":{"cboe":"LIVE","polygon_0dte":"LIVE","sqzme":"LIVE","sqzme_history":"LIVE","quad_signal":"LIVE","breadth":"LIVE","cta":"LIVE","flashalpha":"DEGRADED","wsb":"DISABLED","congress":"DISABLED","edgar":"LIVE","finra":"LIVE","rtat":"LIVE","polygon_engine":"LIVE","unusual_whales":"LIVE"},"vix_prestage":{"badge":"DORMANT","vix_spot":18.43},"escalation_ladder":{"n_layers":1,"confirming":["GEX"],"layer_detail":{"RTAT":{"status":"NOT CONFIRMING","detail":"regime=neutral, z=0.58"},"GEX":{"status":"CONFIRMING","detail":"GEX=-3.75"},"DIX":{"status":"NOT CONFIRMING","detail":"no data"}},"stage":"INITIATE","summary":"1/3 confirming"},"inflection":{"n_flips":2,"n_flips_clean":0,"n_flips_contaminated":2,"inflection_flag":false,"flips":{"fa_gex_sign_flip":{"fired":true,"prev":"positive_gamma","today":"negative_gamma","prev_scorecard_date":"2026-05-15","prev_age_days":3,"baseline_window":1,"baseline_contaminated":true},"fa_dte0_regime_flip":{"fired":false,"prev":"negative_gamma","today":"negative_gamma","prev_scorecard_date":"2026-05-15","prev_age_days":3,"baseline_window":1,"baseline_contaminated":true},"fa_vrp_shift":{"fired":false,"prev":"moderate_premium","today":"moderate_premium","prev_scorecard_date":"2026-05-15","prev_age_days":3,"baseline_window":1,"baseline_contaminated":true},"cta_flipped":{"fired":false,"prev":"LONG","today":"LONG","prev_scorecard_date":"2026-05-15","prev_age_days":3,"baseline_window":1,"baseline_contaminated":true},"dp_surge":{"fired":true,"today_z":1.85,"baseline_n_obs":7,"baseline_window":20,"baseline_contaminated":true},"rv_decompression":{"fired":false,"ratio_5d_20d":1.157,"baseline_n_obs":null,"baseline_window":20,"baseline_contaminated":false}},"fa_gex_delta_1d_bn":-12.9855,"rtat_regime":"neutral","rtat_risk_ratio":1.1081,"rtat_rr_delta_5d":0.2091,"conviction":null,"status":"experimental","validation_note":"Composite 3-of-6 rule not validated \u2014 does not improve over GEX-flip alone. Monitor only.","summary":"2/6 flips: fa_gex_sign_flip, dp_surge"}};</script>
 <script>
-// ─────────────────────────────────────────────────────────────────────────────
-// DATA
-// ─────────────────────────────────────────────────────────────────────────────
-const WATCHLIST = [
-  'XLV','MSTR','AMD','NVDA','TSLA','META','COIN','AMZN','AAPL','GOOGL',
-  'MSFT','SOFI','PLTR','RIVN','BABA','NFLX','JPM','XOM','SHOP','ARKK'
-];
+function showTab(name) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('nav.tabs button').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  document.getElementById('btn-' + name).classList.add('active');
+}
 
-const SCORECARD_DATA = [
-  { rank:1, ticker:'XLV',   composite:17.2, crowd:12, dipbuy:18, zdte:22, sent:16, gex:'Positive', blackout:false, interp:'accumulate' },
-  { rank:2, ticker:'MSTR',  composite:46.8, crowd:62, dipbuy:38, zdte:51, sent:42, gex:'Negative', blackout:false, interp:'avoid' },
-  { rank:3, ticker:'AMD',   composite:34.1, crowd:41, dipbuy:29, zdte:38, sent:28, gex:'Positive', blackout:false, interp:'neutral' },
-  { rank:4, ticker:'NVDA',  composite:28.3, crowd:36, dipbuy:22, zdte:31, sent:25, gex:'Positive', blackout:true,  interp:'neutral' },
-  { rank:5, ticker:'TSLA',  composite:41.5, crowd:55, dipbuy:35, zdte:44, sent:34, gex:'Neutral',  blackout:false, interp:'neutral' },
-  { rank:6, ticker:'COIN',  composite:38.7, crowd:48, dipbuy:32, zdte:42, sent:35, gex:'Negative', blackout:false, interp:'neutral' },
-  { rank:7, ticker:'META',  composite:24.4, crowd:28, dipbuy:21, zdte:26, sent:22, gex:'Positive', blackout:false, interp:'accumulate' },
-  { rank:8, ticker:'AMZN',  composite:21.9, crowd:24, dipbuy:19, zdte:24, sent:20, gex:'Positive', blackout:false, interp:'accumulate' },
-  { rank:9, ticker:'SOFI',  composite:31.2, crowd:38, dipbuy:26, zdte:33, sent:30, gex:'Neutral',  blackout:true,  interp:'neutral' },
-  { rank:10,ticker:'RIVN',  composite:29.6, crowd:33, dipbuy:24, zdte:32, sent:28, gex:'Negative', blackout:false, interp:'neutral' },
-];
+function fmtNum(v, digits) {
+  if (v === null || v === undefined || v === '' || (typeof v === 'number' && isNaN(v))) return '—';
+  if (typeof v === 'number') return v.toFixed(digits === undefined ? 2 : digits);
+  return String(v);
+}
 
-const WATCHLIST_FULL_SCORES = {
-  'XLV':17.2,'MSTR':46.8,'AMD':34.1,'NVDA':28.3,'TSLA':41.5,
-  'META':24.4,'COIN':38.7,'AMZN':21.9,'AAPL':19.1,'GOOGL':16.8,
-  'MSFT':18.4,'SOFI':31.2,'PLTR':35.9,'RIVN':29.6,'BABA':27.1,
-  'NFLX':22.7,'JPM':14.3,'XOM':11.8,'SHOP':33.4,'ARKK':30.5
-};
+function fmtPct(v, digits) {
+  if (v === null || v === undefined || (typeof v === 'number' && isNaN(v))) return '—';
+  return (v * 100).toFixed(digits === undefined ? 1 : digits) + '%';
+}
 
+function fmtBool(v) {
+  if (v === true || v === 'True' || v === 'true') return '<span class="badge badge-amber">TRUE</span>';
+  if (v === false || v === 'False' || v === 'false') return '<span class="badge badge-grey">FALSE</span>';
+  return '—';
+}
 
+function statusBadge(s) {
+  if (!s) return '—';
+  const u = String(s).toUpperCase();
+  if (u === 'NEUTRAL' || u === 'QUIET') return `<span class="badge badge-grey">${u}</span>`;
+  if (u === 'BEARISH' || u === 'CAPITULATION' || u === 'EUPHORIA' || u === 'FIRING') return `<span class="badge badge-red">${u}</span>`;
+  if (u === 'BULLISH') return `<span class="badge badge-green">${u}</span>`;
+  return `<span class="badge badge-amber">${u}</span>`;
+}
 
-const DATA_INTEGRITY = {
-  all_live: true,
-  n_live: 15,
-  n_degraded: 0,
-  summary: "15/15 sources LIVE",
-  sources: [
-    { name: "Vanda Research",    status: "LIVE",    detail: "Live API data (vanda_api)",           value: "avg_bs_ratio=0.87" },
-    { name: "VIX (CBOE)",       status: "LIVE",    detail: "VIX spot + 28d avg fresh",             value: "spot=18.2, avg=16.8" },
-    { name: "FlashAlpha GEX",   status: "LIVE",    detail: "Net GEX from FlashAlpha API",          value: "$7.63B" },
-    { name: "SqzMe G_NORM",     status: "LIVE",    detail: "Normalized gamma ratio",               value: "g_norm=0.42" },
-    { name: "NASDAQ RTAT",      status: "LIVE",    detail: "Real-time retail activity tracker",     value: "net_flow=$142M" },
-    { name: "Polygon 0DTE",     status: "LIVE",    detail: "0DTE options aggregates",               value: "pc_ratio=1.24" },
-    { name: "Polygon Engine",   status: "LIVE",    detail: "Ticker-level aggregates",               value: "20 tickers" },
-    { name: "Unusual Whales",   status: "LIVE",    detail: "Options flow data",                     value: "312 contracts" },
-    { name: "FINRA SI",         status: "LIVE",    detail: "Short interest data",                   value: "20 tickers" },
-    { name: "EDGAR Insider",    status: "LIVE",    detail: "Recent insider transactions",           value: "8 filings" },
-    { name: "CBOE Indices",     status: "LIVE",    detail: "VIX, SKEW, PUT indices",                value: "3 indices" },
-    { name: "WSB Sentiment",    status: "LIVE",    detail: "r/wallstreetbets mentions",             value: "top=TSLA" },
-    { name: "Congress Trades",  status: "LIVE",    detail: "Recent congressional disclosures",      value: "4 trades" },
-    { name: "SentimentTrader",  status: "LIVE",    detail: "Smart/dumb money confidence",           value: "smart=62, dumb=41" },
-    { name: "CTA Regime",       status: "LIVE",    detail: "CTA positioning model",                 value: "regime=NEUTRAL" },
-  ]
-};
+function kv(k, v) { return `<div class="kv"><span class="k">${k}</span><span class="v">${v}</span></div>`; }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// SNAPSHOT LOADER — loads live data from snapshot.json
-// ─────────────────────────────────────────────────────────────────────────────
-let SNAPSHOT = null;
+function renderHeader(snapshot, signals) {
+  const asOf = snapshot.as_of || signals.date || '—';
+  document.getElementById('as-of').textContent = 'As of ' + asOf;
 
-function loadSnapshot() {
-  if (window.SNAPSHOT_DATA) {
-    SNAPSHOT = window.SNAPSHOT_DATA;
-    applySnapshot(SNAPSHOT);
-    console.log('[Dashboard] Snapshot loaded (inline):', SNAPSHOT.as_of);
+  const sigRegime = signals.regime || {};
+  const gateOpen = sigRegime.regime_gate_open;
+  document.getElementById('hdr-gate').innerHTML = gateOpen
+    ? '<span class="badge badge-green">OPEN</span>'
+    : '<span class="badge badge-grey">CLOSED</span>';
+
+  const ssiN = signals.ssi_cluster_breadth;
+  const ssiFiring = signals.cluster_firing;
+  document.getElementById('hdr-ssi').innerHTML = ssiFiring
+    ? `<span class="badge badge-red">FIRING ${ssiN}/9</span>`
+    : `<span class="badge badge-grey">${ssiN}/9</span>`;
+
+  const capN = signals.capitulation_firing;
+  document.getElementById('hdr-cap').innerHTML = capN > 0
+    ? `<span class="badge badge-red">${capN} FIRE</span>`
+    : '<span class="badge badge-grey">0</span>';
+
+  const euphN = signals.euphoria_firing;
+  document.getElementById('hdr-euph').innerHTML = euphN > 0
+    ? `<span class="badge badge-red">${euphN} FIRE</span>`
+    : '<span class="badge badge-grey">0</span>';
+
+  const infl = snapshot.inflection || {};
+  document.getElementById('hdr-inflection').innerHTML = infl.inflection_flag
+    ? `<span class="badge badge-red">FIRED ${infl.n_flips}/6</span>`
+    : `<span class="badge badge-grey">${infl.n_flips || 0}/6</span>`;
+
+  const gex = snapshot.gex_spy;
+  document.getElementById('hdr-gex').innerHTML = typeof gex === 'number'
+    ? (gex < 0 ? `<span class="badge badge-red">${gex.toFixed(2)} Bn</span>` : `<span class="badge badge-green">${gex.toFixed(2)} Bn</span>`)
+    : '—';
+}
+
+function renderOverview(snapshot, signals) {
+  const sigRegime = signals.regime || {};
+  const snapRegime = snapshot.regime || {};
+  let html = '';
+  html += kv('Gate (signals)', sigRegime.regime_gate_open ? 'OPEN' : 'CLOSED');
+  html += kv('SPY close', fmtNum(sigRegime.spy_close));
+  html += kv('SPY 200d MA', fmtNum(sigRegime.spy_ma200));
+  html += kv('SPY vs 200d', fmtPct(sigRegime.spy_vs_200));
+  html += kv('VIX', fmtNum(sigRegime.vix));
+  html += kv('Gate (snapshot)', snapRegime.gate_open ? 'OPEN' : 'CLOSED');
+  html += kv('Confidence', fmtPct(snapRegime.confidence));
+  html += kv('VIX regime', snapRegime.vix_regime || '—');
+  html += kv('Conditions met', `${snapRegime.n_conditions_met || 0}/5`);
+  document.getElementById('ov-regime').innerHTML = html;
+
+  let r = '';
+  r += kv('SSI cluster breadth', `${signals.ssi_cluster_breadth}/9 (trigger ≥ 5)`);
+  r += kv('Cluster firing', fmtBool(signals.cluster_firing));
+  r += kv('Capitulation fires', signals.capitulation_firing);
+  r += kv('Euphoria fires', signals.euphoria_firing);
+  const infl = snapshot.inflection || {};
+  r += kv('Inflection flips', `${infl.n_flips || 0}/6 (clean ${infl.n_flips_clean || 0})`);
+  r += kv('Inflection fired', fmtBool(infl.inflection_flag));
+  r += kv('RTAT regime', infl.rtat_regime || snapshot.rtat_risk_regime || '—');
+  r += kv('RTAT risk ratio', fmtNum(infl.rtat_risk_ratio || snapshot.rtat_risk_ratio, 4));
+  document.getElementById('ov-rollup').innerHTML = r;
+
+  const warns = signals.freshness_warnings || [];
+  if (warns.length === 0) {
+    document.getElementById('ov-warnings').innerHTML = '<div class="small">No freshness warnings.</div>';
+  } else {
+    document.getElementById('ov-warnings').innerHTML = warns.map(w =>
+      `<div>${typeof w === 'string' ? w : JSON.stringify(w)}</div>`
+    ).join('');
+  }
+}
+
+function renderGex(snapshot) {
+  let s = '';
+  s += kv('GEX SPY (Bn)', fmtNum(snapshot.gex_spy, 4));
+  s += kv('GEX flip level', fmtNum(snapshot.gex_flip_spy, 2));
+  s += kv('FA regime', snapshot.fa_regime || '—');
+  s += kv('0DTE regime', snapshot.fa_0dte_regime || '—');
+  const vol = snapshot.fa_spy_vol || {};
+  s += kv('ATM IV', fmtNum(vol.atm_iv, 4));
+  s += kv('RV 10d', fmtNum(vol.rv_10d, 4));
+  s += kv('RV 20d', fmtNum(vol.rv_20d, 4));
+  s += kv('VRP 10d', fmtNum(vol.vrp_10d, 4));
+  document.getElementById('gex-spy').innerHTML = s;
+
+  const fa = snapshot.fa_gex_summary || {};
+  let f = '';
+  f += kv('Symbols', fa.n_symbols || '—');
+  f += kv('Neg GEX', fa.n_neg_gex || 0);
+  f += kv('Pos GEX', fa.n_pos_gex || 0);
+  f += kv('Neg gamma', fa.n_neg_gamma || 0);
+  f += kv('Pos gamma', fa.n_pos_gamma || 0);
+  f += kv('Avg skew', fmtNum(fa.avg_skew, 4));
+  f += kv('Avg VRP', fmtNum(fa.avg_vrp, 4));
+  f += kv('SPY flip', fmtNum(fa.spy_flip, 2));
+  document.getElementById('gex-fa').innerHTML = f;
+}
+
+function renderSqueeze(signals) {
+  const sq = signals.squeeze_signal;
+  if (!sq) {
+    document.getElementById('gex-squeeze').innerHTML = '<div class="small">No squeeze signal in today\'s run.</div>';
     return;
   }
-  fetch('snapshot.json?t=' + Date.now())
-    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-    .then(data => { SNAPSHOT = data; applySnapshot(data); console.log('[Dashboard] Snapshot loaded (fetch):', data.as_of); })
-    .catch(e => console.warn('[Dashboard] No snapshot data available.', e.message || e));
+  let h = '';
+  h += kv('Tier', sq.tier || '—');
+  h += kv('Score', fmtNum(sq.score, 2));
+  h += kv('Spot', fmtNum(sq.spot, 2));
+  h += kv('Net GEX (Bn)', fmtNum(sq.net_gex_b, 4));
+  h += kv('Gamma flip', fmtNum(sq.gamma_flip, 2));
+  h += kv('Call wall', fmtNum(sq.call_wall, 2));
+  h += kv('V-shape cross-up today', fmtBool(sq.vshape_cross_up_today));
+  document.getElementById('gex-squeeze').innerHTML = h;
 }
 
-function fmtDelta(pct) {
-  const sign = pct >= 0 ? '+' : '';
-  const cls = pct > 0 ? 'delta-up' : pct < 0 ? 'delta-down' : 'delta-neutral';
-  return { text: sign + pct.toFixed(2) + '%', cls };
-}
+function renderInflection(snapshot) {
+  const infl = snapshot.inflection || {};
+  let s = '';
+  s += kv('Flips fired', `${infl.n_flips || 0}/6`);
+  s += kv('Clean flips', infl.n_flips_clean || 0);
+  s += kv('Contaminated', infl.n_flips_contaminated || 0);
+  s += kv('Inflection flag', fmtBool(infl.inflection_flag));
+  s += kv('FA GEX Δ 1d (Bn)', fmtNum(infl.fa_gex_delta_1d_bn, 4));
+  s += kv('RTAT regime', infl.rtat_regime || '—');
+  s += kv('RTAT risk ratio', fmtNum(infl.rtat_risk_ratio, 4));
+  s += kv('RTAT rr Δ 5d', fmtNum(infl.rtat_rr_delta_5d, 4));
+  s += kv('Conviction', infl.conviction || '—');
+  s += kv('Status', infl.status || '—');
+  s += `<div class="kv"><span class="k">Note</span><span class="v small" style="max-width:60%;text-align:right">${infl.validation_note || ''}</span></div>`;
+  document.getElementById('infl-summary').innerHTML = s;
 
-function fmtNum(v, decimals) {
-  if (v == null || isNaN(v)) return '--';
-  return v.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
-}
-
-function applySnapshot(s) {
-  // ── Scan timestamp ──
-  const asOf = s.as_of ? new Date(s.as_of) : null;
-  if (asOf) {
-    const fmt = asOf.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
-              + ', ' + asOf.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZoneName: 'short' });
-    const el1 = document.getElementById('last-scan-time');
-    if (el1) el1.textContent = 'Last Scan: ' + fmt;
-    const el2 = document.getElementById('market-as-of');
-    if (el2) el2.textContent = 'As of ' + fmt;
-  }
-
-  // ── Market Conditions cards ──
-  const vix = s.vix_snapshot || {};
-  setTextById('mc-vix-spot', fmtNum(vix.vix_spot, 2));
-  setTextById('mc-vix-avg', '28d Avg: ' + fmtNum(vix.vix_28d_avg, 2));
-  setTextById('mc-vvix', vix.vvix != null ? fmtNum(vix.vvix, 1) : '--');
-
-  const regime = s.regime || {};
-  setTextById('mc-regime-conf', regime.confidence != null ? Math.round(regime.confidence * 100) + '%' : '--');
-
-  const dte0 = s.dte0 || {};
-  setTextById('mc-dte0-pc', dte0.pc_ratio != null ? fmtNum(dte0.pc_ratio, 2) : '--');
-
-  const sent = s.sentiment || {};
-  setTextById('mc-sentiment', sent.sentiment_score != null ? Math.round(sent.sentiment_score) : '--');
-
-  // ── Gate status badge ──
-  const badgeEl = document.querySelector('.regime-badge');
-  if (badgeEl && regime.gate_open != null) {
-    badgeEl.classList.remove('open', 'closed');
-    badgeEl.classList.add(regime.gate_open ? 'open' : 'closed');
-    const dotEl = badgeEl.querySelector('.dot');
-    const textEl = badgeEl.querySelector('span:not(.dot)') || badgeEl.lastChild;
-    if (textEl && textEl.nodeType === 3) textEl.textContent = regime.gate_open ? ' GATE: OPEN' : ' GATE: CLOSED';
-  }
-
-  // ── Gate conditions ──
-  setTextById('gate-vix-val', fmtNum(vix.vix_spot, 2));
-  setTextById('gate-vix-ref', fmtNum(vix.vix_spot, 2));
-
-  // ── Session Summary ──
-  const ss = s.session_summary || {};
-  applySS('spx', ss.SPX);
-  applySS('qqq', ss.QQQ);
-  applySS('iwm', ss.IWM);
-  applySS('hyg', ss.HYG);
-  applySS('10y', ss.US10Y);
-  applySS('dxy', ss.DXY);
-
-  // ── Scorecard ──
-  if (s.top5 && s.top5.length > 0) {
-    updateScorecardFromSnapshot(s);
-  }
-
-  // ── Data Integrity ──
-  if (s.data_integrity) {
-    DATA_INTEGRITY.sources = s.data_integrity.sources || DATA_INTEGRITY.sources;
-    DATA_INTEGRITY.n_live = s.data_integrity.n_live || DATA_INTEGRITY.n_live;
-    DATA_INTEGRITY.n_degraded = s.data_integrity.n_degraded || 0;
-    DATA_INTEGRITY.all_live = s.data_integrity.all_live != null ? s.data_integrity.all_live : DATA_INTEGRITY.all_live;
-    DATA_INTEGRITY.summary = s.data_integrity.summary || DATA_INTEGRITY.summary;
-    renderIntegrity();
-  }
-
-  // ── GEX badge ──
-  const gexBadge = document.querySelector('[id^="mc-gex"]') || document.querySelector('.card-value[style*="color:#6ee7b7"], .card-value[style*="color:#fca5a5"]');
-  // GEX is deeply embedded in HTML — leave as-is for now, overridden by scorecard
-}
-
-function setTextById(id, text) {
-  const el = document.getElementById(id);
-  if (el) el.textContent = text;
-}
-
-function applySS(key, data) {
-  if (!data) return;
-  const closeEl = document.getElementById('ss-' + key + '-close');
-  const chgEl = document.getElementById('ss-' + key + '-chg');
-  if (closeEl) {
-    if (key === '10y') {
-      closeEl.textContent = fmtNum(data.close, 2) + '%';
-    } else {
-      closeEl.textContent = fmtNum(data.close, 2);
-    }
-  }
-  if (chgEl && data.change_pct != null) {
-    const d = fmtDelta(data.change_pct);
-    chgEl.textContent = d.text;
-    chgEl.className = 'card-delta ' + d.cls;
-    chgEl.style.fontSize = '11px';
-  }
-}
-
-function updateScorecardFromSnapshot(s) {
-  // Update SCORECARD_DATA from snapshot top5
-  const newData = (s.top5 || []).map((row, i) => ({
-    rank: i + 1,
-    ticker: row.ticker,
-    composite: row.composite || 0,
-    crowd: row.crowding_score || 0,
-    dipbuy: row.dipbuy_score || 0,
-    zdte: row.dte0_score || 0,
-    sent: row.sentiment_score || 0,
-    gex: row.gex_bucket === 'strongly_positive' || row.gex_bucket === 'slightly_positive' ? 'Positive' :
-         row.gex_bucket === 'strongly_negative' || row.gex_bucket === 'slightly_negative' ? 'Negative' : 'Neutral',
-    blackout: row.in_blackout || false,
-    interp: row.interpretation ? row.interpretation.includes('Accumulate') || row.composite < 35 ? 'accumulate' :
-            row.composite < 55 ? 'neutral' : row.composite < 75 ? 'avoid' : 'alert' : 'neutral',
-  }));
-  if (newData.length > 0) {
-    SCORECARD_DATA.length = 0;
-    newData.forEach(d => SCORECARD_DATA.push(d));
-    buildScorecard();
-  }
-}
-
-// Load snapshot after all functions are defined
-window.addEventListener('DOMContentLoaded', () => loadSnapshot());
-
-
-// ─────────────────────────────────────────────────────────────────────────────
-// TIMESTAMP
-// ─────────────────────────────────────────────────────────────────────────────
-function updateTimestamp() {
-  const el = document.getElementById('live-timestamp');
-  const now = new Date();
-  el.textContent = now.toLocaleString('en-US', {
-    timeZone: 'America/New_York',
-    month: 'short', day: 'numeric', year: 'numeric',
-    hour: '2-digit', minute: '2-digit', second: '2-digit',
-    hour12: false
-  }) + ' EDT';
-}
-updateTimestamp();
-setInterval(updateTimestamp, 1000);
-
-// ─────────────────────────────────────────────────────────────────────────────
-// TAB SWITCHING
-// ─────────────────────────────────────────────────────────────────────────────
-function switchTab(name) {
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.getElementById('tab-' + name).classList.add('active');
-  document.getElementById('sec-' + name).classList.add('active');
-
-  // Lazy init charts
-  if (name === 'charts' && !chartsInitialized) {
-    initCharts();
-    chartsInitialized = true;
-  }
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// SCORECARD TABLE
-// ─────────────────────────────────────────────────────────────────────────────
-function getScoreClass(v) {
-  if (v < 35) return { bar: 'bar-low', text: 'score-low' };
-  if (v < 55) return { bar: 'bar-med', text: 'score-med' };
-  if (v < 75) return { bar: 'bar-high', text: 'score-high' };
-  return { bar: 'bar-crit', text: 'score-crit' };
-}
-
-function renderScoreBar(v) {
-  const cls = getScoreClass(v);
-  return `<div class="score-bar-wrap">
-    <div class="score-bar-track"><div class="score-bar-fill ${cls.bar}" style="width:${v}%"></div></div>
-    <span class="score-val ${cls.text}">${v.toFixed(1)}</span>
-  </div>`;
-}
-
-function renderGex(g) {
-  if (g === 'Positive') return `<span class="gex-bucket gex-pos">+ POS</span>`;
-  if (g === 'Negative') return `<span class="gex-bucket gex-neg">− NEG</span>`;
-  return `<span class="gex-bucket gex-neu">NEU</span>`;
-}
-
-function renderBlackout(b) {
-  if (b) return `<span class="blackout-yes">⚑ Active</span>`;
-  return `<span class="blackout-no">—</span>`;
-}
-
-function renderInterp(i) {
-  const map = {
-    accumulate: ['interp-accumulate','Accumulate'],
-    neutral: ['interp-neutral','Neutral'],
-    avoid: ['interp-avoid','Avoid'],
-    monitor: ['interp-monitor','Monitor'],
-  };
-  const [cls, label] = map[i] || ['interp-neutral','—'];
-  return `<span class="interp-badge ${cls}">${label}</span>`;
-}
-
-function buildScorecard() {
-  const tbody = document.getElementById('scorecard-tbody');
-  tbody.innerHTML = SCORECARD_DATA.map(row => `
-    <tr>
-      <td class="rank-num">${row.rank}</td>
-      <td class="ticker-cell">${row.ticker}</td>
-      <td>${renderScoreBar(row.composite)}</td>
-      <td style="text-align:right">${row.crowd}</td>
-      <td style="text-align:right">${row.dipbuy}</td>
-      <td style="text-align:right">${row.zdte}</td>
-      <td style="text-align:right">${row.sent}</td>
-      <td>${renderGex(row.gex)}</td>
-      <td>${renderBlackout(row.blackout)}</td>
-      <td>${renderInterp(row.interp)}</td>
-    </tr>
-  `).join('');
-}
-buildScorecard();
-
-// ─────────────────────────────────────────────────────────────────────────────
-// WATCHLIST CHIPS
-// ─────────────────────────────────────────────────────────────────────────────
-function buildWatchlistChips() {
-  const el = document.getElementById('watchlist-chips');
-  el.innerHTML = WATCHLIST.map(t => `<span class="ticker-chip">${t}</span>`).join('');
-}
-buildWatchlistChips();
-
-// ─────────────────────────────────────────────────────────────────────────────
-// VIX HISTORY DATA (252 trading days: Apr 2025 → Apr 2026)
-// ─────────────────────────────────────────────────────────────────────────────
-function generateVIXHistory() {
-  const data = [];
-  const dates = [];
-  let vix = 13.8;
-
-  // Milestones: ~calm Apr-Sep 2025, mild rise Oct-Nov, spike Dec-Jan, plateau, spike Mar 2026, recovery
-  const n = 252;
-  for (let i = 0; i < n; i++) {
-    const t = i / n;
-    let target;
-    // Phase definitions
-    if (t < 0.25) target = 14.5;       // Apr–Jun 2025 calm
-    else if (t < 0.35) target = 16;    // Jul 2025 mild
-    else if (t < 0.45) target = 17.5;  // Aug–Sep 2025
-    else if (t < 0.50) target = 19;    // Oct 2025 modest pickup
-    else if (t < 0.55) target = 22;    // Nov 2025 pre-Dec
-    else if (t < 0.60) target = 24;    // Dec 2025
-    else if (t < 0.63) target = 28;    // Jan 2026 spike
-    else if (t < 0.66) target = 26;    // Jan recovery
-    else if (t < 0.70) target = 22;    // Feb 2026 calm
-    else if (t < 0.73) target = 18;    // Early Mar calm
-    else if (t < 0.76) target = 36.4;  // Mar 4 spike (tariff shock)
-    else if (t < 0.80) target = 30;    // Mid-Mar elevated
-    else if (t < 0.85) target = 27;    // Late Mar declining
-    else if (t < 0.90) target = 24;    // Early Apr
-    else if (t < 0.95) target = 22;    // Mid Apr
-    else target = 21.04;               // Apr 17
-
-    // Smooth mean reversion + noise
-    const noise = (Math.random() - 0.5) * 1.8;
-    const reversion = (target - vix) * 0.12;
-    vix = Math.max(10, vix + reversion + noise);
-
-    // Force key events
-    if (i === 189) vix = 36.4; // Mar 4 spike
-    if (i === 251) vix = 21.04; // today
-
-    data.push(parseFloat(vix.toFixed(2)));
-
-    // Generate trading date (skip weekends, approximate)
-    const startDate = new Date('2025-04-10');
-    startDate.setDate(startDate.getDate() + Math.floor(i * 1.4));
-    dates.push(startDate.toLocaleDateString('en-US', { month:'short', day:'numeric' }));
-  }
-  return { data, dates };
-}
-
-// Compute 28-day MA
-function compute28dMA(data) {
-  return data.map((_, i) => {
-    if (i < 27) return null;
-    const slice = data.slice(i - 27, i + 1);
-    return parseFloat((slice.reduce((a,b) => a+b,0) / 28).toFixed(2));
-  });
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// DIP-BUY DATA (60 sessions)
-// ─────────────────────────────────────────────────────────────────────────────
-function generateDipBuyData() {
-  const data = [];
-  const dates = [];
-  let ratio = 0.62;
-  const n = 60;
-  for (let i = 0; i < n; i++) {
-    const t = i / n;
-    let target;
-    // Declining trend with a brief recovery mid-way
-    if (t < 0.3) target = 0.60;
-    else if (t < 0.5) target = 0.55;
-    else if (t < 0.6) target = 0.58; // brief recovery
-    else target = 0.48;              // exhaustion
-
-    const noise = (Math.random() - 0.5) * 0.025;
-    const rev = (target - ratio) * 0.15;
-    ratio = Math.max(0.3, Math.min(0.8, ratio + rev + noise));
-    data.push(parseFloat(ratio.toFixed(3)));
-    const d = new Date('2026-01-15');
-    d.setDate(d.getDate() + Math.floor(i * 1.4));
-    dates.push(d.toLocaleDateString('en-US', { month:'short', day:'numeric' }));
-  }
-  return { data, dates };
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// CHARTS
-// ─────────────────────────────────────────────────────────────────────────────
-let chartsInitialized = false;
-
-const CHART_DEFAULTS = {
-  responsive: true,
-  maintainAspectRatio: false,
-  animation: { duration: 800, easing: 'easeOutQuart' },
-  plugins: {
-    legend: { display: false },
-    tooltip: {
-      backgroundColor: '#1f2937',
-      borderColor: '#374151',
-      borderWidth: 1,
-      titleColor: '#f9fafb',
-      bodyColor: '#d1d5db',
-      padding: 10,
-      cornerRadius: 6,
-      displayColors: true,
-    }
-  },
-  scales: {
-    x: {
-      grid: { color: 'rgba(55,65,81,0.5)', drawBorder: false },
-      ticks: { color: '#6b7280', font: { size: 10, family: 'system-ui' }, maxTicksLimit: 12 }
-    },
-    y: {
-      grid: { color: 'rgba(55,65,81,0.5)', drawBorder: false },
-      ticks: { color: '#6b7280', font: { size: 10, family: 'system-ui' } }
-    }
-  }
-};
-
-function initCharts() {
-  // ── VIX Chart ──
-  const { data: vixData, dates: vixDates } = generateVIXHistory();
-  const ma28 = compute28dMA(vixData);
-
-  const vixCtx = document.getElementById('vix-chart').getContext('2d');
-
-  // Gradient fill
-  const grad = vixCtx.createLinearGradient(0, 0, 0, 220);
-  grad.addColorStop(0, 'rgba(59,130,246,0.25)');
-  grad.addColorStop(1, 'rgba(59,130,246,0.02)');
-
-  new Chart(vixCtx, {
-    type: 'line',
-    data: {
-      labels: vixDates,
-      datasets: [
-        {
-          label: 'VIX',
-          data: vixData,
-          borderColor: '#60a5fa',
-          backgroundColor: grad,
-          borderWidth: 1.5,
-          pointRadius: 0,
-          pointHoverRadius: 4,
-          tension: 0.3,
-          fill: true,
-        },
-        {
-          label: '28d MA',
-          data: ma28,
-          borderColor: '#a78bfa',
-          backgroundColor: 'transparent',
-          borderWidth: 1.5,
-          borderDash: [],
-          pointRadius: 0,
-          pointHoverRadius: 3,
-          tension: 0.3,
-          fill: false,
-        },
-        {
-          label: 'Threshold 25',
-          data: Array(vixData.length).fill(25),
-          borderColor: '#ef4444',
-          backgroundColor: 'transparent',
-          borderWidth: 1,
-          borderDash: [4, 4],
-          pointRadius: 0,
-          fill: false,
-        },
-        {
-          label: 'Caution 18',
-          data: Array(vixData.length).fill(18),
-          borderColor: '#f59e0b',
-          backgroundColor: 'transparent',
-          borderWidth: 1,
-          borderDash: [4, 4],
-          pointRadius: 0,
-          fill: false,
-        },
-      ]
-    },
-    options: {
-      ...CHART_DEFAULTS,
-      plugins: {
-        ...CHART_DEFAULTS.plugins,
-        legend: { display: false },
-        tooltip: {
-          ...CHART_DEFAULTS.plugins.tooltip,
-          mode: 'index',
-          intersect: false,
-          filter: (item) => item.dataset.label === 'VIX' || item.dataset.label === '28d MA',
-          callbacks: {
-            label: (ctx) => ` ${ctx.dataset.label}: ${ctx.parsed.y?.toFixed(2) ?? '—'}`
-          }
-        }
-      },
-      scales: {
-        ...CHART_DEFAULTS.scales,
-        y: {
-          ...CHART_DEFAULTS.scales.y,
-          min: 10,
-          max: 42,
-          ticks: { ...CHART_DEFAULTS.scales.y.ticks, callback: v => v.toFixed(0) }
-        }
-      }
-    }
-  });
-
-  // ── Composite Score Distribution Chart ──
-  const tickers = Object.keys(WATCHLIST_FULL_SCORES);
-  const scores = Object.values(WATCHLIST_FULL_SCORES);
-  const barColors = scores.map(s => {
-    if (s < 35) return 'rgba(16,185,129,0.75)';
-    if (s < 55) return 'rgba(245,158,11,0.75)';
-    if (s < 75) return 'rgba(249,115,22,0.75)';
-    return 'rgba(239,68,68,0.8)';
-  });
-  const barBorders = scores.map(s => {
-    if (s < 35) return '#10b981';
-    if (s < 55) return '#f59e0b';
-    if (s < 75) return '#f97316';
-    return '#ef4444';
-  });
-
-  const scoreCtx = document.getElementById('score-chart').getContext('2d');
-  new Chart(scoreCtx, {
-    type: 'bar',
-    data: {
-      labels: tickers,
-      datasets: [
-        {
-          label: 'Composite Score',
-          data: scores,
-          backgroundColor: barColors,
-          borderColor: barBorders,
-          borderWidth: 1,
-          borderRadius: 3,
-        },
-        {
-          label: 'Alert Threshold',
-          data: Array(tickers.length).fill(75),
-          type: 'line',
-          borderColor: '#ef4444',
-          borderWidth: 1,
-          borderDash: [4, 4],
-          pointRadius: 0,
-          fill: false,
-        }
-      ]
-    },
-    options: {
-      ...CHART_DEFAULTS,
-      plugins: {
-        ...CHART_DEFAULTS.plugins,
-        tooltip: {
-          ...CHART_DEFAULTS.plugins.tooltip,
-          mode: 'index',
-          intersect: false,
-          filter: (item) => item.dataset.label === 'Composite Score',
-          callbacks: {
-            label: (ctx) => ` Composite: ${ctx.parsed.y?.toFixed(1)}`
-          }
-        }
-      },
-      scales: {
-        ...CHART_DEFAULTS.scales,
-        y: {
-          ...CHART_DEFAULTS.scales.y,
-          min: 0, max: 100,
-          ticks: { ...CHART_DEFAULTS.scales.y.ticks, callback: v => v }
-        },
-        x: {
-          ...CHART_DEFAULTS.scales.x,
-          ticks: { ...CHART_DEFAULTS.scales.x.ticks, maxTicksLimit: 20, font: { size: 9 } }
-        }
-      }
-    }
-  });
-
-  // ── Dip-Buy Ratio Chart ──
-  const { data: dipData, dates: dipDates } = generateDipBuyData();
-  const dipCtx = document.getElementById('dipbuy-chart').getContext('2d');
-
-  const dipGrad = dipCtx.createLinearGradient(0, 0, 0, 220);
-  dipGrad.addColorStop(0, 'rgba(16,185,129,0.2)');
-  dipGrad.addColorStop(1, 'rgba(16,185,129,0.02)');
-
-  // Compute exhaustion threshold line (in ratio units, approximately = mean - 1σ)
-  const dipMean = dipData.reduce((a,b)=>a+b,0)/dipData.length;
-  const dipSd = Math.sqrt(dipData.reduce((a,b)=>a+(b-dipMean)**2,0)/dipData.length);
-  const exhaustionLevel = dipMean - dipSd;
-
-  new Chart(dipCtx, {
-    type: 'line',
-    data: {
-      labels: dipDates,
-      datasets: [
-        {
-          label: 'Dip-Buy Ratio',
-          data: dipData,
-          borderColor: '#10b981',
-          backgroundColor: dipGrad,
-          borderWidth: 1.5,
-          pointRadius: 0,
-          pointHoverRadius: 4,
-          tension: 0.3,
-          fill: true,
-        },
-        {
-          label: 'Exhaustion (z=−1)',
-          data: Array(dipData.length).fill(parseFloat(exhaustionLevel.toFixed(3))),
-          borderColor: '#ef4444',
-          borderWidth: 1,
-          borderDash: [4, 4],
-          pointRadius: 0,
-          fill: false,
-        }
-      ]
-    },
-    options: {
-      ...CHART_DEFAULTS,
-      plugins: {
-        ...CHART_DEFAULTS.plugins,
-        tooltip: {
-          ...CHART_DEFAULTS.plugins.tooltip,
-          mode: 'index',
-          intersect: false,
-          filter: (item) => item.dataset.label === 'Dip-Buy Ratio',
-          callbacks: {
-            label: (ctx) => ` Ratio: ${ctx.parsed.y?.toFixed(3)}`
-          }
-        }
-      },
-      scales: {
-        ...CHART_DEFAULTS.scales,
-        y: {
-          ...CHART_DEFAULTS.scales.y,
-          min: 0.3, max: 0.8,
-          ticks: {
-            ...CHART_DEFAULTS.scales.y.ticks,
-            callback: v => v.toFixed(2)
-          }
-        }
-      }
-    }
-  });
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// ACTIONS
-// ─────────────────────────────────────────────────────────────────────────────
-function runScan() {
-  const spinner = document.getElementById('scan-spinner');
-  spinner.style.display = 'block';
-
-  setTimeout(() => {
-    spinner.style.display = 'none';
-    const output = document.getElementById('scan-output');
-    const ts = new Date().toLocaleString('en-US', { timeZone:'America/New_York', hour12:false });
-    output.textContent = `RetailEdge Scan — ${ts} EDT
-${'─'.repeat(48)}
-REGIME: CLOSED (0/4 gate conditions met)
-VIX: 21.04 | VVIX: 98.3 | GEX: +$4.2B (POS)
-Dip-Buy z: -0.41 | Sentiment: 34 (FEAR)
-${'─'.repeat(48)}
-TICKERS PROCESSED: ${WATCHLIST.length}/20
-ALERTS TRIGGERED: 0
-MAX COMPOSITE: 46.8 (MSTR) — gate closed, no action
-${'─'.repeat(48)}
-SUB-SCORES (sample):
-  XLV  → C:17.2  Crowd:12  DB:18  0DTE:22  Sent:16
-  MSTR → C:46.8  Crowd:62  DB:38  0DTE:51  Sent:42
-  AMD  → C:34.1  Crowd:41  DB:29  0DTE:38  Sent:28
-${'─'.repeat(48)}
-STATUS: OK — next scan T+1 at 16:30 EDT`;
-    openModal('scan-modal');
-  }, 1400);
-}
-
-function exportScorecard() {
-  const output = document.getElementById('export-output');
-  const header = 'Rank,Ticker,Composite,Crowding,DipBuy,ZDTE,Sentiment,GEX,Blackout,Signal';
-  const rows = SCORECARD_DATA.map(r =>
-    `${r.rank},${r.ticker},${r.composite},${r.crowd},${r.dipbuy},${r.zdte},${r.sent},${r.gex},${r.blackout?'YES':'NO'},${r.interp}`
-  );
-  output.textContent = [header, ...rows].join('\n');
-  openModal('export-modal');
-}
-
-function openModal(id) {
-  document.getElementById(id).classList.add('open');
-}
-
-function closeModal(id) {
-  document.getElementById(id).classList.remove('open');
-}
-
-// Close modal on overlay click
-document.querySelectorAll('.modal-overlay').forEach(overlay => {
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) overlay.classList.remove('open');
-  });
-});
-
-// ESC to close modals
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
-  }
-});
-
-
-// ─────────────────────────────────────────────────────────────────────────────
-// DATA INTEGRITY TABLE
-// ─────────────────────────────────────────────────────────────────────────────
-function renderIntegrity() {
-  const d = DATA_INTEGRITY;
-  // Summary bar
-  const sumEl = document.getElementById('integrity-summary');
-  const statusClass = d.all_live ? 'all-green' : 'has-issues';
-  sumEl.innerHTML = `
-    <div class="integrity-stat">
-      <div class="integrity-stat-val ${statusClass}">${d.n_live}</div>
-      <div class="integrity-stat-label">Live</div>
-    </div>
-    <div class="integrity-stat">
-      <div class="integrity-stat-val ${d.n_degraded > 0 ? 'has-issues' : ''}">${d.n_degraded}</div>
-      <div class="integrity-stat-label">Degraded</div>
-    </div>
-    <div class="integrity-stat">
-      <div class="integrity-stat-val">${d.sources.length}</div>
-      <div class="integrity-stat-label">Total Sources</div>
-    </div>
-    <div style="flex:1;display:flex;align-items:center;justify-content:flex-end">
-      <span class="integrity-badge ${d.all_live ? 'live' : 'failed'}" style="font-size:13px;padding:6px 16px;">
-        <span class="status-dot"></span>
-        ${d.all_live ? 'ALL SYSTEMS LIVE' : d.summary}
-      </span>
-    </div>
-  `;
-
-  // Table body
-  const tbody = document.getElementById('integrity-tbody');
-  tbody.innerHTML = d.sources.map(s => {
-    const cls = s.status.toLowerCase();
-    return `<tr>
-      <td style="font-weight:600">${s.name}</td>
-      <td><span class="integrity-badge ${cls}"><span class="status-dot"></span>${s.status}</span></td>
-      <td class="integrity-detail">${s.detail}</td>
-      <td class="integrity-value">${s.value || ''}</td>
+  const flips = infl.flips || {};
+  let rows = '<table><thead><tr><th>Flip</th><th>Fired</th><th>Prev</th><th>Today</th><th class="num">Prev age (d)</th><th>Contaminated</th></tr></thead><tbody>';
+  Object.keys(flips).forEach(name => {
+    const f = flips[name];
+    const prev = (f.prev !== undefined) ? f.prev : (f.today_z !== undefined ? '(z baseline)' : '(numeric)');
+    const today = (f.today !== undefined) ? f.today : (f.today_z !== undefined ? fmtNum(f.today_z, 2) : (f.ratio_5d_20d !== undefined ? fmtNum(f.ratio_5d_20d, 3) : '—'));
+    rows += `<tr>
+      <td>${name}</td>
+      <td>${fmtBool(f.fired)}</td>
+      <td>${prev}</td>
+      <td>${today}</td>
+      <td class="num">${f.prev_age_days !== undefined ? f.prev_age_days : '—'}</td>
+      <td>${fmtBool(f.baseline_contaminated)}</td>
     </tr>`;
-  }).join('');
+  });
+  rows += '</tbody></table>';
+  document.getElementById('infl-flips').innerHTML = rows;
 }
-renderIntegrity();
 
+function pairTable(rows, kind) {
+  if (!rows || rows.length === 0) return '<div class="small">No rows.</div>';
+  const zCol = (kind === 'ssi') ? 'ssi_z' : 'ratio_z';
+  const rawCol = (kind === 'ssi') ? 'ssi_raw' : 'ratio_raw';
+  let html = `<table><thead><tr>
+    <th>Bull</th><th>Bear</th><th>Bench</th>
+    <th class="num">${zCol === 'ssi_z' ? 'SSI z' : 'Ratio z'}</th>
+    <th class="num">${zCol === 'ssi_z' ? 'SSI raw' : 'Ratio raw'}</th>
+    <th>Status</th>
+    ${kind === 'ss' ? '<th class="num">Bull $vol</th><th class="num">Bear $vol</th>' : ''}
+    <th>As of</th>
+  </tr></thead><tbody>`;
+  rows.forEach(r => {
+    html += `<tr>
+      <td>${r.bull || '—'}</td>
+      <td>${r.bear || '—'}</td>
+      <td>${r.bench || '—'}</td>
+      <td class="num">${fmtNum(r[zCol], 3)}</td>
+      <td class="num">${fmtNum(r[rawCol], 4)}</td>
+      <td>${statusBadge(r.status)}</td>
+      ${kind === 'ss' ? `<td class="num">${r.bull_dvol || '—'}</td><td class="num">${r.bear_dvol || '—'}</td>` : ''}
+      <td class="small">${r.as_of_date || '—'}</td>
+    </tr>`;
+  });
+  html += '</tbody></table>';
+  return html;
+}
+
+function renderSsi(signals) {
+  document.getElementById('ssi-table').innerHTML = pairTable(signals.ssi_details, 'ssi');
+  document.getElementById('cap-table').innerHTML = pairTable(signals.cap_details, 'cap');
+  document.getElementById('euph-table').innerHTML = pairTable(signals.euph_details, 'euph');
+}
+
+function renderLetf(signals) {
+  const ss = signals.ss_details || {};
+  let html = '';
+  Object.keys(ss).forEach(tierKey => {
+    html += `<div class="tier-label">${tierKey}</div>`;
+    html += pairTable(ss[tierKey], 'ss');
+  });
+  document.getElementById('ss-table').innerHTML = html || '<div class="small">No rows.</div>';
+}
+
+function renderAll(snapshot, signals) {
+  renderHeader(snapshot, signals);
+  renderOverview(snapshot, signals);
+  renderGex(snapshot);
+  renderSqueeze(signals);
+  renderInflection(snapshot);
+  renderSsi(signals);
+  renderLetf(signals);
+}
+
+function showError(msg) {
+  document.getElementById('error-banner').innerHTML = `<div class="error">${msg}</div>`;
+}
+
+Promise.all([
+  fetch('./snapshot.json').then(r => { if (!r.ok) throw new Error('snapshot.json HTTP ' + r.status); return r.json(); }),
+  fetch('./signals.json').then(r => { if (!r.ok) throw new Error('signals.json HTTP ' + r.status); return r.json(); })
+]).then(([snapshot, signals]) => {
+  try {
+    renderAll(snapshot, signals);
+  } catch (e) {
+    showError('Render error: ' + e.message);
+    console.error(e);
+  }
+}).catch(e => {
+  showError('Failed to load data: ' + e.message);
+  console.error(e);
+});
 </script>
 </body>
 </html>
