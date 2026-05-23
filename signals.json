@@ -1,13 +1,13 @@
 {
-  "date": "2026-05-20",
+  "date": "2026-05-22",
   "regime": {
-    "spy_close": 741.25,
-    "spy_ma200": 677.72,
-    "spy_vs_200": 9.37,
+    "spy_close": 747.61,
+    "spy_ma200": 678.86,
+    "spy_vs_200": 10.13,
     "regime_gate_open": "True",
-    "vix": 17.44
+    "vix": 16.92
   },
-  "ssi_cluster_breadth": 1,
+  "ssi_cluster_breadth": 0,
   "cluster_firing": false,
   "capitulation_firing": 0,
   "euphoria_firing": 0,
@@ -19,131 +19,131 @@
       "ssi_z": -0.47,
       "ssi_raw": 0.5,
       "status": "NEUTRAL",
-      "days_data": 48,
+      "days_data": 49,
       "trend_5d": [
-        2.84,
-        2.27,
         0.83,
         -0.52,
+        -0.47,
+        -0.47,
         -0.47
       ],
-      "z_chg_5d": -3.31,
+      "z_chg_5d": -1.3,
       "is_core": true,
-      "as_of_date": "2026-05-19"
+      "as_of_date": "2026-05-21"
     },
     {
       "bench": "IWM",
       "bull": "URTY",
       "bear": "SRTY",
-      "ssi_z": 0.127,
-      "ssi_raw": 0.5,
+      "ssi_z": -0.669,
+      "ssi_raw": 0.3333,
       "status": "NEUTRAL",
-      "days_data": 48,
+      "days_data": 49,
       "trend_5d": [
-        0.17,
-        0.17,
         0.13,
         0.13,
-        0.13
+        0.13,
+        0.13,
+        -0.67
       ],
-      "z_chg_5d": -0.04,
+      "z_chg_5d": -0.8,
       "is_core": true,
-      "as_of_date": "2026-05-19"
+      "as_of_date": "2026-05-21"
     },
     {
       "bench": "QQQ",
       "bull": "TQQQ",
       "bear": "SQQQ",
-      "ssi_z": -0.447,
-      "ssi_raw": 0.6023,
-      "status": "NEUTRAL",
-      "days_data": 48,
+      "ssi_z": 1.043,
+      "ssi_raw": 0.6644,
+      "status": "BULLISH",
+      "days_data": 49,
       "trend_5d": [
-        0.7,
-        1.85,
         0.21,
         -0.36,
-        -0.45
+        -0.45,
+        0.29,
+        1.04
       ],
-      "z_chg_5d": -1.15,
+      "z_chg_5d": 0.83,
       "is_core": true,
-      "as_of_date": "2026-05-19"
+      "as_of_date": "2026-05-21"
     },
     {
       "bench": "SLV",
       "bull": "AGQ",
       "bear": "ZSL",
-      "ssi_z": 0.741,
-      "ssi_raw": 0.7143,
+      "ssi_z": 0.146,
+      "ssi_raw": 0.6667,
       "status": "NEUTRAL",
-      "days_data": 48,
+      "days_data": 49,
       "trend_5d": [
-        1.92,
-        -0.08,
         0.68,
         1.63,
-        0.74
+        0.74,
+        0.19,
+        0.15
       ],
-      "z_chg_5d": -1.18,
+      "z_chg_5d": -0.53,
       "is_core": true,
-      "as_of_date": "2026-05-19"
+      "as_of_date": "2026-05-21"
     },
     {
       "bench": "SOXX",
       "bull": "SOXL",
       "bear": "SOXS",
-      "ssi_z": -0.889,
-      "ssi_raw": 0.6338,
+      "ssi_z": 0.978,
+      "ssi_raw": 0.6984,
       "status": "NEUTRAL",
-      "days_data": 48,
+      "days_data": 49,
       "trend_5d": [
-        0.17,
-        0.94,
         0.56,
         0.76,
-        -0.89
+        -0.89,
+        -0.6,
+        0.98
       ],
-      "z_chg_5d": -1.06,
+      "z_chg_5d": 0.42,
       "is_core": true,
-      "as_of_date": "2026-05-19"
+      "as_of_date": "2026-05-21"
     },
     {
       "bench": "SPY",
       "bull": "SSO",
       "bear": "SDS",
-      "ssi_z": 0.147,
+      "ssi_z": 0.033,
       "ssi_raw": 0.6,
       "status": "NEUTRAL",
-      "days_data": 48,
+      "days_data": 49,
       "trend_5d": [
         0.26,
-        0.33,
-        0.26,
         0.19,
-        0.15
+        0.15,
+        0.06,
+        0.03
       ],
-      "z_chg_5d": -0.11,
+      "z_chg_5d": -0.23,
       "is_core": true,
-      "as_of_date": "2026-05-19"
+      "as_of_date": "2026-05-21"
     },
     {
       "bench": "XBI",
       "bull": "LABU",
       "bear": "LABD",
-      "ssi_z": -0.375,
+      "ssi_z": -0.307,
       "ssi_raw": 0.5,
       "status": "NEUTRAL",
-      "days_data": 48,
+      "days_data": 49,
       "trend_5d": [
-        2.84,
         -0.38,
         -0.38,
         -0.38,
-        -0.38
+        -1.33,
+        -0.31
       ],
-      "z_chg_5d": -3.22,
+      "z_chg_5d": 0.07,
       "is_core": true,
-      "as_of_date": "2026-05-19"
+      "as_of_date": "2026-05-21"
     },
     {
       "bench": "XLE",
@@ -152,35 +152,34 @@
       "ssi_z": null,
       "ssi_raw": null,
       "status": "NEUTRAL",
-      "days_data": 48,
+      "days_data": 49,
       "trend_5d": [
-        -0.7,
         1.1,
         1.6,
         -1.14
       ],
-      "z_chg_5d": -0.44,
+      "z_chg_5d": -2.24,
       "is_core": true,
-      "as_of_date": "2026-05-19"
+      "as_of_date": "2026-05-21"
     },
     {
       "bench": "XOP",
       "bull": "GUSH",
       "bear": "DRIP",
-      "ssi_z": -1.048,
-      "ssi_raw": 0.0,
-      "status": "BEARISH",
-      "days_data": 48,
+      "ssi_z": 0.066,
+      "ssi_raw": 0.1111,
+      "status": "NEUTRAL",
+      "days_data": 49,
       "trend_5d": [
-        -1.4,
-        -1.26,
         -1.15,
         0.72,
-        -1.05
+        -1.05,
+        0.15,
+        0.07
       ],
-      "z_chg_5d": 0.35,
+      "z_chg_5d": 1.22,
       "is_core": true,
-      "as_of_date": "2026-05-19"
+      "as_of_date": "2026-05-21"
     },
     {
       "bench": "XLF",
@@ -189,7 +188,7 @@
       "ssi_z": null,
       "ssi_raw": 1.0,
       "status": "NEUTRAL",
-      "days_data": 48,
+      "days_data": 49,
       "trend_5d": [
         -0.68,
         -0.61,
@@ -199,7 +198,7 @@
       ],
       "z_chg_5d": 1.86,
       "is_core": false,
-      "as_of_date": "2026-05-19"
+      "as_of_date": "2026-05-21"
     }
   ],
   "cap_details": [
@@ -207,19 +206,19 @@
       "bench": "QQQ",
       "bull": "TQQQ",
       "bear": "SQQQ",
-      "ratio_z": 0.447,
-      "ratio_raw": 0.3977,
+      "ratio_z": -1.043,
+      "ratio_raw": 0.3356,
       "status": "QUIET",
-      "as_of_date": "2026-05-19"
+      "as_of_date": "2026-05-21"
     },
     {
       "bench": "SOXX",
       "bull": "SOXL",
       "bear": "SOXS",
-      "ratio_z": 0.889,
-      "ratio_raw": 0.3662,
+      "ratio_z": -0.978,
+      "ratio_raw": 0.3016,
       "status": "QUIET",
-      "as_of_date": "2026-05-19"
+      "as_of_date": "2026-05-21"
     },
     {
       "bench": "FXI",
@@ -228,7 +227,7 @@
       "ratio_z": null,
       "ratio_raw": 0.0,
       "status": "QUIET",
-      "as_of_date": "2026-05-19"
+      "as_of_date": "2026-05-21"
     },
     {
       "bench": "XLF",
@@ -237,16 +236,16 @@
       "ratio_z": null,
       "ratio_raw": 0.0,
       "status": "QUIET",
-      "as_of_date": "2026-05-19"
+      "as_of_date": "2026-05-21"
     },
     {
       "bench": "QQQ",
       "bull": "QLD",
       "bear": "QID",
-      "ratio_z": 0.627,
+      "ratio_z": 0.734,
       "ratio_raw": 0.75,
       "status": "QUIET",
-      "as_of_date": "2026-05-19"
+      "as_of_date": "2026-05-21"
     },
     {
       "bench": "DIA",
@@ -255,7 +254,7 @@
       "ratio_z": null,
       "ratio_raw": 1.0,
       "status": "QUIET",
-      "as_of_date": "2026-05-19"
+      "as_of_date": "2026-05-21"
     }
   ],
   "euph_details": [
@@ -263,22 +262,29 @@
       "bench": "XOP",
       "bull": "GUSH",
       "bear": "DRIP",
-      "ratio_z": -1.048,
-      "ratio_raw": 0.0,
+      "ratio_z": 0.066,
+      "ratio_raw": 0.1111,
       "status": "QUIET",
-      "as_of_date": "2026-05-19"
+      "as_of_date": "2026-05-21"
     },
     {
       "bench": "XLK",
       "bull": "TECL",
       "bear": "TECS",
-      "ratio_z": -2.161,
-      "ratio_raw": 0.5714,
+      "ratio_z": -1.319,
+      "ratio_raw": 0.6,
       "status": "QUIET",
-      "as_of_date": "2026-05-19"
+      "as_of_date": "2026-05-21"
     }
   ],
   "freshness_warnings": [
+    {
+      "section": "Inflection Monitor",
+      "field": "n_flips",
+      "value": 2,
+      "prev_value": 2,
+      "message": "n_flips identical to yesterday (2)"
+    },
     {
       "section": "Inflection Monitor",
       "field": "rtat_rr_delta_5d",
@@ -287,88 +293,81 @@
       "message": "rtat_rr_delta_5d identical to yesterday (0.2091)"
     },
     {
-      "section": "LETF Signals",
-      "field": "soxl_activity_percentile",
-      "value": 99,
-      "prev_value": 99,
-      "message": "soxl_activity_percentile identical to yesterday (99)"
+      "section": "pair_data",
+      "message": "GDX (NUGT/DUST) as_of=2026-05-21 vs anchor=2026-05-22 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "GDX (NUGT/DUST) as_of=2026-05-19 vs anchor=2026-05-20 (1d behind)"
+      "message": "IWM (URTY/SRTY) as_of=2026-05-21 vs anchor=2026-05-22 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "IWM (URTY/SRTY) as_of=2026-05-19 vs anchor=2026-05-20 (1d behind)"
+      "message": "QQQ (TQQQ/SQQQ) as_of=2026-05-21 vs anchor=2026-05-22 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "QQQ (TQQQ/SQQQ) as_of=2026-05-19 vs anchor=2026-05-20 (1d behind)"
+      "message": "SLV (AGQ/ZSL) as_of=2026-05-21 vs anchor=2026-05-22 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "SLV (AGQ/ZSL) as_of=2026-05-19 vs anchor=2026-05-20 (1d behind)"
+      "message": "SOXX (SOXL/SOXS) as_of=2026-05-21 vs anchor=2026-05-22 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "SOXX (SOXL/SOXS) as_of=2026-05-19 vs anchor=2026-05-20 (1d behind)"
+      "message": "SPY (SSO/SDS) as_of=2026-05-21 vs anchor=2026-05-22 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "SPY (SSO/SDS) as_of=2026-05-19 vs anchor=2026-05-20 (1d behind)"
+      "message": "XBI (LABU/LABD) as_of=2026-05-21 vs anchor=2026-05-22 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "XBI (LABU/LABD) as_of=2026-05-19 vs anchor=2026-05-20 (1d behind)"
+      "message": "XLE (ERX/ERY) as_of=2026-05-21 vs anchor=2026-05-22 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "XLE (ERX/ERY) as_of=2026-05-19 vs anchor=2026-05-20 (1d behind)"
+      "message": "XOP (GUSH/DRIP) as_of=2026-05-21 vs anchor=2026-05-22 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "XOP (GUSH/DRIP) as_of=2026-05-19 vs anchor=2026-05-20 (1d behind)"
+      "message": "XLF (FAS/FAZ) as_of=2026-05-21 vs anchor=2026-05-22 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "XLF (FAS/FAZ) as_of=2026-05-19 vs anchor=2026-05-20 (1d behind)"
+      "message": "FXI (YINN/YANG) as_of=2026-05-21 vs anchor=2026-05-22 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "FXI (YINN/YANG) as_of=2026-05-19 vs anchor=2026-05-20 (1d behind)"
+      "message": "QQQ (QLD/QID) as_of=2026-05-21 vs anchor=2026-05-22 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "QQQ (QLD/QID) as_of=2026-05-19 vs anchor=2026-05-20 (1d behind)"
+      "message": "DIA (DDM/DXD) as_of=2026-05-21 vs anchor=2026-05-22 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "DIA (DDM/DXD) as_of=2026-05-19 vs anchor=2026-05-20 (1d behind)"
-    },
-    {
-      "section": "pair_data",
-      "message": "XLK (TECL/TECS) as_of=2026-05-19 vs anchor=2026-05-20 (1d behind)"
+      "message": "XLK (TECL/TECS) as_of=2026-05-21 vs anchor=2026-05-22 (1d behind)"
     }
   ],
   "squeeze_signal": {
-    "score": 4,
-    "tier": "WATCH (Score 4)",
+    "score": 1,
+    "tier": "QUIET",
     "vshape_tier": "NO FIRE",
     "vshape_cross_up_today": false,
-    "spot": 738.1875,
-    "gamma_flip": 738.6870636566048,
-    "call_wall": 740,
-    "net_gex_b": -3.8625057011311816,
+    "spot": 747.3,
+    "gamma_flip": 730.9987267771633,
+    "call_wall": 750,
+    "net_gex_b": 10.651472182021921,
     "score_components": {
-      "c1_spot_at_flip": true,
+      "c1_spot_at_flip": false,
       "c2_tight_ceiling": true,
-      "c3_neg_cluster": true,
+      "c3_neg_cluster": false,
       "c4_vex_flipped": false,
       "c5_skew_compress": false,
-      "c6_cw_near_flip": true
+      "c6_cw_near_flip": false
     },
     "warmup_complete": false,
-    "warmup_days_populated": 3,
+    "warmup_days_populated": 4,
     "warmup_required": 5,
     "warmup_resume_date": "2026-05-26"
   },
@@ -378,56 +377,56 @@
         "bench": "AMZN",
         "bull": "AMZU",
         "bear": "AMZD",
-        "ratio_z": 0.719,
-        "ratio_raw": 0.8417,
-        "status": "QUIET",
-        "bull_dvol": "$96.7M",
-        "bear_dvol": "$104.4M",
-        "as_of_date": "2026-05-20"
+        "ratio_z": -3.013,
+        "ratio_raw": 0.5001,
+        "status": "EUPHORIA",
+        "bull_dvol": "$21.6M",
+        "bear_dvol": "$4.2M",
+        "as_of_date": "2026-05-22"
       },
       {
         "bench": "TSLA",
         "bull": "TSLL",
         "bear": "TSLS",
-        "ratio_z": 0.826,
-        "ratio_raw": 0.0106,
+        "ratio_z": -1.48,
+        "ratio_raw": 0.0029,
         "status": "QUIET",
-        "bull_dvol": "$1021.0M",
-        "bear_dvol": "$39.5M",
-        "as_of_date": "2026-05-20"
+        "bull_dvol": "$241.4M",
+        "bear_dvol": "$2.4M",
+        "as_of_date": "2026-05-22"
       },
       {
         "bench": "GOOGL",
         "bull": "GGLL",
         "bear": "GGLS",
-        "ratio_z": 0.312,
-        "ratio_raw": 0.9167,
-        "status": "QUIET",
-        "bull_dvol": "$186.6M",
-        "bear_dvol": "$78.6M",
-        "as_of_date": "2026-05-20"
+        "ratio_z": -3.725,
+        "ratio_raw": 0.6878,
+        "status": "EUPHORIA",
+        "bull_dvol": "$27.9M",
+        "bear_dvol": "$2.4M",
+        "as_of_date": "2026-05-22"
       },
       {
         "bench": "MSFT",
         "bull": "MSFU",
         "bear": "MSFD",
-        "ratio_z": 0.655,
-        "ratio_raw": 0.3148,
-        "status": "QUIET",
-        "bull_dvol": "$147.5M",
-        "bear_dvol": "$30.2M",
-        "as_of_date": "2026-05-20"
+        "ratio_z": -1.724,
+        "ratio_raw": 0.0648,
+        "status": "WARMING",
+        "bull_dvol": "$37.8M",
+        "bear_dvol": "$1.1M",
+        "as_of_date": "2026-05-22"
       },
       {
         "bench": "AAPL",
         "bull": "AAPU",
         "bear": "AAPD",
-        "ratio_z": 1.303,
-        "ratio_raw": 0.8661,
+        "ratio_z": -1.361,
+        "ratio_raw": 0.5524,
         "status": "QUIET",
-        "bull_dvol": "$67.4M",
-        "bear_dvol": "$130.5M",
-        "as_of_date": "2026-05-20"
+        "bull_dvol": "$12.3M",
+        "bear_dvol": "$4.3M",
+        "as_of_date": "2026-05-22"
       }
     ],
     "Tier B": [
@@ -435,23 +434,23 @@
         "bench": "PLTR",
         "bull": "PLTU",
         "bear": "PLTD",
-        "ratio_z": 0.751,
-        "ratio_raw": 0.9535,
-        "status": "QUIET",
-        "bull_dvol": "$78.4M",
-        "bear_dvol": "$339.3M",
-        "as_of_date": "2026-05-20"
+        "ratio_z": -3.025,
+        "ratio_raw": 0.773,
+        "status": "EUPHORIA",
+        "bull_dvol": "$19.8M",
+        "bear_dvol": "$13.8M",
+        "as_of_date": "2026-05-22"
       },
       {
         "bench": "NVDA",
         "bull": "NVDU",
         "bear": "NVDD",
-        "ratio_z": 0.481,
-        "ratio_raw": 0.2065,
+        "ratio_z": 1.18,
+        "ratio_raw": 0.2515,
         "status": "QUIET",
-        "bull_dvol": "$134.0M",
-        "bear_dvol": "$7.1M",
-        "as_of_date": "2026-05-20"
+        "bull_dvol": "$14.8M",
+        "bear_dvol": "$1.1M",
+        "as_of_date": "2026-05-22"
       }
     ]
   }
