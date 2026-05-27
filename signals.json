@@ -1,11 +1,11 @@
 {
-  "date": "2026-05-23",
+  "date": "2026-05-25",
   "regime": {
     "spy_close": 745.64,
     "spy_ma200": 678.85,
     "spy_vs_200": 9.84,
     "regime_gate_open": "True",
-    "vix": 16.7
+    "vix": 16.59
   },
   "ssi_cluster_breadth": 1,
   "cluster_firing": false,
@@ -19,7 +19,7 @@
       "ssi_z": -0.47,
       "ssi_raw": 0.5,
       "status": "NEUTRAL",
-      "days_data": 49,
+      "days_data": 48,
       "trend_5d": [
         -0.52,
         -0.47,
@@ -38,7 +38,7 @@
       "ssi_z": -1.965,
       "ssi_raw": 0.0,
       "status": "BEARISH",
-      "days_data": 49,
+      "days_data": 48,
       "trend_5d": [
         0.13,
         0.13,
@@ -57,7 +57,7 @@
       "ssi_z": 1.261,
       "ssi_raw": 0.6746,
       "status": "BULLISH",
-      "days_data": 49,
+      "days_data": 48,
       "trend_5d": [
         -0.36,
         -0.45,
@@ -76,7 +76,7 @@
       "ssi_z": 0.038,
       "ssi_raw": 0.6667,
       "status": "NEUTRAL",
-      "days_data": 49,
+      "days_data": 48,
       "trend_5d": [
         1.63,
         0.74,
@@ -95,7 +95,7 @@
       "ssi_z": -0.502,
       "ssi_raw": 0.6463,
       "status": "NEUTRAL",
-      "days_data": 49,
+      "days_data": 48,
       "trend_5d": [
         0.76,
         -0.89,
@@ -114,7 +114,7 @@
       "ssi_z": 0.105,
       "ssi_raw": 0.6,
       "status": "NEUTRAL",
-      "days_data": 49,
+      "days_data": 48,
       "trend_5d": [
         0.19,
         0.15,
@@ -133,7 +133,7 @@
       "ssi_z": -0.307,
       "ssi_raw": 0.5,
       "status": "NEUTRAL",
-      "days_data": 49,
+      "days_data": 48,
       "trend_5d": [
         -0.38,
         -0.38,
@@ -152,12 +152,11 @@
       "ssi_z": null,
       "ssi_raw": null,
       "status": "NEUTRAL",
-      "days_data": 49,
+      "days_data": 48,
       "trend_5d": [
-        1.6,
         -1.14
       ],
-      "z_chg_5d": -2.74,
+      "z_chg_5d": null,
       "is_core": true,
       "as_of_date": "2026-05-22"
     },
@@ -168,7 +167,7 @@
       "ssi_z": -0.924,
       "ssi_raw": 0.0,
       "status": "NEUTRAL",
-      "days_data": 49,
+      "days_data": 48,
       "trend_5d": [
         0.72,
         -1.05,
@@ -187,7 +186,7 @@
       "ssi_z": null,
       "ssi_raw": 1.0,
       "status": "NEUTRAL",
-      "days_data": 49,
+      "days_data": 48,
       "trend_5d": [
         -0.68,
         -0.61,
@@ -279,17 +278,17 @@
   "freshness_warnings": [
     {
       "section": "Inflection Monitor",
-      "field": "n_flips",
-      "value": 2,
-      "prev_value": 2,
-      "message": "n_flips identical to yesterday (2)"
-    },
-    {
-      "section": "Inflection Monitor",
       "field": "rtat_rr_delta_5d",
       "value": 0.2091,
       "prev_value": 0.2091,
       "message": "rtat_rr_delta_5d identical to yesterday (0.2091)"
+    },
+    {
+      "section": "SSI Cluster",
+      "field": "finra_market_ratio",
+      "value": 0.4873,
+      "prev_value": 0.4873,
+      "message": "finra_market_ratio identical to yesterday (0.4873)"
     }
   ],
   "squeeze_signal": {
@@ -298,9 +297,9 @@
     "vshape_tier": "NO FIRE",
     "vshape_cross_up_today": false,
     "spot": 744.0450000000001,
-    "gamma_flip": 739.0071027698518,
+    "gamma_flip": 739.0097416272293,
     "call_wall": 745,
-    "net_gex_b": 11.878058608126164,
+    "net_gex_b": 11.757793497331829,
     "score_components": {
       "c1_spot_at_flip": true,
       "c2_tight_ceiling": true,
@@ -310,7 +309,7 @@
       "c6_cw_near_flip": true
     },
     "warmup_complete": true,
-    "warmup_days_populated": 5,
+    "warmup_days_populated": 6,
     "warmup_required": 5,
     "warmup_resume_date": null
   },
@@ -331,7 +330,7 @@
         "bench": "TSLA",
         "bull": "TSLL",
         "bear": "TSLS",
-        "ratio_z": -1.375,
+        "ratio_z": -1.374,
         "ratio_raw": 0.0033,
         "status": "QUIET",
         "bull_dvol": "$1245.7M",
@@ -353,7 +352,7 @@
         "bench": "MSFT",
         "bull": "MSFU",
         "bear": "MSFD",
-        "ratio_z": 0.31,
+        "ratio_z": 0.311,
         "ratio_raw": 0.2881,
         "status": "QUIET",
         "bull_dvol": "$146.3M",
@@ -377,7 +376,7 @@
         "bench": "PLTR",
         "bull": "PLTU",
         "bear": "PLTD",
-        "ratio_z": 0.134,
+        "ratio_z": 0.135,
         "ratio_raw": 0.9346,
         "status": "QUIET",
         "bull_dvol": "$78.1M",
@@ -388,7 +387,7 @@
         "bench": "NVDA",
         "bull": "NVDU",
         "bear": "NVDD",
-        "ratio_z": -0.69,
+        "ratio_z": -0.689,
         "ratio_raw": 0.1529,
         "status": "QUIET",
         "bull_dvol": "$111.6M",
