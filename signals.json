@@ -1,13 +1,13 @@
 {
-  "date": "2026-06-04",
+  "date": "2026-06-05",
   "regime": {
-    "spy_close": 757.09,
-    "spy_ma200": 683.44,
-    "spy_vs_200": 10.78,
+    "spy_close": 737.55,
+    "spy_ma200": 683.93,
+    "spy_vs_200": 7.84,
     "regime_gate_open": "True",
-    "vix": 15.4
+    "vix": 21.51
   },
-  "ssi_cluster_breadth": 3,
+  "ssi_cluster_breadth": 2,
   "cluster_firing": false,
   "capitulation_firing": 0,
   "euphoria_firing": 0,
@@ -16,96 +16,96 @@
       "bench": "GDX",
       "bull": "NUGT",
       "bear": "DUST",
-      "ssi_z": 1.293,
+      "ssi_z": 1.164,
       "ssi_raw": 1.0,
       "status": "BULLISH",
       "days_data": 47,
       "trend_5d": [
-        -0.55,
         1.63,
         1.45,
         1.29,
-        1.29
+        1.29,
+        1.16
       ],
-      "z_chg_5d": 1.84,
+      "z_chg_5d": -0.47,
       "is_core": true,
-      "as_of_date": "2026-06-03"
+      "as_of_date": "2026-06-04"
     },
     {
       "bench": "IWM",
       "bull": "URTY",
       "bear": "SRTY",
-      "ssi_z": -1.089,
+      "ssi_z": -1.066,
       "ssi_raw": 0.0,
       "status": "BEARISH",
       "days_data": 47,
       "trend_5d": [
-        -1.5,
         0.42,
         -1.34,
         -1.21,
-        -1.09
+        -1.09,
+        -1.07
       ],
-      "z_chg_5d": 0.41,
+      "z_chg_5d": -1.49,
       "is_core": true,
-      "as_of_date": "2026-06-03"
+      "as_of_date": "2026-06-04"
     },
     {
       "bench": "QQQ",
       "bull": "TQQQ",
       "bear": "SQQQ",
-      "ssi_z": 0.664,
-      "ssi_raw": 0.6838,
+      "ssi_z": 0.367,
+      "ssi_raw": 0.6748,
       "status": "NEUTRAL",
       "days_data": 47,
       "trend_5d": [
-        -0.02,
         2.02,
         1.3,
         1.22,
-        0.66
+        0.66,
+        0.37
       ],
-      "z_chg_5d": 0.68,
+      "z_chg_5d": -1.65,
       "is_core": true,
-      "as_of_date": "2026-06-03"
+      "as_of_date": "2026-06-04"
     },
     {
       "bench": "SLV",
       "bull": "AGQ",
       "bear": "ZSL",
-      "ssi_z": 0.564,
+      "ssi_z": 0.489,
       "ssi_raw": 0.75,
       "status": "NEUTRAL",
       "days_data": 47,
       "trend_5d": [
-        1.61,
         1.59,
         1.41,
         0.62,
-        0.56
+        0.56,
+        0.49
       ],
-      "z_chg_5d": -1.05,
+      "z_chg_5d": -1.1,
       "is_core": true,
-      "as_of_date": "2026-06-03"
+      "as_of_date": "2026-06-04"
     },
     {
       "bench": "SOXX",
       "bull": "SOXL",
       "bear": "SOXS",
-      "ssi_z": -1.958,
-      "ssi_raw": 0.5743,
-      "status": "BEARISH",
+      "ssi_z": -0.004,
+      "ssi_raw": 0.6532,
+      "status": "NEUTRAL",
       "days_data": 47,
       "trend_5d": [
-        0.03,
         -0.15,
         -0.2,
         -2.5,
-        -1.96
+        -1.96,
+        -0.0
       ],
-      "z_chg_5d": -1.99,
+      "z_chg_5d": 0.15,
       "is_core": true,
-      "as_of_date": "2026-06-03"
+      "as_of_date": "2026-06-04"
     },
     {
       "bench": "SPY",
@@ -116,34 +116,34 @@
       "status": "BEARISH",
       "days_data": 47,
       "trend_5d": [
-        -1.61,
         -0.12,
         0.79,
         0.73,
+        -1.63,
         -1.63
       ],
-      "z_chg_5d": -0.02,
+      "z_chg_5d": -1.51,
       "is_core": true,
-      "as_of_date": "2026-06-03"
+      "as_of_date": "2026-06-04"
     },
     {
       "bench": "XBI",
       "bull": "LABU",
       "bear": "LABD",
-      "ssi_z": 2.595,
-      "ssi_raw": 1.0,
-      "status": "BULLISH",
+      "ssi_z": 0.566,
+      "ssi_raw": 0.6667,
+      "status": "NEUTRAL",
       "days_data": 47,
       "trend_5d": [
         -0.31,
-        -0.31,
         -0.2,
         1.59,
-        2.6
+        2.6,
+        0.57
       ],
-      "z_chg_5d": 2.91,
+      "z_chg_5d": 0.88,
       "is_core": true,
-      "as_of_date": "2026-06-03"
+      "as_of_date": "2026-06-04"
     },
     {
       "bench": "XLE",
@@ -156,26 +156,26 @@
       "trend_5d": [],
       "z_chg_5d": null,
       "is_core": true,
-      "as_of_date": "2026-06-03"
+      "as_of_date": "2026-06-04"
     },
     {
       "bench": "XOP",
       "bull": "GUSH",
       "bear": "DRIP",
-      "ssi_z": -0.547,
+      "ssi_z": -0.472,
       "ssi_raw": 0.0,
       "status": "NEUTRAL",
       "days_data": 47,
       "trend_5d": [
-        -0.68,
         -0.61,
         -0.61,
         -0.55,
-        -0.55
+        -0.55,
+        -0.47
       ],
-      "z_chg_5d": 0.13,
+      "z_chg_5d": 0.14,
       "is_core": true,
-      "as_of_date": "2026-06-03"
+      "as_of_date": "2026-06-04"
     },
     {
       "bench": "XLF",
@@ -186,13 +186,12 @@
       "status": "NEUTRAL",
       "days_data": 47,
       "trend_5d": [
-        1.47,
         1.31,
         1.18
       ],
-      "z_chg_5d": -0.29,
+      "z_chg_5d": -0.13,
       "is_core": false,
-      "as_of_date": "2026-06-03"
+      "as_of_date": "2026-06-04"
     }
   ],
   "cap_details": [
@@ -200,19 +199,19 @@
       "bench": "QQQ",
       "bull": "TQQQ",
       "bear": "SQQQ",
-      "ratio_z": -0.664,
-      "ratio_raw": 0.3162,
+      "ratio_z": -0.367,
+      "ratio_raw": 0.3252,
       "status": "QUIET",
-      "as_of_date": "2026-06-03"
+      "as_of_date": "2026-06-04"
     },
     {
       "bench": "SOXX",
       "bull": "SOXL",
       "bear": "SOXS",
-      "ratio_z": 1.958,
-      "ratio_raw": 0.4257,
-      "status": "WARMING",
-      "as_of_date": "2026-06-03"
+      "ratio_z": 0.004,
+      "ratio_raw": 0.3468,
+      "status": "QUIET",
+      "as_of_date": "2026-06-04"
     },
     {
       "bench": "FXI",
@@ -221,7 +220,7 @@
       "ratio_z": -0.224,
       "ratio_raw": 0.0,
       "status": "QUIET",
-      "as_of_date": "2026-06-03"
+      "as_of_date": "2026-06-04"
     },
     {
       "bench": "XLF",
@@ -230,25 +229,25 @@
       "ratio_z": null,
       "ratio_raw": 0.0,
       "status": "QUIET",
-      "as_of_date": "2026-06-03"
+      "as_of_date": "2026-06-04"
     },
     {
       "bench": "QQQ",
       "bull": "QLD",
       "bear": "QID",
-      "ratio_z": 0.605,
-      "ratio_raw": 0.6923,
+      "ratio_z": -1.213,
+      "ratio_raw": 0.5833,
       "status": "QUIET",
-      "as_of_date": "2026-06-03"
+      "as_of_date": "2026-06-04"
     },
     {
       "bench": "DIA",
       "bull": "DDM",
       "bear": "DXD",
       "ratio_z": null,
-      "ratio_raw": null,
+      "ratio_raw": 1.0,
       "status": "QUIET",
-      "as_of_date": "2026-06-03"
+      "as_of_date": "2026-06-04"
     }
   ],
   "euph_details": [
@@ -256,22 +255,29 @@
       "bench": "XOP",
       "bull": "GUSH",
       "bear": "DRIP",
-      "ratio_z": -0.547,
+      "ratio_z": -0.472,
       "ratio_raw": 0.0,
       "status": "QUIET",
-      "as_of_date": "2026-06-03"
+      "as_of_date": "2026-06-04"
     },
     {
       "bench": "XLK",
       "bull": "TECL",
       "bear": "TECS",
-      "ratio_z": -0.978,
+      "ratio_z": -0.893,
       "ratio_raw": 0.5714,
       "status": "QUIET",
-      "as_of_date": "2026-06-03"
+      "as_of_date": "2026-06-04"
     }
   ],
   "freshness_warnings": [
+    {
+      "section": "Inflection Monitor",
+      "field": "n_flips",
+      "value": 2,
+      "prev_value": 2,
+      "message": "n_flips identical to yesterday (2)"
+    },
     {
       "section": "Inflection Monitor",
       "field": "rtat_rr_delta_5d",
@@ -281,80 +287,80 @@
     },
     {
       "section": "pair_data",
-      "message": "GDX (NUGT/DUST) as_of=2026-06-03 vs anchor=2026-06-04 (1d behind)"
+      "message": "GDX (NUGT/DUST) as_of=2026-06-04 vs anchor=2026-06-05 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "IWM (URTY/SRTY) as_of=2026-06-03 vs anchor=2026-06-04 (1d behind)"
+      "message": "IWM (URTY/SRTY) as_of=2026-06-04 vs anchor=2026-06-05 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "QQQ (TQQQ/SQQQ) as_of=2026-06-03 vs anchor=2026-06-04 (1d behind)"
+      "message": "QQQ (TQQQ/SQQQ) as_of=2026-06-04 vs anchor=2026-06-05 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "SLV (AGQ/ZSL) as_of=2026-06-03 vs anchor=2026-06-04 (1d behind)"
+      "message": "SLV (AGQ/ZSL) as_of=2026-06-04 vs anchor=2026-06-05 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "SOXX (SOXL/SOXS) as_of=2026-06-03 vs anchor=2026-06-04 (1d behind)"
+      "message": "SOXX (SOXL/SOXS) as_of=2026-06-04 vs anchor=2026-06-05 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "SPY (SSO/SDS) as_of=2026-06-03 vs anchor=2026-06-04 (1d behind)"
+      "message": "SPY (SSO/SDS) as_of=2026-06-04 vs anchor=2026-06-05 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "XBI (LABU/LABD) as_of=2026-06-03 vs anchor=2026-06-04 (1d behind)"
+      "message": "XBI (LABU/LABD) as_of=2026-06-04 vs anchor=2026-06-05 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "XLE (ERX/ERY) as_of=2026-06-03 vs anchor=2026-06-04 (1d behind)"
+      "message": "XLE (ERX/ERY) as_of=2026-06-04 vs anchor=2026-06-05 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "XOP (GUSH/DRIP) as_of=2026-06-03 vs anchor=2026-06-04 (1d behind)"
+      "message": "XOP (GUSH/DRIP) as_of=2026-06-04 vs anchor=2026-06-05 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "XLF (FAS/FAZ) as_of=2026-06-03 vs anchor=2026-06-04 (1d behind)"
+      "message": "XLF (FAS/FAZ) as_of=2026-06-04 vs anchor=2026-06-05 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "FXI (YINN/YANG) as_of=2026-06-03 vs anchor=2026-06-04 (1d behind)"
+      "message": "FXI (YINN/YANG) as_of=2026-06-04 vs anchor=2026-06-05 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "QQQ (QLD/QID) as_of=2026-06-03 vs anchor=2026-06-04 (1d behind)"
+      "message": "QQQ (QLD/QID) as_of=2026-06-04 vs anchor=2026-06-05 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "DIA (DDM/DXD) as_of=2026-06-03 vs anchor=2026-06-04 (1d behind)"
+      "message": "DIA (DDM/DXD) as_of=2026-06-04 vs anchor=2026-06-05 (1d behind)"
     },
     {
       "section": "pair_data",
-      "message": "XLK (TECL/TECS) as_of=2026-06-03 vs anchor=2026-06-04 (1d behind)"
+      "message": "XLK (TECL/TECS) as_of=2026-06-04 vs anchor=2026-06-05 (1d behind)"
     }
   ],
   "squeeze_signal": {
-    "score": 4,
-    "tier": "WATCH (Score 4)",
+    "score": 2,
+    "tier": "QUIET",
     "vshape_tier": "NO FIRE",
     "vshape_cross_up_today": false,
-    "spot": 754.55485,
-    "gamma_flip": 757.4974782150512,
-    "call_wall": 757,
-    "net_gex_b": -6.058555699232615,
+    "spot": 735.43985,
+    "gamma_flip": 734.0109338871542,
+    "call_wall": 750,
+    "net_gex_b": -7.290078904808667,
     "score_components": {
       "c1_spot_at_flip": true,
-      "c2_tight_ceiling": true,
+      "c2_tight_ceiling": false,
       "c3_neg_cluster": true,
       "c4_vex_flipped": false,
       "c5_skew_compress": false,
-      "c6_cw_near_flip": true
+      "c6_cw_near_flip": false
     },
     "warmup_complete": true,
-    "warmup_days_populated": 14,
+    "warmup_days_populated": 15,
     "warmup_required": 5,
     "warmup_resume_date": null
   },
@@ -364,56 +370,56 @@
         "bench": "AMZN",
         "bull": "AMZU",
         "bear": "AMZD",
-        "ratio_z": 0.247,
-        "ratio_raw": 0.8303,
+        "ratio_z": 0.088,
+        "ratio_raw": 0.8244,
         "status": "QUIET",
-        "bull_dvol": "$97.1M",
-        "bear_dvol": "$110.3M",
-        "as_of_date": "2026-06-04"
+        "bull_dvol": "$149.8M",
+        "bear_dvol": "$179.6M",
+        "as_of_date": "2026-06-05"
       },
       {
         "bench": "TSLA",
         "bull": "TSLL",
         "bear": "TSLS",
-        "ratio_z": -1.077,
+        "ratio_z": -1.033,
         "ratio_raw": 0.003,
         "status": "QUIET",
-        "bull_dvol": "$676.6M",
-        "bear_dvol": "$7.3M",
-        "as_of_date": "2026-06-04"
+        "bull_dvol": "$1022.5M",
+        "bear_dvol": "$13.5M",
+        "as_of_date": "2026-06-05"
       },
       {
         "bench": "GOOGL",
         "bull": "GGLL",
         "bear": "GGLS",
-        "ratio_z": 0.053,
-        "ratio_raw": 0.8941,
+        "ratio_z": 0.776,
+        "ratio_raw": 0.9202,
         "status": "QUIET",
-        "bull_dvol": "$316.1M",
-        "bear_dvol": "$117.4M",
-        "as_of_date": "2026-06-04"
+        "bull_dvol": "$270.1M",
+        "bear_dvol": "$141.7M",
+        "as_of_date": "2026-06-05"
       },
       {
         "bench": "MSFT",
         "bull": "MSFU",
         "bear": "MSFD",
-        "ratio_z": -0.86,
-        "ratio_raw": 0.1533,
+        "ratio_z": -1.134,
+        "ratio_raw": 0.1214,
         "status": "QUIET",
-        "bull_dvol": "$218.1M",
-        "bear_dvol": "$16.7M",
-        "as_of_date": "2026-06-04"
+        "bull_dvol": "$251.9M",
+        "bear_dvol": "$16.0M",
+        "as_of_date": "2026-06-05"
       },
       {
         "bench": "AAPL",
         "bull": "AAPU",
         "bear": "AAPD",
-        "ratio_z": 1.439,
-        "ratio_raw": 0.9078,
+        "ratio_z": 0.785,
+        "ratio_raw": 0.8678,
         "status": "QUIET",
-        "bull_dvol": "$36.1M",
-        "bear_dvol": "$98.1M",
-        "as_of_date": "2026-06-04"
+        "bull_dvol": "$87.2M",
+        "bear_dvol": "$164.0M",
+        "as_of_date": "2026-06-05"
       }
     ],
     "Tier B": [
@@ -421,23 +427,23 @@
         "bench": "PLTR",
         "bull": "PLTU",
         "bear": "PLTD",
-        "ratio_z": 0.309,
-        "ratio_raw": 0.9286,
+        "ratio_z": 0.661,
+        "ratio_raw": 0.943,
         "status": "QUIET",
-        "bull_dvol": "$137.6M",
-        "bear_dvol": "$344.3M",
-        "as_of_date": "2026-06-04"
+        "bull_dvol": "$79.1M",
+        "bear_dvol": "$287.2M",
+        "as_of_date": "2026-06-05"
       },
       {
         "bench": "NVDA",
         "bull": "NVDU",
         "bear": "NVDD",
-        "ratio_z": -0.206,
-        "ratio_raw": 0.1684,
+        "ratio_z": 0.297,
+        "ratio_raw": 0.1944,
         "status": "QUIET",
-        "bull_dvol": "$79.3M",
-        "bear_dvol": "$3.5M",
-        "as_of_date": "2026-06-04"
+        "bull_dvol": "$77.9M",
+        "bear_dvol": "$4.9M",
+        "as_of_date": "2026-06-05"
       }
     ]
   }
