@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-06-10T14:05:24.138371-04:00",
+  "as_of": "2026-06-10T14:10:17.637477-04:00",
   "regime": {
     "gate_open": false,
     "confidence": 0.35,
@@ -45,52 +45,22 @@
   },
   "cross_asset": {
     "credit_stress": true,
-    "hyg_lqd_ratio": 0.7348,
+    "hyg_lqd_ratio": 0.7347,
     "cot": {
       "error": "HTTP Error 403: Forbidden"
     },
-    "gex_value": 0.0,
-    "gex_bucket": "neutral",
-    "fa_atm_iv": null,
-    "fa_rv_20d": null,
-    "fa_vrp_assessment": null,
-    "fa_rv_5d": null,
-    "fa_rv_10d": null,
-    "fa_rv_30d": null,
-    "fa_rv_60d": null,
+    "gex_value": 3131028235.509996,
+    "gex_bucket": "strongly_positive",
     "insider_watchlist_bias": "neutral",
     "insider_n_buying": 0,
     "insider_n_selling": 0
   },
-  "gex_spy": 0.0,
+  "gex_spy": 3131028235.509996,
   "gex_flip_spy": 0.0,
-  "fa_0dte_regime": "unknown",
-  "fa_spy_vol": {
-    "atm_iv": null,
-    "rv_20d": null,
-    "vrp_assessment": null,
-    "rv_5d": null,
-    "rv_10d": null,
-    "rv_30d": null,
-    "rv_60d": null,
-    "vrp_5d": null,
-    "vrp_10d": null
-  },
-  "fa_gex_summary": {
-    "spy_gex": 0.0,
-    "spy_flip": 0.0,
-    "n_pos_gex": 1,
-    "n_neg_gex": 1,
-    "n_neg_gamma": 0,
-    "n_pos_gamma": 0,
-    "avg_vrp": null,
-    "avg_skew": null,
-    "vrp_assessments": {},
-    "top_skew": [],
-    "n_symbols": 2,
-    "status": "live"
-  },
-  "fa_regime": "nan",
+  "fa_0dte_regime": null,
+  "fa_spy_vol": {},
+  "fa_gex_summary": {},
+  "fa_regime": null,
   "finra_market_ratio": 0.4905,
   "finra_market_z": -0.543,
   "finra_elevated": [
@@ -383,7 +353,7 @@
       "sentiment_score": 0.0,
       "crowding_z": 0.0,
       "dipbuy_z": 0.0,
-      "gex_bucket": "neutral",
+      "gex_bucket": "strongly_positive",
       "in_blackout": false,
       "alert_flag": false,
       "interpretation": "Weak / no contrarian setup",
@@ -431,21 +401,7 @@
       "uw_premium_pc_ratio": null,
       "uw_max_oi_strike": null,
       "uw_max_oi_put_strike": null,
-      "uw_oi_concentration": null,
-      "fa_gex_value": null,
-      "fa_gamma_flip": null,
-      "fa_dist_from_flip_pct": null,
-      "fa_gex_bucket": "strongly_negative",
-      "fa_regime_label": "nan",
-      "fa_0dte_regime": "unknown",
-      "fa_0dte_pin_risk": null,
-      "fa_0dte_expected_move": null,
-      "fa_spot_vs_flip": "unknown",
-      "fa_atm_iv": null,
-      "fa_rv_5d": null,
-      "fa_rv_20d": null,
-      "fa_vrp_assessment": "unknown",
-      "fa_regime": "nan"
+      "uw_oi_concentration": null
     },
     {
       "ticker": "AMD",
@@ -456,7 +412,7 @@
       "sentiment_score": 0.0,
       "crowding_z": 0.0,
       "dipbuy_z": 0.0,
-      "gex_bucket": "neutral",
+      "gex_bucket": "strongly_positive",
       "in_blackout": false,
       "alert_flag": false,
       "interpretation": "Weak / no contrarian setup",
@@ -504,21 +460,7 @@
       "uw_premium_pc_ratio": null,
       "uw_max_oi_strike": null,
       "uw_max_oi_put_strike": null,
-      "uw_oi_concentration": null,
-      "fa_gex_value": null,
-      "fa_gamma_flip": null,
-      "fa_dist_from_flip_pct": null,
-      "fa_gex_bucket": "strongly_negative",
-      "fa_regime_label": "nan",
-      "fa_0dte_regime": "unknown",
-      "fa_0dte_pin_risk": null,
-      "fa_0dte_expected_move": null,
-      "fa_spot_vs_flip": "unknown",
-      "fa_atm_iv": null,
-      "fa_rv_5d": null,
-      "fa_rv_20d": null,
-      "fa_vrp_assessment": "unknown",
-      "fa_regime": "nan"
+      "uw_oi_concentration": null
     },
     {
       "ticker": "AMZN",
@@ -529,7 +471,7 @@
       "sentiment_score": 0.0,
       "crowding_z": 0.0,
       "dipbuy_z": 0.0,
-      "gex_bucket": "neutral",
+      "gex_bucket": "strongly_positive",
       "in_blackout": false,
       "alert_flag": false,
       "interpretation": "Weak / no contrarian setup",
@@ -577,21 +519,7 @@
       "uw_premium_pc_ratio": null,
       "uw_max_oi_strike": null,
       "uw_max_oi_put_strike": null,
-      "uw_oi_concentration": null,
-      "fa_gex_value": null,
-      "fa_gamma_flip": null,
-      "fa_dist_from_flip_pct": null,
-      "fa_gex_bucket": "strongly_negative",
-      "fa_regime_label": "nan",
-      "fa_0dte_regime": "unknown",
-      "fa_0dte_pin_risk": null,
-      "fa_0dte_expected_move": null,
-      "fa_spot_vs_flip": "unknown",
-      "fa_atm_iv": null,
-      "fa_rv_5d": null,
-      "fa_rv_20d": null,
-      "fa_vrp_assessment": "unknown",
-      "fa_regime": "nan"
+      "uw_oi_concentration": null
     },
     {
       "ticker": "CHAT",
@@ -602,7 +530,7 @@
       "sentiment_score": 0.0,
       "crowding_z": 0.0,
       "dipbuy_z": 0.0,
-      "gex_bucket": "neutral",
+      "gex_bucket": "strongly_positive",
       "in_blackout": false,
       "alert_flag": false,
       "interpretation": "Weak / no contrarian setup",
@@ -650,21 +578,7 @@
       "uw_premium_pc_ratio": null,
       "uw_max_oi_strike": null,
       "uw_max_oi_put_strike": null,
-      "uw_oi_concentration": null,
-      "fa_gex_value": null,
-      "fa_gamma_flip": null,
-      "fa_dist_from_flip_pct": null,
-      "fa_gex_bucket": "strongly_negative",
-      "fa_regime_label": "nan",
-      "fa_0dte_regime": "unknown",
-      "fa_0dte_pin_risk": null,
-      "fa_0dte_expected_move": null,
-      "fa_spot_vs_flip": "unknown",
-      "fa_atm_iv": null,
-      "fa_rv_5d": null,
-      "fa_rv_20d": null,
-      "fa_vrp_assessment": "unknown",
-      "fa_regime": "nan"
+      "uw_oi_concentration": null
     },
     {
       "ticker": "DRIP",
@@ -675,7 +589,7 @@
       "sentiment_score": 0.0,
       "crowding_z": 0.0,
       "dipbuy_z": 0.0,
-      "gex_bucket": "neutral",
+      "gex_bucket": "strongly_positive",
       "in_blackout": false,
       "alert_flag": false,
       "interpretation": "Weak / no contrarian setup",
@@ -723,21 +637,7 @@
       "uw_premium_pc_ratio": 0.0,
       "uw_max_oi_strike": null,
       "uw_max_oi_put_strike": null,
-      "uw_oi_concentration": 73.11,
-      "fa_gex_value": null,
-      "fa_gamma_flip": null,
-      "fa_dist_from_flip_pct": null,
-      "fa_gex_bucket": "strongly_negative",
-      "fa_regime_label": "nan",
-      "fa_0dte_regime": "unknown",
-      "fa_0dte_pin_risk": null,
-      "fa_0dte_expected_move": null,
-      "fa_spot_vs_flip": "unknown",
-      "fa_atm_iv": null,
-      "fa_rv_5d": null,
-      "fa_rv_20d": null,
-      "fa_vrp_assessment": "unknown",
-      "fa_regime": "nan"
+      "uw_oi_concentration": 73.11
     }
   ],
   "alerts_fired": 0,
@@ -749,21 +649,21 @@
     "cta_ma_detail": {
       "20": {
         "above": false,
-        "sma": 745.93,
-        "distance_pct": -1.94
+        "sma": 745.89,
+        "distance_pct": -2.03
       },
       "50": {
         "above": true,
-        "sma": 719.44,
-        "distance_pct": 1.67
+        "sma": 719.43,
+        "distance_pct": 1.58
       },
       "200": {
         "above": true,
         "sma": 683.09,
-        "distance_pct": 7.09
+        "distance_pct": 6.98
       }
     },
-    "spy_price": 731.49,
+    "spy_price": 730.78,
     "cot_lev_net": -500732,
     "cot_lev_net_chg": -42952,
     "cot_report_date": "2026-06-02",
@@ -782,11 +682,10 @@
     "results": [
       {
         "source": "FlashAlpha",
-        "status": "LIVE",
-        "evidence": "SPY net_gex: -19.3130 -> 0.0000 (delta=19.3130), 45 symbols",
+        "status": "DEGRADED",
+        "evidence": "Fallback to DIX.csv (GEX=$3.13B) \u2014 paid API key missing or failed",
         "key_values": {
-          "spy_net_gex": 0.0,
-          "n_symbols": 45
+          "spy_net_gex": 3131028235.509996
         },
         "error": ""
       },
@@ -911,34 +810,41 @@
         "error": ""
       }
     ],
-    "n_live": 10,
+    "n_live": 9,
     "n_stale": 0,
-    "n_degraded": 0,
+    "n_degraded": 1,
     "n_empty": 1,
     "n_down": 2,
     "n_disabled": 0,
     "n_total": 13,
     "all_live": false,
-    "timestamp": "2026-06-10T18:08:41.191165+00:00",
-    "summary": "10/13 live | 1 EMPTY: EDGAR Insiders | 2 DOWN: QuiverQuant WSB, Congress Trades",
-    "flipped_sources": []
+    "timestamp": "2026-06-10T18:13:19.874263+00:00",
+    "summary": "9/13 live | 1 DEGRADED: FlashAlpha | 1 EMPTY: EDGAR Insiders | 2 DOWN: QuiverQuant WSB, Congress Trades",
+    "flipped_sources": [
+      {
+        "source": "FlashAlpha",
+        "prev_status": "LIVE",
+        "new_status": "DEGRADED",
+        "evidence": "Fallback to DIX.csv (GEX=$3.13B) \u2014 paid API key missing or failed"
+      }
+    ]
   },
   "session_summary": {
     "SPX": {
-      "close": 7318.08,
-      "change_pct": -0.93
+      "close": 7321.64,
+      "change_pct": -0.88
     },
     "QQQ": {
-      "close": 699.48,
-      "change_pct": -1.18
+      "close": 700.13,
+      "change_pct": -1.09
     },
     "IWM": {
-      "close": 284.36,
-      "change_pct": -0.23
+      "close": 284.43,
+      "change_pct": -0.21
     },
     "HYG": {
-      "close": 79.53,
-      "change_pct": -0.11
+      "close": 79.54,
+      "change_pct": -0.1
     }
   },
   "prices": {
@@ -996,7 +902,7 @@
     "quad_signal": "LIVE",
     "breadth": "LIVE",
     "cta": "LIVE",
-    "flashalpha": "LIVE",
+    "flashalpha": "DEGRADED",
     "wsb": "DISABLED",
     "congress": "DISABLED",
     "edgar": "LIVE",
@@ -1019,7 +925,7 @@
       },
       "GEX": {
         "status": "NOT CONFIRMING",
-        "detail": "GEX=0.00"
+        "detail": "GEX=3131028235.51"
       },
       "DIX": {
         "status": "NOT CONFIRMING",
@@ -1030,15 +936,15 @@
     "summary": "0/3 confirming"
   },
   "inflection": {
-    "n_flips": 1,
-    "n_flips_clean": 0,
+    "n_flips": 2,
+    "n_flips_clean": 1,
     "n_flips_contaminated": 1,
     "inflection_flag": false,
     "flips": {
       "fa_gex_sign_flip": {
-        "fired": false,
+        "fired": true,
         "prev": "negative_gamma",
-        "today": "nan",
+        "today": "positive_gamma",
         "prev_scorecard_date": "2026-06-09",
         "prev_age_days": 1,
         "baseline_window": 1,
@@ -1047,7 +953,7 @@
       "fa_dte0_regime_flip": {
         "fired": false,
         "prev": "unknown",
-        "today": "unknown",
+        "today": null,
         "prev_scorecard_date": "2026-06-09",
         "prev_age_days": 1,
         "baseline_window": 1,
@@ -1083,16 +989,16 @@
         "ratio_5d_20d": null,
         "baseline_n_obs": null,
         "baseline_window": 20,
-        "baseline_contaminated": false
+        "baseline_contaminated": true
       }
     },
-    "fa_gex_delta_1d_bn": 10.0961,
+    "fa_gex_delta_1d_bn": 3131028245.6061,
     "rtat_regime": "neutral",
     "rtat_risk_ratio": 1.2243,
     "rtat_rr_delta_5d": 0.2091,
     "conviction": null,
     "status": "experimental",
     "validation_note": "Composite 3-of-6 rule not validated \u2014 does not improve over GEX-flip alone. Monitor only.",
-    "summary": "1/6 flips: dp_surge"
+    "summary": "2/6 flips: fa_gex_sign_flip, dp_surge"
   }
 }
