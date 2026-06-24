@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-06-23T20:49:18.845221-04:00",
+  "as_of": "2026-06-23T20:54:36.772014-04:00",
   "regime": {
     "gate_open": false,
     "confidence": 0.35,
@@ -49,9 +49,9 @@
     "cot": {
       "error": "HTTP Error 403: Forbidden"
     },
-    "gex_value": -9.9323,
+    "gex_value": -9.9325,
     "gex_bucket": "strongly_negative",
-    "fa_atm_iv": 17.92,
+    "fa_atm_iv": 17.93,
     "fa_rv_20d": 17.03,
     "fa_vrp_assessment": "thin_premium",
     "fa_rv_5d": 14.08,
@@ -62,19 +62,19 @@
     "insider_n_buying": 0,
     "insider_n_selling": 10
   },
-  "gex_spy": -9.9323,
-  "gex_flip_spy": 744.551371118012,
+  "gex_spy": -9.9325,
+  "gex_flip_spy": 744.551395870392,
   "fa_0dte_regime": "positive_gamma",
   "fa_spy_vol": {
-    "atm_iv": 17.92,
+    "atm_iv": 17.93,
     "rv_20d": 17.03,
     "vrp_assessment": "thin_premium",
     "rv_5d": 14.08,
     "rv_10d": 19.46,
     "rv_30d": 15.07,
     "rv_60d": 15.14,
-    "vrp_5d": 3.84,
-    "vrp_10d": -1.54
+    "vrp_5d": 3.85,
+    "vrp_10d": -1.53
   },
   "fa_gex_summary": {
     "spy_gex": -9.932,
@@ -83,8 +83,8 @@
     "n_neg_gex": 19,
     "n_neg_gamma": 0,
     "n_pos_gamma": 3,
-    "avg_vrp": 19.02,
-    "avg_skew": 12.19,
+    "avg_vrp": 19.03,
+    "avg_skew": 12.2,
     "vrp_assessments": {
       "very_high_premium": 15,
       "danger_zone": 12,
@@ -97,15 +97,15 @@
     "top_skew": [
       {
         "symbol": "MAGS",
-        "skew_25d": 130.22
+        "skew_25d": 130.33
       },
       {
         "symbol": "GDX",
-        "skew_25d": 121.65
+        "skew_25d": 121.77
       },
       {
         "symbol": "KWEB",
-        "skew_25d": 86.07
+        "skew_25d": 86.17
       }
     ],
     "n_symbols": 45,
@@ -452,8 +452,8 @@
       "uw_max_oi_strike": NaN,
       "uw_max_oi_put_strike": NaN,
       "uw_oi_concentration": NaN,
-      "fa_gex_value": 1035781763.0,
-      "fa_gamma_flip": 283.8949,
+      "fa_gex_value": 1035768454.0,
+      "fa_gamma_flip": 283.8951,
       "fa_dist_from_flip_pct": 4.304,
       "fa_gex_bucket": "strongly_positive",
       "fa_regime_label": "positive_gamma",
@@ -461,7 +461,7 @@
       "fa_0dte_pin_risk": NaN,
       "fa_0dte_expected_move": NaN,
       "fa_spot_vs_flip": "nan",
-      "fa_atm_iv": 26.62,
+      "fa_atm_iv": 26.63,
       "fa_rv_5d": 14.74,
       "fa_rv_20d": 24.22,
       "fa_vrp_assessment": "moderate_premium",
@@ -525,8 +525,8 @@
       "uw_max_oi_strike": NaN,
       "uw_max_oi_put_strike": NaN,
       "uw_oi_concentration": NaN,
-      "fa_gex_value": 134037033.0,
-      "fa_gamma_flip": 527.6248,
+      "fa_gex_value": 134036137.0,
+      "fa_gamma_flip": 527.6249,
       "fa_dist_from_flip_pct": -1.155,
       "fa_gex_bucket": "strongly_positive",
       "fa_regime_label": "negative_gamma",
@@ -534,7 +534,7 @@
       "fa_0dte_pin_risk": NaN,
       "fa_0dte_expected_move": NaN,
       "fa_spot_vs_flip": "nan",
-      "fa_atm_iv": 80.03,
+      "fa_atm_iv": 80.04,
       "fa_rv_5d": 86.16,
       "fa_rv_20d": 85.29,
       "fa_vrp_assessment": "danger_zone",
@@ -598,7 +598,7 @@
       "uw_max_oi_strike": NaN,
       "uw_max_oi_put_strike": NaN,
       "uw_oi_concentration": NaN,
-      "fa_gex_value": 155068464.0,
+      "fa_gex_value": 155064953.0,
       "fa_gamma_flip": 232.8695,
       "fa_dist_from_flip_pct": 0.073,
       "fa_gex_bucket": "strongly_positive",
@@ -607,7 +607,7 @@
       "fa_0dte_pin_risk": NaN,
       "fa_0dte_expected_move": NaN,
       "fa_spot_vs_flip": "nan",
-      "fa_atm_iv": 34.76,
+      "fa_atm_iv": 34.77,
       "fa_rv_5d": 49.94,
       "fa_rv_20d": 36.2,
       "fa_vrp_assessment": "negative_spread",
@@ -671,7 +671,7 @@
       "uw_max_oi_strike": NaN,
       "uw_max_oi_put_strike": NaN,
       "uw_oi_concentration": NaN,
-      "fa_gex_value": 238365.0,
+      "fa_gex_value": 238364.0,
       "fa_gamma_flip": 87.4919,
       "fa_dist_from_flip_pct": 9.208,
       "fa_gex_bucket": "strongly_positive",
@@ -753,7 +753,7 @@
       "fa_0dte_pin_risk": NaN,
       "fa_0dte_expected_move": NaN,
       "fa_spot_vs_flip": "nan",
-      "fa_atm_iv": 85.05,
+      "fa_atm_iv": 85.06,
       "fa_rv_5d": 40.13,
       "fa_rv_20d": 63.72,
       "fa_vrp_assessment": "very_high_premium",
@@ -803,9 +803,9 @@
       {
         "source": "FlashAlpha",
         "status": "LIVE",
-        "evidence": "SPY net_gex: -5.7282 -> -9.9323 (delta=-4.2041), 45 symbols",
+        "evidence": "SPY net_gex: -5.7282 -> -9.9325 (delta=-4.2043), 45 symbols",
         "key_values": {
-          "spy_net_gex": -9.9323,
+          "spy_net_gex": -9.9325,
           "n_symbols": 45
         },
         "error": ""
@@ -939,7 +939,7 @@
     "n_disabled": 0,
     "n_total": 13,
     "all_live": false,
-    "timestamp": "2026-06-24T00:55:21.311564+00:00",
+    "timestamp": "2026-06-24T00:58:18.275131+00:00",
     "summary": "11/13 live | 2 DOWN: QuiverQuant WSB, Congress Trades",
     "flipped_sources": []
   },
@@ -1096,7 +1096,7 @@
         "baseline_contaminated": false
       }
     },
-    "fa_gex_delta_1d_bn": -4.2041,
+    "fa_gex_delta_1d_bn": -4.2043,
     "rtat_regime": "neutral",
     "rtat_risk_ratio": 1.3348,
     "rtat_rr_delta_5d": 0.2091,
