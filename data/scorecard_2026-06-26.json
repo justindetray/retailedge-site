@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-06-26T20:26:08.094727-04:00",
+  "as_of": "2026-06-26T20:30:49.891843-04:00",
   "regime": {
     "gate_open": false,
     "confidence": 0.45,
@@ -51,7 +51,7 @@
     },
     "gex_value": -10.238,
     "gex_bucket": "strongly_negative",
-    "fa_atm_iv": 14.69,
+    "fa_atm_iv": 14.7,
     "fa_rv_20d": 16.77,
     "fa_vrp_assessment": "negative_spread",
     "fa_rv_5d": 10.14,
@@ -63,18 +63,18 @@
     "insider_n_selling": 10
   },
   "gex_spy": -10.238,
-  "gex_flip_spy": 742.42233682932,
+  "gex_flip_spy": 742.422509412803,
   "fa_0dte_regime": "negative_gamma",
   "fa_spy_vol": {
-    "atm_iv": 14.69,
+    "atm_iv": 14.7,
     "rv_20d": 16.77,
     "vrp_assessment": "negative_spread",
     "rv_5d": 10.14,
     "rv_10d": 15.46,
     "rv_30d": 15.09,
     "rv_60d": 13.64,
-    "vrp_5d": 4.55,
-    "vrp_10d": -0.77
+    "vrp_5d": 4.56,
+    "vrp_10d": -0.76
   },
   "fa_gex_summary": {
     "spy_gex": -10.238,
@@ -83,7 +83,7 @@
     "n_neg_gex": 15,
     "n_neg_gamma": 15,
     "n_pos_gamma": 23,
-    "avg_vrp": 10.84,
+    "avg_vrp": 10.85,
     "avg_skew": 10.33,
     "vrp_assessments": {
       "danger_zone": 22,
@@ -97,15 +97,15 @@
     "top_skew": [
       {
         "symbol": "KWEB",
-        "skew_25d": 123.06
+        "skew_25d": 123.1
       },
       {
         "symbol": "XLB",
-        "skew_25d": 101.42
+        "skew_25d": 101.43
       },
       {
         "symbol": "UVIX",
-        "skew_25d": 83.02
+        "skew_25d": 83.05
       }
     ],
     "n_symbols": 45,
@@ -454,7 +454,7 @@
       "uw_max_oi_strike": NaN,
       "uw_max_oi_put_strike": NaN,
       "uw_oi_concentration": NaN,
-      "fa_gex_value": 516946435.0,
+      "fa_gex_value": 516939999.0,
       "fa_gamma_flip": 277.9302,
       "fa_dist_from_flip_pct": 1.652,
       "fa_gex_bucket": "strongly_positive",
@@ -463,7 +463,7 @@
       "fa_0dte_pin_risk": 39.0,
       "fa_0dte_expected_move": 10.7982,
       "fa_spot_vs_flip": "above",
-      "fa_atm_iv": 25.05,
+      "fa_atm_iv": 25.06,
       "fa_rv_5d": 53.67,
       "fa_rv_20d": 34.42,
       "fa_vrp_assessment": "danger_zone",
@@ -527,8 +527,8 @@
       "uw_max_oi_strike": NaN,
       "uw_max_oi_put_strike": NaN,
       "uw_oi_concentration": NaN,
-      "fa_gex_value": 132564084.0,
-      "fa_gamma_flip": 509.0925,
+      "fa_gex_value": 132563682.0,
+      "fa_gamma_flip": 509.0923,
       "fa_dist_from_flip_pct": 1.96,
       "fa_gex_bucket": "strongly_positive",
       "fa_regime_label": "positive_gamma",
@@ -536,7 +536,7 @@
       "fa_0dte_pin_risk": 32.0,
       "fa_0dte_expected_move": 14.3356,
       "fa_spot_vs_flip": "above",
-      "fa_atm_iv": 71.01,
+      "fa_atm_iv": 71.02,
       "fa_rv_5d": 56.45,
       "fa_rv_20d": 80.26,
       "fa_vrp_assessment": "danger_zone",
@@ -600,7 +600,7 @@
       "uw_max_oi_strike": NaN,
       "uw_max_oi_put_strike": NaN,
       "uw_oi_concentration": NaN,
-      "fa_gex_value": 224479735.0,
+      "fa_gex_value": 224477288.0,
       "fa_gamma_flip": 231.4337,
       "fa_dist_from_flip_pct": 0.212,
       "fa_gex_bucket": "strongly_positive",
@@ -673,7 +673,7 @@
       "uw_max_oi_strike": NaN,
       "uw_max_oi_put_strike": NaN,
       "uw_oi_concentration": NaN,
-      "fa_gex_value": 241745.0,
+      "fa_gex_value": 241744.0,
       "fa_gamma_flip": 87.5627,
       "fa_dist_from_flip_pct": 6.784,
       "fa_gex_bucket": "strongly_positive",
@@ -682,7 +682,7 @@
       "fa_0dte_pin_risk": NaN,
       "fa_0dte_expected_move": NaN,
       "fa_spot_vs_flip": "nan",
-      "fa_atm_iv": 54.15,
+      "fa_atm_iv": 54.16,
       "fa_rv_5d": 66.29,
       "fa_rv_20d": 67.66,
       "fa_vrp_assessment": "danger_zone",
@@ -755,7 +755,7 @@
       "fa_0dte_pin_risk": NaN,
       "fa_0dte_expected_move": NaN,
       "fa_spot_vs_flip": "nan",
-      "fa_atm_iv": 67.03,
+      "fa_atm_iv": 67.04,
       "fa_rv_5d": 35.65,
       "fa_rv_20d": 59.58,
       "fa_vrp_assessment": "healthy_premium",
@@ -940,7 +940,7 @@
     "n_disabled": 0,
     "n_total": 13,
     "all_live": false,
-    "timestamp": "2026-06-27T00:32:14.921506+00:00",
+    "timestamp": "2026-06-27T00:34:32.728664+00:00",
     "summary": "10/13 live | 1 DEGRADED: CBOE P/C | 2 DOWN: QuiverQuant WSB, Congress Trades",
     "flipped_sources": [
       {
