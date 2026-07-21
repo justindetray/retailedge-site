@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-07-20T20:31:40.759476-04:00",
+  "as_of": "2026-07-20T20:31:23.737790-04:00",
   "regime": {
     "gate_open": false,
     "confidence": 0.4,
@@ -44,8 +44,8 @@
     "interpretation": "WSB data unavailable \u2014 sentiment signal offline"
   },
   "cross_asset": {
-    "credit_stress": null,
-    "hyg_lqd_ratio": null,
+    "credit_stress": false,
+    "hyg_lqd_ratio": 0.7405,
     "cot": {
       "error": "HTTP Error 403: Forbidden"
     },
@@ -63,7 +63,7 @@
     "insider_n_selling": 0
   },
   "gex_spy": -9.4197,
-  "gex_flip_spy": 748.971535394577,
+  "gex_flip_spy": 748.97153547847,
   "fa_0dte_regime": "positive_gamma",
   "fa_spy_vol": {
     "atm_iv": 14.11,
@@ -79,14 +79,14 @@
   "fa_gex_summary": {
     "spy_gex": -9.42,
     "spy_flip": 748.97,
-    "n_pos_gex": 28,
+    "n_pos_gex": 27,
     "n_neg_gex": 17,
-    "n_neg_gamma": 6,
-    "n_pos_gamma": 8,
-    "avg_vrp": 14.71,
-    "avg_skew": 3.81,
+    "n_neg_gamma": 7,
+    "n_pos_gamma": 7,
+    "avg_vrp": 11.78,
+    "avg_skew": -0.05,
     "vrp_assessments": {
-      "very_high_premium": 22,
+      "very_high_premium": 21,
       "moderate_premium": 6,
       "thin_premium": 5,
       "healthy_premium": 5,
@@ -96,19 +96,19 @@
     },
     "top_skew": [
       {
-        "symbol": "SMCI",
-        "skew_25d": 161.94
-      },
-      {
         "symbol": "UVXY",
         "skew_25d": 90.11
       },
       {
         "symbol": "EEM",
         "skew_25d": 83.82
+      },
+      {
+        "symbol": "XLC",
+        "skew_25d": 28.51
       }
     ],
-    "n_symbols": 45,
+    "n_symbols": 44,
     "status": "live"
   },
   "fa_regime": "negative_gamma",
@@ -454,14 +454,14 @@
       "uw_max_oi_strike": NaN,
       "uw_max_oi_put_strike": NaN,
       "uw_oi_concentration": NaN,
-      "fa_gex_value": 795241991.0,
+      "fa_gex_value": 793072877.0,
       "fa_gamma_flip": 279.7132,
       "fa_dist_from_flip_pct": 14.09,
       "fa_gex_bucket": "strongly_positive",
       "fa_regime_label": "positive_gamma",
       "fa_0dte_regime": "positive_gamma",
       "fa_0dte_pin_risk": 70.0,
-      "fa_0dte_expected_move": 6.6162,
+      "fa_0dte_expected_move": 5.8682,
       "fa_spot_vs_flip": "above",
       "fa_atm_iv": 28.36,
       "fa_rv_5d": 37.38,
@@ -527,14 +527,14 @@
       "uw_max_oi_strike": NaN,
       "uw_max_oi_put_strike": NaN,
       "uw_oi_concentration": NaN,
-      "fa_gex_value": 104753466.0,
-      "fa_gamma_flip": 495.5744,
+      "fa_gex_value": 104738614.0,
+      "fa_gamma_flip": 495.5747,
       "fa_dist_from_flip_pct": 2.002,
       "fa_gex_bucket": "strongly_positive",
       "fa_regime_label": "positive_gamma",
       "fa_0dte_regime": "positive_gamma",
-      "fa_0dte_pin_risk": 55.0,
-      "fa_0dte_expected_move": 5.2712,
+      "fa_0dte_pin_risk": 37.0,
+      "fa_0dte_expected_move": 6.8217,
       "fa_spot_vs_flip": "above",
       "fa_atm_iv": 93.28,
       "fa_rv_5d": 53.44,
@@ -600,14 +600,14 @@
       "uw_max_oi_strike": NaN,
       "uw_max_oi_put_strike": NaN,
       "uw_oi_concentration": NaN,
-      "fa_gex_value": 474783880.0,
+      "fa_gex_value": 474783947.0,
       "fa_gamma_flip": 242.6588,
       "fa_dist_from_flip_pct": 2.752,
       "fa_gex_bucket": "strongly_positive",
       "fa_regime_label": "positive_gamma",
       "fa_0dte_regime": "negative_gamma",
       "fa_0dte_pin_risk": 66.0,
-      "fa_0dte_expected_move": 3.1251,
+      "fa_0dte_expected_move": 2.8716,
       "fa_spot_vs_flip": "below",
       "fa_atm_iv": 56.84,
       "fa_rv_5d": 30.77,
@@ -941,7 +941,7 @@
     "n_disabled": 2,
     "n_total": 13,
     "all_live": false,
-    "timestamp": "2026-07-21T00:35:51.852798+00:00",
+    "timestamp": "2026-07-21T00:36:02.298153+00:00",
     "summary": "9/11 live | 1 STALE: VIX | 1 EMPTY: EDGAR Insiders",
     "flipped_sources": [
       {
@@ -956,18 +956,19 @@
     "SPX": {
       "close": 7443.28,
       "change_pct": -0.19
+    },
+    "HYG": {
+      "close": 79.65,
+      "change_pct": -0.19
     }
   },
   "prices": {
     "NVDA": 203.28,
     "TSLA": 369.57,
-    "PLTR": 134.85,
-    "IWM": 294.04,
-    "XLK": 175.71,
-    "XLE": 57.94,
-    "IGV": 92.98,
-    "TZA": 41.35,
-    "UVIX": 60.76
+    "QQQ": 695.33,
+    "IWM": 292.31,
+    "UVXY": 25.44,
+    "SOXS": 53.99
   },
   "scan_status": {
     "cboe": "LIVE",
