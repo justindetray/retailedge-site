@@ -1,13 +1,13 @@
 {
-  "date": "2026-07-22",
+  "date": "2026-07-23",
   "regime": {
-    "spy_close": 748.28,
-    "spy_ma200": 697.47,
-    "spy_vs_200": 7.28,
+    "spy_close": 747.41,
+    "spy_ma200": 697.86,
+    "spy_vs_200": 7.1,
     "regime_gate_open": "True",
-    "vix": 16.64
+    "vix": 18.7
   },
-  "ssi_cluster_breadth": 2,
+  "ssi_cluster_breadth": 1,
   "cluster_firing": false,
   "capitulation_firing": 1,
   "euphoria_firing": 0,
@@ -22,14 +22,14 @@
       "days_data": 46,
       "trend_5d": [
         -0.7,
-        -0.7,
         -0.65,
         -2.37,
+        -0.37,
         -0.37
       ],
       "z_chg_5d": 0.33,
       "is_core": true,
-      "as_of_date": "2026-07-21"
+      "as_of_date": "2026-07-22"
     },
     {
       "bench": "IWM",
@@ -48,83 +48,83 @@
       ],
       "z_chg_5d": 0.09,
       "is_core": true,
-      "as_of_date": "2026-07-21"
+      "as_of_date": "2026-07-22"
     },
     {
       "bench": "QQQ",
       "bull": "TQQQ",
       "bear": "SQQQ",
-      "ssi_z": -1.439,
-      "ssi_raw": 0.5773,
+      "ssi_z": -1.804,
+      "ssi_raw": 0.55,
       "status": "BEARISH",
       "days_data": 46,
       "trend_5d": [
-        0.11,
         -0.55,
         -1.1,
         -1.16,
-        -1.44
+        -1.44,
+        -1.8
       ],
-      "z_chg_5d": -1.55,
+      "z_chg_5d": -1.25,
       "is_core": true,
-      "as_of_date": "2026-07-21"
+      "as_of_date": "2026-07-22"
     },
     {
       "bench": "SLV",
       "bull": "AGQ",
       "bear": "ZSL",
-      "ssi_z": 0.341,
+      "ssi_z": 0.405,
       "ssi_raw": 0.6667,
       "status": "NEUTRAL",
       "days_data": 46,
       "trend_5d": [
-        -1.95,
         0.08,
         -1.76,
         -1.55,
-        0.34
+        0.34,
+        0.41
       ],
-      "z_chg_5d": 2.29,
+      "z_chg_5d": 0.33,
       "is_core": true,
-      "as_of_date": "2026-07-21"
+      "as_of_date": "2026-07-22"
     },
     {
       "bench": "SOXX",
       "bull": "SOXL",
       "bear": "SOXS",
-      "ssi_z": -0.601,
-      "ssi_raw": 0.6069,
+      "ssi_z": -0.423,
+      "ssi_raw": 0.6115,
       "status": "NEUTRAL",
       "days_data": 46,
       "trend_5d": [
-        2.56,
         1.73,
         0.25,
         -1.05,
-        -0.6
+        -0.6,
+        -0.42
       ],
-      "z_chg_5d": -3.16,
+      "z_chg_5d": -2.15,
       "is_core": true,
-      "as_of_date": "2026-07-21"
+      "as_of_date": "2026-07-22"
     },
     {
       "bench": "SPY",
       "bull": "SSO",
       "bear": "SDS",
-      "ssi_z": -1.855,
-      "ssi_raw": 0.5,
-      "status": "BEARISH",
+      "ssi_z": 0.039,
+      "ssi_raw": 0.6667,
+      "status": "NEUTRAL",
       "days_data": 46,
       "trend_5d": [
-        0.05,
         1.24,
         1.14,
         1.05,
-        -1.86
+        -1.86,
+        0.04
       ],
-      "z_chg_5d": -1.91,
+      "z_chg_5d": -1.2,
       "is_core": true,
-      "as_of_date": "2026-07-21"
+      "as_of_date": "2026-07-22"
     },
     {
       "bench": "XBI",
@@ -135,15 +135,15 @@
       "status": "NEUTRAL",
       "days_data": 46,
       "trend_5d": [
-        0.37,
         -1.08,
         -0.43,
         0.62,
+        0.62,
         0.62
       ],
-      "z_chg_5d": 0.25,
+      "z_chg_5d": 1.7,
       "is_core": true,
-      "as_of_date": "2026-07-21"
+      "as_of_date": "2026-07-22"
     },
     {
       "bench": "XLE",
@@ -156,7 +156,7 @@
       "trend_5d": [],
       "z_chg_5d": null,
       "is_core": true,
-      "as_of_date": "2026-07-21"
+      "as_of_date": "2026-07-22"
     },
     {
       "bench": "XOP",
@@ -175,7 +175,7 @@
       ],
       "z_chg_5d": -0.2,
       "is_core": true,
-      "as_of_date": "2026-07-21"
+      "as_of_date": "2026-07-22"
     },
     {
       "bench": "XLF",
@@ -188,7 +188,7 @@
       "trend_5d": [],
       "z_chg_5d": null,
       "is_core": false,
-      "as_of_date": "2026-07-21"
+      "as_of_date": "2026-07-22"
     }
   ],
   "cap_details": [
@@ -196,19 +196,19 @@
       "bench": "QQQ",
       "bull": "TQQQ",
       "bear": "SQQQ",
-      "ratio_z": 1.439,
-      "ratio_raw": 0.4227,
+      "ratio_z": 1.804,
+      "ratio_raw": 0.45,
       "status": "WARMING",
-      "as_of_date": "2026-07-21"
+      "as_of_date": "2026-07-22"
     },
     {
       "bench": "SOXX",
       "bull": "SOXL",
       "bear": "SOXS",
-      "ratio_z": 0.601,
-      "ratio_raw": 0.3931,
+      "ratio_z": 0.423,
+      "ratio_raw": 0.3885,
       "status": "QUIET",
-      "as_of_date": "2026-07-21"
+      "as_of_date": "2026-07-22"
     },
     {
       "bench": "FXI",
@@ -217,7 +217,7 @@
       "ratio_z": null,
       "ratio_raw": null,
       "status": "QUIET",
-      "as_of_date": "2026-07-21"
+      "as_of_date": "2026-07-22"
     },
     {
       "bench": "XLF",
@@ -226,16 +226,16 @@
       "ratio_z": null,
       "ratio_raw": null,
       "status": "QUIET",
-      "as_of_date": "2026-07-21"
+      "as_of_date": "2026-07-22"
     },
     {
       "bench": "QQQ",
       "bull": "QLD",
       "bear": "QID",
-      "ratio_z": 2.494,
-      "ratio_raw": 0.7857,
+      "ratio_z": 2.255,
+      "ratio_raw": 0.8235,
       "status": "FIRING",
-      "as_of_date": "2026-07-21"
+      "as_of_date": "2026-07-22"
     },
     {
       "bench": "DIA",
@@ -244,7 +244,7 @@
       "ratio_z": null,
       "ratio_raw": null,
       "status": "QUIET",
-      "as_of_date": "2026-07-21"
+      "as_of_date": "2026-07-22"
     }
   ],
   "euph_details": [
@@ -255,46 +255,38 @@
       "ratio_z": null,
       "ratio_raw": null,
       "status": "QUIET",
-      "as_of_date": "2026-07-21"
+      "as_of_date": "2026-07-22"
     },
     {
       "bench": "XLK",
       "bull": "TECL",
       "bear": "TECS",
-      "ratio_z": -0.471,
-      "ratio_raw": 0.5,
-      "status": "QUIET",
-      "as_of_date": "2026-07-21"
+      "ratio_z": 1.826,
+      "ratio_raw": 1.0,
+      "status": "WARMING",
+      "as_of_date": "2026-07-22"
     }
   ],
-  "freshness_warnings": [
-    {
-      "section": "Inflection Monitor",
-      "field": "n_flips",
-      "value": 3,
-      "prev_value": 3,
-      "message": "n_flips identical to yesterday (3)"
-    }
-  ],
+  "freshness_warnings": [],
   "squeeze_signal": {
-    "score": 4,
-    "tier": "WATCH (Score 4)",
+    "score": 2,
+    "tier": "QUIET",
     "vshape_tier": "NO FIRE",
     "vshape_cross_up_today": false,
-    "spot": 746.41,
-    "gamma_flip": 749.307390127554,
+    "spot": 738.5450000000001,
+    "gamma_flip": 748.246100375339,
     "call_wall": 750,
-    "net_gex_b": -9.6147059260409,
+    "net_gex_b": -13.881384256880848,
     "score_components": {
-      "c1_spot_at_flip": true,
-      "c2_tight_ceiling": true,
+      "c1_spot_at_flip": false,
+      "c2_tight_ceiling": false,
       "c3_neg_cluster": true,
       "c4_vex_flipped": false,
       "c5_skew_compress": false,
       "c6_cw_near_flip": true
     },
     "warmup_complete": true,
-    "warmup_days_populated": 47,
+    "warmup_days_populated": 48,
     "warmup_required": 5,
     "warmup_resume_date": null
   },
@@ -304,23 +296,23 @@
         "bench": "AMZN",
         "bull": "AMZU",
         "bear": "AMZD",
-        "ratio_z": 2.101,
-        "ratio_raw": 0.9121,
-        "status": "CAPITULATION",
-        "bull_dvol": "$49.1M",
-        "bear_dvol": "$130.4M",
-        "as_of_date": "2026-07-21"
+        "ratio_z": 0.827,
+        "ratio_raw": 0.8626,
+        "status": "QUIET",
+        "bull_dvol": "$65.6M",
+        "bear_dvol": "$109.1M",
+        "as_of_date": "2026-07-22"
       },
       {
         "bench": "TSLA",
         "bull": "TSLL",
         "bear": "TSLS",
-        "ratio_z": null,
-        "ratio_raw": null,
-        "status": "NO DATA",
-        "bull_dvol": null,
-        "bear_dvol": null,
-        "as_of_date": null
+        "ratio_z": -1.387,
+        "ratio_raw": 0.0057,
+        "status": "QUIET",
+        "bull_dvol": "$532.6M",
+        "bear_dvol": "$15.9M",
+        "as_of_date": "2026-07-22"
       },
       {
         "bench": "GOOGL",
