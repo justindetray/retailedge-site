@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-07-24T20:32:25.434559-04:00",
+  "as_of": "2026-07-24T20:32:03.411339-04:00",
   "regime": {
     "gate_open": false,
     "confidence": 0.3,
@@ -44,8 +44,8 @@
     "interpretation": "WSB data unavailable \u2014 sentiment signal offline"
   },
   "cross_asset": {
-    "credit_stress": false,
-    "hyg_lqd_ratio": 0.7456,
+    "credit_stress": null,
+    "hyg_lqd_ratio": null,
     "cot": {
       "error": "HTTP Error 403: Forbidden"
     },
@@ -80,19 +80,18 @@
     "spy_gex": -10.353,
     "spy_flip": 746.84,
     "n_pos_gex": 28,
-    "n_neg_gex": 17,
-    "n_neg_gamma": 15,
-    "n_pos_gamma": 23,
-    "avg_vrp": 30.03,
-    "avg_skew": 7.29,
+    "n_neg_gex": 16,
+    "n_neg_gamma": 16,
+    "n_pos_gamma": 21,
+    "avg_vrp": 29.8,
+    "avg_skew": 7.46,
     "vrp_assessments": {
       "very_high_premium": 26,
       "moderate_premium": 10,
       "danger_zone": 3,
       "healthy_premium": 3,
       "thin_premium": 1,
-      "negative_spread": 1,
-      "unknown": 1
+      "negative_spread": 1
     },
     "top_skew": [
       {
@@ -108,7 +107,7 @@
         "skew_25d": 80.6
       }
     ],
-    "n_symbols": 45,
+    "n_symbols": 44,
     "status": "live"
   },
   "fa_regime": "negative_gamma",
@@ -452,14 +451,14 @@
       "uw_max_oi_strike": null,
       "uw_max_oi_put_strike": null,
       "uw_oi_concentration": null,
-      "fa_gex_value": 1156808474.0,
-      "fa_gamma_flip": 286.507,
-      "fa_dist_from_flip_pct": 14.173,
+      "fa_gex_value": 1154233809.0,
+      "fa_gamma_flip": 286.6202,
+      "fa_dist_from_flip_pct": 14.139,
       "fa_gex_bucket": "strongly_positive",
       "fa_regime_label": "positive_gamma",
       "fa_0dte_regime": "negative_gamma",
       "fa_0dte_pin_risk": 44.0,
-      "fa_0dte_expected_move": 5.7889,
+      "fa_0dte_expected_move": 5.5606,
       "fa_spot_vs_flip": "below",
       "fa_atm_iv": 34.2,
       "fa_rv_5d": 34.49,
@@ -761,7 +760,7 @@
     }
   ],
   "alerts_fired": 0,
-  "scorecard_path": "/home/user/workspace/retailedge/output/scorecards/retailedge_2026-07-25.html",
+  "scorecard_path": "/home/user/workspace/retailedge/output/scorecards/retailedge_2026-07-27.html",
   "cta_regime": {
     "cta_posture": "NEUTRAL",
     "cta_conviction": 1,
@@ -802,8 +801,8 @@
     "results": [
       {
         "source": "FlashAlpha",
-        "status": "LIVE",
-        "evidence": "SPY net_gex: -13.8814 -> -10.3527 (delta=3.5287), 45 symbols",
+        "status": "STALE",
+        "evidence": "SPY net_gex: -10.3527 -> -10.3527 (unchanged from prev day)",
         "key_values": {
           "spy_net_gex": -10.3527,
           "n_symbols": 45
@@ -812,8 +811,8 @@
       },
       {
         "source": "VIX",
-        "status": "LIVE",
-        "evidence": "VIX spot: 18.7000 -> 18.5800, VVIX=100.7",
+        "status": "STALE",
+        "evidence": "VIX spot: 18.5800 -> 18.5800 (unchanged)",
         "key_values": {
           "vix_spot": 18.58,
           "vvix": 100.73
@@ -833,8 +832,8 @@
       },
       {
         "source": "RTAT",
-        "status": "LIVE",
-        "evidence": "risk_ratio: 2.1401 -> 1.6486, 51 tickers",
+        "status": "STALE",
+        "evidence": "risk_ratio: 1.6486 -> 1.6486 (unchanged), 51 tickers",
         "key_values": {
           "risk_ratio": 1.6486,
           "n_tickers": 51,
@@ -866,8 +865,8 @@
       },
       {
         "source": "Unusual Whales",
-        "status": "LIVE",
-        "evidence": "24 tickers, 1206 sweeps, 3 bullish / 3 bearish",
+        "status": "STALE",
+        "evidence": "sweeps: 1206 -> 1206, B-S: 0 -> 0 (unchanged)",
         "key_values": {
           "total_sweeps": 1206,
           "bullish_minus_bearish": 0,
@@ -877,8 +876,8 @@
       },
       {
         "source": "FINRA",
-        "status": "LIVE",
-        "evidence": "market_ratio: 0.4993 -> 0.4953, 45 tickers",
+        "status": "STALE",
+        "evidence": "market_ratio: 0.4953 -> 0.4953 (unchanged)",
         "key_values": {
           "market_ratio": 0.4953,
           "n_tickers": 45
@@ -930,50 +929,75 @@
         "error": ""
       }
     ],
-    "n_live": 10,
-    "n_stale": 0,
+    "n_live": 5,
+    "n_stale": 5,
     "n_degraded": 1,
     "n_empty": 0,
     "n_down": 0,
     "n_disabled": 2,
     "n_total": 13,
     "all_live": false,
-    "timestamp": "2026-07-25T00:38:01.908669+00:00",
-    "summary": "10/11 live | 1 DEGRADED: CBOE P/C",
+    "timestamp": "2026-07-27T22:03:29.331456+00:00",
+    "summary": "5/11 live | 5 STALE: FlashAlpha, VIX, RTAT, Unusual Whales, FINRA | 1 DEGRADED: CBOE P/C",
     "flipped_sources": [
       {
-        "source": "CBOE P/C",
+        "source": "FlashAlpha",
         "prev_status": "LIVE",
-        "new_status": "DEGRADED",
-        "evidence": "Using cboe_fallback instead of primary CBOE feed"
+        "new_status": "STALE",
+        "evidence": "SPY net_gex: -10.3527 -> -10.3527 (unchanged from prev day)"
+      },
+      {
+        "source": "VIX",
+        "prev_status": "LIVE",
+        "new_status": "STALE",
+        "evidence": "VIX spot: 18.5800 -> 18.5800 (unchanged)"
+      },
+      {
+        "source": "RTAT",
+        "prev_status": "LIVE",
+        "new_status": "STALE",
+        "evidence": "risk_ratio: 1.6486 -> 1.6486 (unchanged), 51 tickers"
+      },
+      {
+        "source": "Unusual Whales",
+        "prev_status": "LIVE",
+        "new_status": "STALE",
+        "evidence": "sweeps: 1206 -> 1206, B-S: 0 -> 0 (unchanged)"
+      },
+      {
+        "source": "FINRA",
+        "prev_status": "LIVE",
+        "new_status": "STALE",
+        "evidence": "market_ratio: 0.4953 -> 0.4953 (unchanged)"
       }
     ]
   },
   "session_summary": {
     "SPX": {
-      "close": 7411.98,
-      "change_pct": 0.05
+      "close": 7413.18,
+      "change_pct": 0.02
+    },
+    "QQQ": {
+      "close": 684.23,
+      "change_pct": -1.12
     },
     "IWM": {
-      "close": 292.09,
-      "change_pct": -0.58
+      "close": 291.17,
+      "change_pct": -0.31
     },
     "HYG": {
       "close": 79.23,
-      "change_pct": -0.36
+      "change_pct": 0.0
     }
   },
   "prices": {
-    "NVDA": 206.84,
-    "TSLA": 313.03,
-    "PLTR": 122.92,
+    "PLTR": 123.37,
     "SMCI": 30.1,
     "MSTR": 91.67,
-    "GOOGL": 317.69,
-    "SPY": 738.93,
-    "IBIT": 36.35,
-    "TLT": 83.25,
-    "UVXY": 25.09
+    "XLRE": 45.95,
+    "XLC": 106.3,
+    "SPTL": 25.31,
+    "EWZ": 35.73
   },
   "scan_status": {
     "cboe": "LIVE",
@@ -1077,8 +1101,8 @@
     },
     "fa_gex_delta_1d_bn": 3.5287,
     "rtat_regime": "risk_on",
-    "rtat_risk_ratio": 1.6486,
-    "rtat_rr_delta_5d": -1.9338,
+    "rtat_risk_ratio": 1.8978,
+    "rtat_rr_delta_5d": -1.3372,
     "conviction": null,
     "status": "experimental",
     "validation_note": "Composite 3-of-6 rule not validated \u2014 does not improve over GEX-flip alone. Monitor only.",
