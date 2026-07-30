@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-07-29T20:31:16.773537-04:00",
+  "as_of": "2026-07-29T20:32:29.505733-04:00",
   "regime": {
     "gate_open": false,
     "confidence": 0.3,
@@ -21,9 +21,9 @@
     "cond_uw_flow_sentiment": 0.0474
   },
   "vix_snapshot": {
-    "vix_spot": 18.21,
-    "vix_28d_avg": 17.25,
-    "vvix": 98.51
+    "vix_spot": 20.66,
+    "vix_28d_avg": 17.39,
+    "vvix": 109.47
   },
   "dte0": {
     "pc_ratio": 0.295,
@@ -49,7 +49,7 @@
     "cot": {
       "error": "HTTP Error 403: Forbidden"
     },
-    "gex_value": -12.1853,
+    "gex_value": -12.165,
     "gex_bucket": "strongly_negative",
     "fa_atm_iv": 18.33,
     "fa_rv_20d": 10.7,
@@ -62,8 +62,8 @@
     "insider_n_buying": 0,
     "insider_n_selling": 6
   },
-  "gex_spy": -12.1853,
-  "gex_flip_spy": 747.406135858103,
+  "gex_spy": -12.165,
+  "gex_flip_spy": 747.402453626953,
   "fa_0dte_regime": "positive_gamma",
   "fa_spy_vol": {
     "atm_iv": 18.33,
@@ -77,14 +77,14 @@
     "vrp_10d": 6.66
   },
   "fa_gex_summary": {
-    "spy_gex": -12.185,
-    "spy_flip": 747.41,
+    "spy_gex": -12.165,
+    "spy_flip": 747.4,
     "n_pos_gex": 26,
     "n_neg_gex": 19,
     "n_neg_gamma": 3,
     "n_pos_gamma": 9,
-    "avg_vrp": 28.04,
-    "avg_skew": 8.58,
+    "avg_vrp": 28.05,
+    "avg_skew": 9.71,
     "vrp_assessments": {
       "very_high_premium": 29,
       "healthy_premium": 7,
@@ -96,7 +96,7 @@
     "top_skew": [
       {
         "symbol": "AMD",
-        "skew_25d": 165.91
+        "skew_25d": 165.92
       },
       {
         "symbol": "MSFT",
@@ -104,7 +104,7 @@
       },
       {
         "symbol": "XLK",
-        "skew_25d": 90.85
+        "skew_25d": 89.43
       }
     ],
     "n_symbols": 45,
@@ -202,7 +202,7 @@
       "sqzme_pnn_interpretation": "**P_NN +0.1606**: Strong bullish k-NN forecast \u2014 historical analogs with similar G/D/V/P produced strong 21d returns.",
       "sqzme_axes_interpretation": "G_NORM=+0.159: Balanced gamma positioning. D_NORM=+0.132: Dark pool activity in normal range. V_NORM=-0.362: Volatility compressing \u2014 calm regime. VRP: IV (28.5) > annualized RV (23.6) \u2014 options expensive relative to realized moves.",
       "confirmation_summary": "2/7 sources confirm contrarian signal. Confirming: SqzMe P_NN, RTAT sentiment.",
-      "risk_factors": "Regime gate CLOSED (30% confidence). VIX 18.21 above 28d avg 17.25.",
+      "risk_factors": "Regime gate CLOSED (30% confidence). VIX 20.66 above 28d avg 17.39.",
       "actionable": false,
       "trade_suggestion": "Insufficient confirmation for trade entry.",
       "narrative_summary": "LOW (28%) | P_NN=+0.1606 | 2/7 confirm",
@@ -222,7 +222,7 @@
       "sqzme_pnn_interpretation": "P_NN +0.0455 \u2014 neutral range, no strong directional signal.",
       "sqzme_axes_interpretation": "G_NORM=-0.761: Put-heavy gamma = fear/hedging \u2014 contrarian bullish. D_NORM=+0.431: Dark pool activity in normal range. V_NORM=+0.061: Volatility in normal range. VRP: IV (79.2) \u2248 annualized RV (69.6) \u2014 balanced.",
       "confirmation_summary": "1 contradict.",
-      "risk_factors": "Regime gate CLOSED (30% confidence). VIX 18.21 above 28d avg 17.25.",
+      "risk_factors": "Regime gate CLOSED (30% confidence). VIX 20.66 above 28d avg 17.39.",
       "actionable": false,
       "trade_suggestion": "Insufficient confirmation for trade entry.",
       "narrative_summary": "LOW (0%) | P_NN=+0.0455",
@@ -242,7 +242,7 @@
       "sqzme_pnn_interpretation": "**P_NN +0.1080**: Strong bullish k-NN forecast \u2014 historical analogs with similar G/D/V/P produced strong 21d returns.",
       "sqzme_axes_interpretation": "G_NORM=-0.738: Put-heavy gamma = fear/hedging \u2014 contrarian bullish. D_NORM=-0.742: Depressed dark pool activity \u2014 reduced institutional interest. V_NORM=-0.667: Volatility compressing \u2014 calm regime. VRP: IV (43.2) > annualized RV (18.7) \u2014 options expensive relative to realized moves.",
       "confirmation_summary": "1/7 sources confirm contrarian signal. Confirming: SqzMe P_NN.",
-      "risk_factors": "Regime gate CLOSED (30% confidence). VIX 18.21 above 28d avg 17.25.",
+      "risk_factors": "Regime gate CLOSED (30% confidence). VIX 20.66 above 28d avg 17.39.",
       "actionable": false,
       "trade_suggestion": "Insufficient confirmation for trade entry.",
       "narrative_summary": "LOW (14%) | P_NN=+0.1080 | 1/7 confirm",
@@ -262,7 +262,7 @@
       "sqzme_pnn_interpretation": "**P_NN +0.0932**: Mildly bullish k-NN forecast \u2014 historical analogs lean positive over 21 days.",
       "sqzme_axes_interpretation": "G_NORM=-0.989: Put-heavy gamma = fear/hedging \u2014 contrarian bullish. D_NORM=-0.345: Dark pool activity in normal range. V_NORM=-0.601: Volatility compressing \u2014 calm regime. VRP: IV (48.9) \u2248 annualized RV (46.5) \u2014 balanced.",
       "confirmation_summary": "2/7 sources confirm contrarian signal. 1 contradict. Confirming: SqzMe P_NN, RTAT sentiment.",
-      "risk_factors": "Regime gate CLOSED (30% confidence). VIX 18.21 above 28d avg 17.25.",
+      "risk_factors": "Regime gate CLOSED (30% confidence). VIX 20.66 above 28d avg 17.39.",
       "actionable": false,
       "trade_suggestion": "Insufficient confirmation for trade entry.",
       "narrative_summary": "LOW (18%) | P_NN=+0.0932 | 2/7 confirm",
@@ -282,7 +282,7 @@
       "sqzme_pnn_interpretation": "P_NN -0.0405 \u2014 neutral range, no strong directional signal.",
       "sqzme_axes_interpretation": "G_NORM=+0.263: Balanced gamma positioning. D_NORM=-0.710: Depressed dark pool activity \u2014 reduced institutional interest. V_NORM=+0.541: Realized volatility accelerating \u2014 heightened risk regime. VRP: IV (69.8) > annualized RV (46.3) \u2014 options expensive relative to realized moves.",
       "confirmation_summary": "1/7 sources confirm contrarian signal. Confirming: RTAT sentiment.",
-      "risk_factors": "Regime gate CLOSED (30% confidence). VIX 18.21 above 28d avg 17.25. Leveraged ETF path-dependency risk for multi-day holds \u2014 prefer XLE over DRIP.",
+      "risk_factors": "Regime gate CLOSED (30% confidence). VIX 20.66 above 28d avg 17.39. Leveraged ETF path-dependency risk for multi-day holds \u2014 prefer XLE over DRIP.",
       "actionable": false,
       "trade_suggestion": "Insufficient confirmation for trade entry.",
       "narrative_summary": "LOW (14%) | P_NN=-0.0405 | 1/7 confirm",
@@ -302,7 +302,7 @@
       "sqzme_pnn_interpretation": "P_NN +0.0293 \u2014 neutral range, no strong directional signal.",
       "sqzme_axes_interpretation": "G_NORM=-0.892: Put-heavy gamma = fear/hedging \u2014 contrarian bullish. D_NORM=-0.479: Dark pool activity in normal range. V_NORM=-0.501: Volatility compressing \u2014 calm regime. VRP: IV (33.2) > annualized RV (24.7) \u2014 options expensive relative to realized moves.",
       "confirmation_summary": "1/7 sources confirm contrarian signal. Confirming: RTAT sentiment.",
-      "risk_factors": "Regime gate CLOSED (30% confidence). VIX 18.21 above 28d avg 17.25.",
+      "risk_factors": "Regime gate CLOSED (30% confidence). VIX 20.66 above 28d avg 17.39.",
       "actionable": false,
       "trade_suggestion": "Insufficient confirmation for trade entry.",
       "narrative_summary": "LOW (14%) | P_NN=+0.0293 | 1/7 confirm",
@@ -322,7 +322,7 @@
       "sqzme_pnn_interpretation": "P_NN +0.0168 \u2014 neutral range, no strong directional signal.",
       "sqzme_axes_interpretation": "G_NORM=-0.311: Put-heavy gamma = fear/hedging \u2014 contrarian bullish. D_NORM=-0.387: Dark pool activity in normal range. V_NORM=+0.150: Volatility in normal range. VRP: IV (24.5) > annualized RV (17.7) \u2014 options expensive relative to realized moves.",
       "confirmation_summary": "1 contradict.",
-      "risk_factors": "Regime gate CLOSED (30% confidence). VIX 18.21 above 28d avg 17.25.",
+      "risk_factors": "Regime gate CLOSED (30% confidence). VIX 20.66 above 28d avg 17.39.",
       "actionable": false,
       "trade_suggestion": "Insufficient confirmation for trade entry.",
       "narrative_summary": "LOW (0%) | P_NN=+0.0168",
@@ -342,7 +342,7 @@
       "sqzme_pnn_interpretation": "P_NN -0.0169 \u2014 neutral range, no strong directional signal.",
       "sqzme_axes_interpretation": "G_NORM=+0.221: Balanced gamma positioning. D_NORM=+0.186: Dark pool activity in normal range. V_NORM=-0.048: Volatility in normal range. VRP: IV (23.3) > annualized RV (15.5) \u2014 options expensive relative to realized moves.",
       "confirmation_summary": "2/7 sources confirm contrarian signal. Confirming: FINRA exhaustion, RTAT sentiment.",
-      "risk_factors": "Regime gate CLOSED (30% confidence). VIX 18.21 above 28d avg 17.25.",
+      "risk_factors": "Regime gate CLOSED (30% confidence). VIX 20.66 above 28d avg 17.39.",
       "actionable": false,
       "trade_suggestion": "Insufficient confirmation for trade entry.",
       "narrative_summary": "LOW (28%) | P_NN=-0.0169 | 2/7 confirm",
@@ -362,7 +362,7 @@
       "sqzme_pnn_interpretation": "**P_NN +0.0647**: Mildly bullish k-NN forecast \u2014 historical analogs lean positive over 21 days.",
       "sqzme_axes_interpretation": "G_NORM=-0.742: Put-heavy gamma = fear/hedging \u2014 contrarian bullish. D_NORM=-0.038: Dark pool activity in normal range. V_NORM=-0.664: Volatility compressing \u2014 calm regime. VRP: IV (43.0) > annualized RV (30.6) \u2014 options expensive relative to realized moves.",
       "confirmation_summary": "1/7 sources confirm contrarian signal. Confirming: SqzMe P_NN.",
-      "risk_factors": "Regime gate CLOSED (30% confidence). VIX 18.21 above 28d avg 17.25.",
+      "risk_factors": "Regime gate CLOSED (30% confidence). VIX 20.66 above 28d avg 17.39.",
       "actionable": false,
       "trade_suggestion": "Insufficient confirmation for trade entry.",
       "narrative_summary": "LOW (14%) | P_NN=+0.0647 | 1/7 confirm",
@@ -382,7 +382,7 @@
       "sqzme_pnn_interpretation": "**P_NN +0.1098**: Strong bullish k-NN forecast \u2014 historical analogs with similar G/D/V/P produced strong 21d returns.",
       "sqzme_axes_interpretation": "G_NORM=-0.302: Put-heavy gamma = fear/hedging \u2014 contrarian bullish. D_NORM=+0.707: Elevated dark pool short volume \u2014 institutional accumulation (contrarian bullish). V_NORM=+0.267: Volatility in normal range. VRP: IV (32.1) \u2248 annualized RV (28.4) \u2014 balanced.",
       "confirmation_summary": "1/7 sources confirm contrarian signal. Confirming: SqzMe P_NN.",
-      "risk_factors": "Regime gate CLOSED (30% confidence). VIX 18.21 above 28d avg 17.25.",
+      "risk_factors": "Regime gate CLOSED (30% confidence). VIX 20.66 above 28d avg 17.39.",
       "actionable": false,
       "trade_suggestion": "Insufficient confirmation for trade entry.",
       "narrative_summary": "LOW (14%) | P_NN=+0.1098 | 1/7 confirm",
@@ -453,14 +453,14 @@
       "uw_max_oi_strike": NaN,
       "uw_max_oi_put_strike": NaN,
       "uw_oi_concentration": NaN,
-      "fa_gex_value": 1136408695.0,
-      "fa_gamma_flip": 292.4403,
+      "fa_gex_value": 1136407571.0,
+      "fa_gamma_flip": 292.4402,
       "fa_dist_from_flip_pct": 14.001,
       "fa_gex_bucket": "strongly_positive",
       "fa_regime_label": "positive_gamma",
       "fa_0dte_regime": "negative_gamma",
       "fa_0dte_pin_risk": 60.0,
-      "fa_0dte_expected_move": 9.3205,
+      "fa_0dte_expected_move": 10.2654,
       "fa_spot_vs_flip": "below",
       "fa_atm_iv": 36.71,
       "fa_rv_5d": 29.21,
@@ -526,7 +526,7 @@
       "uw_max_oi_strike": NaN,
       "uw_max_oi_put_strike": NaN,
       "uw_oi_concentration": NaN,
-      "fa_gex_value": 463251619.0,
+      "fa_gex_value": 463250287.0,
       "fa_gamma_flip": 489.907,
       "fa_dist_from_flip_pct": 3.207,
       "fa_gex_bucket": "strongly_positive",
@@ -535,7 +535,7 @@
       "fa_0dte_pin_risk": 54.0,
       "fa_0dte_expected_move": 26.3104,
       "fa_spot_vs_flip": "above",
-      "fa_atm_iv": 141.04,
+      "fa_atm_iv": 141.05,
       "fa_rv_5d": 37.85,
       "fa_rv_20d": 75.36,
       "fa_vrp_assessment": "very_high_premium",
@@ -599,16 +599,16 @@
       "uw_max_oi_strike": NaN,
       "uw_max_oi_put_strike": NaN,
       "uw_oi_concentration": NaN,
-      "fa_gex_value": 253019040.0,
+      "fa_gex_value": 253018600.0,
       "fa_gamma_flip": 228.9601,
       "fa_dist_from_flip_pct": 0.437,
       "fa_gex_bucket": "strongly_positive",
       "fa_regime_label": "positive_gamma",
       "fa_0dte_regime": "positive_gamma",
       "fa_0dte_pin_risk": 50.0,
-      "fa_0dte_expected_move": 21.3273,
+      "fa_0dte_expected_move": 21.0433,
       "fa_spot_vs_flip": "above",
-      "fa_atm_iv": 65.04,
+      "fa_atm_iv": 65.05,
       "fa_rv_5d": 29.62,
       "fa_rv_20d": 25.51,
       "fa_vrp_assessment": "very_high_premium",
@@ -745,7 +745,7 @@
       "uw_max_oi_strike": NaN,
       "uw_max_oi_put_strike": NaN,
       "uw_oi_concentration": 51.11,
-      "fa_gex_value": 62518.0,
+      "fa_gex_value": 62515.0,
       "fa_gamma_flip": 56.9419,
       "fa_dist_from_flip_pct": -33.981,
       "fa_gex_bucket": "strongly_positive",
@@ -754,7 +754,7 @@
       "fa_0dte_pin_risk": NaN,
       "fa_0dte_expected_move": NaN,
       "fa_spot_vs_flip": "nan",
-      "fa_atm_iv": 80.01,
+      "fa_atm_iv": 80.02,
       "fa_rv_5d": 75.64,
       "fa_rv_20d": 59.33,
       "fa_vrp_assessment": "very_high_premium",
@@ -804,20 +804,20 @@
       {
         "source": "FlashAlpha",
         "status": "LIVE",
-        "evidence": "SPY net_gex: -4.6154 -> -12.1853 (delta=-7.5699), 45 symbols",
+        "evidence": "SPY net_gex: -4.6154 -> -12.1650 (delta=-7.5496), 45 symbols",
         "key_values": {
-          "spy_net_gex": -12.1853,
+          "spy_net_gex": -12.165,
           "n_symbols": 45
         },
         "error": ""
       },
       {
         "source": "VIX",
-        "status": "STALE",
-        "evidence": "VIX spot: 18.2100 -> 18.2100 (unchanged)",
+        "status": "LIVE",
+        "evidence": "VIX spot: 18.2100 -> 20.6600, VVIX=109.5",
         "key_values": {
-          "vix_spot": 18.21,
-          "vvix": 98.51
+          "vix_spot": 20.66,
+          "vvix": 109.47
         },
         "error": ""
       },
@@ -932,50 +932,35 @@
         "error": ""
       }
     ],
-    "n_live": 10,
-    "n_stale": 1,
+    "n_live": 11,
+    "n_stale": 0,
     "n_degraded": 0,
     "n_empty": 0,
     "n_down": 0,
     "n_disabled": 2,
     "n_total": 13,
-    "all_live": false,
-    "timestamp": "2026-07-30T00:37:07.810743+00:00",
-    "summary": "10/11 live | 1 STALE: VIX",
-    "flipped_sources": [
-      {
-        "source": "VIX",
-        "prev_status": "LIVE",
-        "new_status": "STALE",
-        "evidence": "VIX spot: 18.2100 -> 18.2100 (unchanged)"
-      }
-    ]
+    "all_live": true,
+    "timestamp": "2026-07-30T00:38:29.253258+00:00",
+    "summary": "All 11 sources LIVE",
+    "flipped_sources": []
   },
   "session_summary": {
     "SPX": {
       "close": 7316.15,
       "change_pct": -1.52
-    },
-    "QQQ": {
-      "close": 675.49,
-      "change_pct": -0.97
     }
   },
   "prices": {
     "NVDA": 190.01,
     "TSLA": 298.32,
-    "PLTR": 123.0,
-    "SMCI": 25.7,
-    "MSTR": 93.33,
-    "AMZN": 230.86,
-    "META": 585.61,
-    "MSFT": 390.54,
-    "AAPL": 338.19,
-    "GOOGL": 336.71,
-    "SQQQ": 49.44,
-    "IBIT": 36.0,
-    "TLT": 82.85,
-    "EWZ": 35.47
+    "XLV": 166.24,
+    "XLU": 44.91,
+    "XLB": 51.74,
+    "DRIP": 42.33,
+    "SLV": 51.77,
+    "SPTL": 25.26,
+    "HYG": 79.24,
+    "SPAB": 25.16
   },
   "scan_status": {
     "cboe": "LIVE",
@@ -995,8 +980,8 @@
     "unusual_whales": "LIVE"
   },
   "vix_prestage": {
-    "badge": "DORMANT",
-    "vix_spot": 18.21
+    "badge": "WATCH",
+    "vix_spot": 20.66
   },
   "escalation_ladder": {
     "n_layers": 1,
@@ -1010,7 +995,7 @@
       },
       "GEX": {
         "status": "CONFIRMING",
-        "detail": "GEX=-12.19"
+        "detail": "GEX=-12.16"
       },
       "DIX": {
         "status": "NOT CONFIRMING",
@@ -1077,7 +1062,7 @@
         "baseline_contaminated": false
       }
     },
-    "fa_gex_delta_1d_bn": -7.5699,
+    "fa_gex_delta_1d_bn": -7.5496,
     "rtat_regime": "risk_on",
     "rtat_risk_ratio": 1.9689,
     "rtat_rr_delta_5d": -1.2299,
