@@ -1,11 +1,11 @@
 {
-  "date": "2026-07-30",
+  "date": "2026-07-31",
   "regime": {
-    "spy_close": 729.46,
-    "spy_ma200": 699.52,
-    "spy_vs_200": 4.28,
+    "spy_close": 741.69,
+    "spy_ma200": 699.97,
+    "spy_vs_200": 5.96,
     "regime_gate_open": "True",
-    "vix": 17.09
+    "vix": 15.99
   },
   "ssi_cluster_breadth": 1,
   "cluster_firing": false,
@@ -16,20 +16,20 @@
       "bench": "GDX",
       "bull": "NUGT",
       "bear": "DUST",
-      "ssi_z": -0.167,
-      "ssi_raw": 0.5,
-      "status": "NEUTRAL",
+      "ssi_z": 1.965,
+      "ssi_raw": 1.0,
+      "status": "BULLISH",
       "days_data": 46,
       "trend_5d": [
         -0.34,
-        -0.34,
         1.7,
         -0.26,
-        -0.17
+        -0.17,
+        1.97
       ],
-      "z_chg_5d": 0.17,
+      "z_chg_5d": 2.31,
       "is_core": true,
-      "as_of_date": "2026-07-29"
+      "as_of_date": "2026-07-30"
     },
     {
       "bench": "IWM",
@@ -48,102 +48,102 @@
       ],
       "z_chg_5d": 0.09,
       "is_core": true,
-      "as_of_date": "2026-07-29"
+      "as_of_date": "2026-07-30"
     },
     {
       "bench": "QQQ",
       "bull": "TQQQ",
       "bear": "SQQQ",
-      "ssi_z": -0.374,
-      "ssi_raw": 0.6074,
+      "ssi_z": 0.145,
+      "ssi_raw": 0.6239,
       "status": "NEUTRAL",
       "days_data": 46,
       "trend_5d": [
-        -0.63,
         -0.74,
         0.27,
         -0.99,
-        -0.37
+        -0.37,
+        0.14
       ],
-      "z_chg_5d": 0.26,
+      "z_chg_5d": 0.88,
       "is_core": true,
-      "as_of_date": "2026-07-29"
+      "as_of_date": "2026-07-30"
     },
     {
       "bench": "SLV",
       "bull": "AGQ",
       "bear": "ZSL",
-      "ssi_z": 0.521,
-      "ssi_raw": 0.6667,
-      "status": "NEUTRAL",
+      "ssi_z": 3.118,
+      "ssi_raw": 1.0,
+      "status": "BULLISH",
       "days_data": 46,
       "trend_5d": [
-        0.44,
         0.52,
         0.52,
         -1.6,
-        0.52
+        0.52,
+        3.12
       ],
-      "z_chg_5d": 0.08,
+      "z_chg_5d": 2.6,
       "is_core": true,
-      "as_of_date": "2026-07-29"
+      "as_of_date": "2026-07-30"
     },
     {
       "bench": "SOXX",
       "bull": "SOXL",
       "bear": "SOXS",
-      "ssi_z": 1.1,
-      "ssi_raw": 0.7033,
-      "status": "BULLISH",
+      "ssi_z": 0.661,
+      "ssi_raw": 0.6833,
+      "status": "NEUTRAL",
       "days_data": 46,
       "trend_5d": [
-        0.45,
         1.4,
         1.97,
         1.35,
-        1.1
+        1.1,
+        0.66
       ],
-      "z_chg_5d": 0.65,
+      "z_chg_5d": -0.74,
       "is_core": true,
-      "as_of_date": "2026-07-29"
+      "as_of_date": "2026-07-30"
     },
     {
       "bench": "SPY",
       "bull": "SSO",
       "bear": "SDS",
-      "ssi_z": -1.033,
-      "ssi_raw": 0.6,
+      "ssi_z": -1.943,
+      "ssi_raw": 0.5,
       "status": "BEARISH",
       "days_data": 46,
       "trend_5d": [
-        -0.74,
-        0.0,
+        -0.0,
         1.5,
         -0.24,
-        -1.03
+        -1.03,
+        -1.94
       ],
-      "z_chg_5d": -0.29,
+      "z_chg_5d": -1.94,
       "is_core": true,
-      "as_of_date": "2026-07-29"
+      "as_of_date": "2026-07-30"
     },
     {
       "bench": "XBI",
       "bull": "LABU",
       "bear": "LABD",
-      "ssi_z": 2.66,
+      "ssi_z": 2.173,
       "ssi_raw": 1.0,
       "status": "BULLISH",
       "days_data": 46,
       "trend_5d": [
-        0.62,
         0.82,
         3.57,
         0.29,
-        2.66
+        2.66,
+        2.17
       ],
-      "z_chg_5d": 2.04,
+      "z_chg_5d": 1.35,
       "is_core": true,
-      "as_of_date": "2026-07-29"
+      "as_of_date": "2026-07-30"
     },
     {
       "bench": "XLE",
@@ -156,14 +156,14 @@
       "trend_5d": [],
       "z_chg_5d": null,
       "is_core": true,
-      "as_of_date": "2026-07-29"
+      "as_of_date": "2026-07-30"
     },
     {
       "bench": "XOP",
       "bull": "GUSH",
       "bear": "DRIP",
       "ssi_z": null,
-      "ssi_raw": 1.0,
+      "ssi_raw": null,
       "status": "NEUTRAL",
       "days_data": 46,
       "trend_5d": [
@@ -175,7 +175,7 @@
       ],
       "z_chg_5d": -0.2,
       "is_core": true,
-      "as_of_date": "2026-07-29"
+      "as_of_date": "2026-07-30"
     },
     {
       "bench": "XLF",
@@ -188,7 +188,7 @@
       "trend_5d": [],
       "z_chg_5d": null,
       "is_core": false,
-      "as_of_date": "2026-07-29"
+      "as_of_date": "2026-07-30"
     }
   ],
   "cap_details": [
@@ -196,19 +196,19 @@
       "bench": "QQQ",
       "bull": "TQQQ",
       "bear": "SQQQ",
-      "ratio_z": 0.374,
-      "ratio_raw": 0.3926,
+      "ratio_z": -0.145,
+      "ratio_raw": 0.3761,
       "status": "QUIET",
-      "as_of_date": "2026-07-29"
+      "as_of_date": "2026-07-30"
     },
     {
       "bench": "SOXX",
       "bull": "SOXL",
       "bear": "SOXS",
-      "ratio_z": -1.1,
-      "ratio_raw": 0.2967,
+      "ratio_z": -0.661,
+      "ratio_raw": 0.3167,
       "status": "QUIET",
-      "as_of_date": "2026-07-29"
+      "as_of_date": "2026-07-30"
     },
     {
       "bench": "FXI",
@@ -217,7 +217,7 @@
       "ratio_z": null,
       "ratio_raw": 0.0,
       "status": "QUIET",
-      "as_of_date": "2026-07-29"
+      "as_of_date": "2026-07-30"
     },
     {
       "bench": "XLF",
@@ -226,16 +226,16 @@
       "ratio_z": null,
       "ratio_raw": 0.0,
       "status": "QUIET",
-      "as_of_date": "2026-07-29"
+      "as_of_date": "2026-07-30"
     },
     {
       "bench": "QQQ",
       "bull": "QLD",
       "bear": "QID",
-      "ratio_z": -0.779,
-      "ratio_raw": 0.4545,
+      "ratio_z": -0.87,
+      "ratio_raw": 0.4444,
       "status": "QUIET",
-      "as_of_date": "2026-07-29"
+      "as_of_date": "2026-07-30"
     },
     {
       "bench": "DIA",
@@ -244,7 +244,7 @@
       "ratio_z": null,
       "ratio_raw": null,
       "status": "QUIET",
-      "as_of_date": "2026-07-29"
+      "as_of_date": "2026-07-30"
     }
   ],
   "euph_details": [
@@ -253,40 +253,40 @@
       "bull": "GUSH",
       "bear": "DRIP",
       "ratio_z": null,
-      "ratio_raw": 1.0,
+      "ratio_raw": null,
       "status": "QUIET",
-      "as_of_date": "2026-07-29"
+      "as_of_date": "2026-07-30"
     },
     {
       "bench": "XLK",
       "bull": "TECL",
       "bear": "TECS",
-      "ratio_z": 0.804,
-      "ratio_raw": 0.8,
+      "ratio_z": 0.519,
+      "ratio_raw": 0.75,
       "status": "QUIET",
-      "as_of_date": "2026-07-29"
+      "as_of_date": "2026-07-30"
     }
   ],
   "freshness_warnings": [],
   "squeeze_signal": {
-    "score": 5,
+    "score": 6,
     "tier": "WATCH (Score 5+)",
     "vshape_tier": "NO FIRE",
     "vshape_cross_up_today": false,
-    "spot": 743.54,
-    "gamma_flip": 743.842960124065,
+    "spot": 744.39,
+    "gamma_flip": 744.824318326244,
     "call_wall": 750,
-    "net_gex_b": -5.80354020204345,
+    "net_gex_b": -5.219898494495339,
     "score_components": {
       "c1_spot_at_flip": true,
       "c2_tight_ceiling": true,
       "c3_neg_cluster": true,
       "c4_vex_flipped": true,
-      "c5_skew_compress": false,
+      "c5_skew_compress": true,
       "c6_cw_near_flip": true
     },
     "warmup_complete": true,
-    "warmup_days_populated": 53,
+    "warmup_days_populated": 54,
     "warmup_required": 5,
     "warmup_resume_date": null
   },
@@ -296,23 +296,23 @@
         "bench": "AMZN",
         "bull": "AMZU",
         "bear": "AMZD",
-        "ratio_z": 0.286,
-        "ratio_raw": 0.854,
-        "status": "QUIET",
-        "bull_dvol": "$49.7M",
-        "bear_dvol": "$97.4M",
-        "as_of_date": "2026-07-29"
+        "ratio_z": -2.965,
+        "ratio_raw": 0.6649,
+        "status": "EUPHORIA",
+        "bull_dvol": "$319.7M",
+        "bear_dvol": "$188.1M",
+        "as_of_date": "2026-07-30"
       },
       {
         "bench": "TSLA",
         "bull": "TSLL",
         "bear": "TSLS",
-        "ratio_z": -1.39,
-        "ratio_raw": 0.0032,
+        "ratio_z": -0.918,
+        "ratio_raw": 0.0046,
         "status": "QUIET",
-        "bull_dvol": "$572.0M",
-        "bear_dvol": "$18.9M",
-        "as_of_date": "2026-07-29"
+        "bull_dvol": "$632.7M",
+        "bear_dvol": "$27.3M",
+        "as_of_date": "2026-07-30"
       },
       {
         "bench": "GOOGL",
